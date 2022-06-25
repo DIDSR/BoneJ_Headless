@@ -86,30 +86,6 @@ for txt in ROINRRD:
     plotall(img, img_otsu0, img1, img_otsu)
    
     nrrd.write(f"/gpfs_projects_old/sriharsha.marupudi/ROI_Segmentations_grayscales_L1/Segmentation-{NAME}.nrrd",img_otsu.astype(np.uint8))
-
-    # triplanar_plot_save(plotall, figDir+f"fig_{NAME}")
-  
-    # plt.figure(figsize=(9, 3.5))
-    # plt.subplot(131)
-    # plt.imshow(image_slice, cmap='gray')
-    # plt.axis('off')
-    # plt.subplot(132)
-    # plt.imshow(img[:,:,100], cmap='jet')
-    # plt.axis('off')
-    # plt.subplot(133)
-    # plt.imshow(img_threshold[:,:,100], cmap='jet')
-    # plt.axis('off')
-    # plt.show()
-    
-    # # read one of the grayscale roi files (replace the path with your own folder)
-    # ind = 0
-    # fig = plt.figure()
-    # plt.imshow(img1[:,:,100],cmap="gray")
-    # plt.contour(img_otsu[:,:,100],level=0.5,linewidths=0.5)
-    # plt.axis("off")
-    # # plt.savefig(figDir+f"{NAME}-Overlay")
-    # # triplanar_plot_save(fig,figDir+f"fig_{NAME}-Overlay")
-    # plt.close()
     
     
     plt.figure(figsize=(9, 3.5))
