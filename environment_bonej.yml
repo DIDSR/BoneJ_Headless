@@ -1,0 +1,32 @@
+# conda update --all
+# conda env create -f environment_bonej.yml
+# conda env remove -n main
+
+name: bonej
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - numpy
+  - scipy
+  - numba
+  - mkl
+  - matplotlib
+  - scikit-image
+  - scikit-learn
+  - spyder
+  - ipython
+  - glob2
+  - bioconda::fiji
+  - pip
+  - pip:
+    - pynrrd # image/data file formats
+    - pydicom
+    - h5py
+    - nibabel
+    - python-csv
+    - temp
+    - sys
+    - os
+    - subprocess
+    
