@@ -1,36 +1,13 @@
 
 
+Welcome to BoneJ Headless documentation!
+=====================================
+
 The following is a documentation of how to use the BoneJ modules and scripts that have been developed for the Quantitative Bone Texture Project. The BoneJ Module scrips were written in Python with Fiji scripts being written with Jython. To run these scripts there needs to be a working installation of Fiji with BoneJ installed, additionally files must be 3D 8-bit binary files. All functions utilize a macro file that is included with the modules written in Jython that is run within Fiji. 
 The scripts rely on invoking Fiji from the system’s command line. Fiji is called in headless mode, thus no GUI will appear. The macro files with Fiji scripts written in Jython are run to return the final results. 
 
-Plugins Include 
-Trabecular Thickness 
-Trabecular Spacing 
-Anisotropy 
-Area Volume Fraction 
-Connectivity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Citation
-
-Domander R, Felder AA, Doube M. 2021 BoneJ2 - refactoring established research software. Wellcome Open Res. 6. doi:10.12688/wellcomeopenres.16619.1
+**Citations:**
+*Domander R, Felder AA, Doube M. 2021 BoneJ2 - refactoring established research software. Wellcome Open Res. 6. doi:10.12688/wellcomeopenres.16619.1
 Doube M, Kłosowski MM, Arganda-Carreras I, Cordeliéres F, Dougherty RP, Jackson J, Schmid B, Hutchinson JR, Shefelbine SJ. BoneJ: free and extensible bone image analysis in ImageJ. Bone 47 1076-1079 (2010). doi: 10.1016/j.bone.2010.08.023
 
 Dougherty R, Kunzelmann K (2007), Computing local thickness of 3D structures with ImageJ, Microsc. Microanal., 13: 1678-1679, <doi:10.1017/S1431927607074430>
@@ -47,6 +24,77 @@ Toriwaki J, Yonekura T (2002), Euler number and connectivity indexes of a three 
 Rasband, W.S., ImageJ, U. S. National Institutes of Health, Bethesda, Maryland, USA, https://imagej.nih.gov/ij/, 1997-2018.
 BoneJ2 
 
-ImageJ 1.53q 
+ImageJ 1.53q *
+
+
+
+Table of Contents
+-----------------
+
+.. toctree::
+   :hidden:
+
+   Home <self>
+
+.. toctree::
+   :maxdepth: 2
+
+   installation
+   usage
+   plugins
+   contributing
+   developers
+   FAQs <faq>
+   changes
+
+Plugins
+---------------
+
+Currently supports the following pluins:
+
+* :py:class:`Trabecular Thickness <radiomics.firstorder.RadiomicsFirstOrder>`
+* :py:class:`Trabecular Spacing <radiomics.shape.RadiomicsShape>`
+* :py:class:`Anisotropy <radiomics.shape2D.RadiomicsShape2D>`
+* :py:class:`Area Volume Fraction <radiomics.glcm.RadiomicsGLCM>` 
+* :py:class:`Connectivity <radiomics.glrlm.RadiomicsGLRLM>` 
+
+
+Detailed description onindividual plugins is provided in section :ref:`plugins`.
+
+
+3rd-party packages used in pyradiomics
+--------------------------------------
+
+* SimpleITK (Image loading and preprocessing)
+* numpy (Feature calculation)
+* PyWavelets (Wavelet filter)
+* pykwalify (Enabling yaml parameters file checking)
+* six (Python 3 Compatibility)
+
+See also the `requirements file <https://github.com/Radiomics/pyradiomics/blob/master/requirements.txt>`_.
+
+Installation
+------------
+
+Fiji can be installed with the followingn link:
+
+*  ``https://imagej.net/software/fiji/downloads``
+
+For more detailed installation instructions for BoneJ,
+see https://imagej.net/plugins/bonej.
+
+BoneJ Indices and Tables
+------------------------------
+
+* :ref:`modindex`
+* :ref:`genindex`
+* :ref:`search`
+
+
+
+
+
+
+
 
 
