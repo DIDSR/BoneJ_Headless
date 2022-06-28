@@ -29,16 +29,22 @@ Function
 def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts) 
 
 array = Numpy array of the image
+
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Thickness module assumes microns. 
+
 fiji_path = Path to the users local Fiji installation 
+
 showMaps = True will generate a thickness map which is saved as optional_dict. False will generate no thickness map. 
+
 maskArtefacts = True will remove foreground voxels that are not present in the original image from the final thickness map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
 
 Results
 --------------------
 
 Mean Tb. Th = The mean trabecular spacing value of the image. 
+
 Std Tb. Th = The standard deviation of the trabecular spacing values. 
+
 Max Tb. Th = The max trabecular spacing value of the image. 
 
 
@@ -53,18 +59,23 @@ Function
 def Spacing(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False): 
 
 array = Numpy array of the image
+
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+
 fiji_path = Path to the users local Fiji installation 
+
 showMaps = True will generate a spacing map which is saved as optional_dict. False will generate no spacing map. 
+
 maskArtefacts = True will remove background voxels that are not present in the original image from the final spacing map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
 
 Results
 --------------------
 
 Mean Tb. Sp = The mean trabecular spacing value of the image. 
+
 Std Tb. Sp = The standard deviation of the trabecular spacing values. 
+
 Max Tb. Sp = The max trabecular spacing value of the image. 
-If showMaps is set to True a spacing map is generated. 
 
 
 Anisotropy
@@ -82,16 +93,23 @@ Function
 def Anisotropy(array, voxel_size, fiji_path, NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False):  
 
 Directions = Number of times the sampling is performed from various directions. Min value is 9. Recommended value is 2000. 
+
 Lines per direction = The number of parallel lines drawn in each direction. Recommended value 10000. 
+
 Sampling Increment = The distance between sampling points along a line. Minimum, default, and recommended value is 1.73. 
+
 radii = True of False. If True is input the radii of the fitted ellipsoid results are output. 
+
 eigens = True or False. If True is input the eigenvectors and values of the fitted ellipsoid is output 
+
 It is best to run a convergence analysis to determine the best parameters for Anisotropy. Recommended parameters may not give stable results in a reasonable amount of time. An ImageJ macro has been included for this. 
 
 Results
 --------------------
 Degree of anisotropy = Quantitative value representing the directionality of trabecular bone sample. 0 is isotropic, 1 is anisotropic. The higher the value the more orientation in the microstructure of the bone. 
+
 Radii of fitted ellipsoid = Radii lengths, a<b<c of the ellipsoid fit to the point cloud. Used to calculate degree of anisotropy. DA=1/c^2 -1/a^2 . Only output if radii is set to True. 
+
 Eigenvectors and values = Values of the x,y,,z components of the three eigvenctors of the ellipsoid fit to the point cloud (m00,m01,m02..). Eigenvalues are listed as D1,D2,D3  which correspond 1/c^2 ,1/b^2 ,1/a^2 , a,b,c are the radii of the ellipsoid fit to the point cloud vector. 
 
 
@@ -109,15 +127,20 @@ Function
 def Connectivity(array,voxel_size,fiji_path): 
 
 array = Numpy array of the image
+
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+
 fiji_path = Path to the users local Fiji installation 
 
 Results
 ------------------
 
 Euler characteristic =  Euler characteristic of the sample if it were floating in space
+
 Corrected Euler = The contribution of the bone sample to the Euler characteristic of the bone to which it is connected
+
 Connectivity = Connectivity of the image described as the number of trabeculae 
+
 Connectivity Density = The number of trabeculae per unit volume
 
 
@@ -129,15 +152,20 @@ Function
 --------------------
 
 def Area_VolumeFraction(array,voxel_size,fiji_path): 
+
 array = Numpy array of the image
+
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+
 fiji_path = Path to the users local Fiji installation 
 
 Results
 --------------------
 
 Bone volume: Volume of bone voxels 
+
 Total volume: Volume of entire image
+
 BV/TV: Ratio of Bone volume to total volume of the image 
 
 
