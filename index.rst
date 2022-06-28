@@ -1,5 +1,3 @@
-
-
 Welcome to BoneJ Headless documentation!
 =====================================
 
@@ -52,11 +50,11 @@ Plugins
 
 Currently supports the following pluins:
 
-* :Trabecular Thickness 
-* :Trabecular Spacing 
-* :Anisotropy
-* :Area Volume Fraction
-* :Connectivity
+* Trabecular Thickness 
+* Trabecular Spacing 
+* Anisotropy
+* Area Volume Fraction
+* Connectivity
 
 
 Detailed description onindividual plugins is provided in section :ref:`plugins`.
@@ -70,14 +68,6 @@ Fiji can be installed with the followingn link:
 
 For more detailed installation instructions for BoneJ,
 see https://imagej.net/plugins/bonej.
-
-BoneJ Indices and Tables
-------------------------------
-
-* :ref:`modindex`
-* :ref:`genindex`
-* :ref:`search`
-
 
 
 
