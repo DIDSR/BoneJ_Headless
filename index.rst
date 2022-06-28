@@ -52,26 +52,14 @@ Plugins
 
 Currently supports the following pluins:
 
-* :py:class:`Trabecular Thickness <radiomics.firstorder.RadiomicsFirstOrder>`
-* :py:class:`Trabecular Spacing <radiomics.shape.RadiomicsShape>`
-* :py:class:`Anisotropy <radiomics.shape2D.RadiomicsShape2D>`
-* :py:class:`Area Volume Fraction <radiomics.glcm.RadiomicsGLCM>` 
-* :py:class:`Connectivity <radiomics.glrlm.RadiomicsGLRLM>` 
+* :Trabecular Thickness 
+* :Trabecular Spacing 
+* :Anisotropy
+* :Area Volume Fraction
+* :Connectivity
 
 
 Detailed description onindividual plugins is provided in section :ref:`plugins`.
-
-
-3rd-party packages used in pyradiomics
---------------------------------------
-
-* SimpleITK (Image loading and preprocessing)
-* numpy (Feature calculation)
-* PyWavelets (Wavelet filter)
-* pykwalify (Enabling yaml parameters file checking)
-* six (Python 3 Compatibility)
-
-See also the `requirements file <https://github.com/Radiomics/pyradiomics/blob/master/requirements.txt>`_.
 
 Installation
 ------------
