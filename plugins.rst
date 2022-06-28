@@ -104,6 +104,7 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing modu
 fiji_path = Path to the users local Fiji installation 
 
 Results
+------------------
 
 Euler characteristic =  Euler characteristic of the sample if it were floating in space
 Corrected Euler = The contribution of the bone sample to the Euler characteristic of the bone to which it is connected
@@ -113,31 +114,19 @@ Connectivity Density = The number of trabeculae per unit volume
 
 Area Volume Fraction
 --------------------------------------------
-
-.. automodule:: radiomics.glszm
-    :members:
-    :undoc-members:
-    :show-inheritance:
-    :member-order: bysource
-
-.. _radiomics-glrlm-label:
-
-Gray Level Run Length Matrix (GLRLM) Features
----------------------------------------------
-
 Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent bone are divided by the total number of voxels in the image. 
 
 Function
 
 def Area_VolumeFraction(array,voxel_size,fiji_path): 
-a
-rray = Numpy array of the image
+array = Numpy array of the image
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
 fiji_path = Path to the users local Fiji installation 
 Results
 Bone volume: Volume of bone voxels 
 Total volume: Volume of entire image
 BV/TV: Ratio of Bone volume to total volume of the image 
+
 
 
 
