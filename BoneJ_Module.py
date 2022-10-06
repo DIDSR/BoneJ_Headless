@@ -21,12 +21,14 @@ import sys, os
 
 
 # BoneJ Function wrapper
+# def BoneJ(array,voxel_size,Fiji_path):
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
 
-NAME = "1_759-67066-L45_2"
-array,array1header = nrrd.read(f"/gpfs_projects_old/sriharsha.marupudi/Segmentations_Otsu/Segmentation-grayscale-{NAME}.nrrd")  # should be a numpy array
+NAME = "1_06604"
+# MD-160409-1_
+array,array1header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/Segmentation-grayscale-{NAME}.nrrd")  # should be a numpy array
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
@@ -50,7 +52,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
     nrrd.write(data1_nrrd,array,header)
-    # macro_file = "/gpfs_projects_old/sriharsha.marupudi/Trabecular_Thickness_API_Test.py"
+    # macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Thickness_API_Test.py"
     # run BoneJ thickness wraapper 
     # table is results of thickness plugin as csv file 
     # thickness_tif is numpy array of thickness images 
@@ -64,10 +66,9 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-
     
  
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r",) as file:
+    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -76,7 +77,8 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         if showMaps==True:
             with open(outputdir+f"ROI-{NAME}-thickness.tif", 'rb') as f:
                 thickness_tif = f.read()
-            thickness_tif = optional_dict["thickness_tif"] 
+            optional_dict["thickness_tif"] = thickness_tif
+            
            
         
     return metric_dict, optional_dict
@@ -97,9 +99,10 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
     nrrd.write(data1_nrrd,array,header)
+    # macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Thickness_API_Test.py"
     # run BoneJ thickness wraapper 
-    # table is results of spacing plugin as csv file 
-    # thickness_tif is numpy array of spacing images 
+    # table is results of thickness plugin as csv file 
+    # thickness_tif is numpy array of thickness images 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", spacing_tif="+"\""+spacing_tif+"\"",\
@@ -113,11 +116,11 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     
 
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r",) as file:
+    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
-    
+        
         optional_dict={}
         if showMaps==True:
             with open(outputdir+f"ROI-{NAME}-spacing.tif", 'rb') as f:
@@ -128,16 +131,14 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
 
             
        
-def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False):
+def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False):
     
     NDirs = str(NDirs)
     nLines = str(nLines)
     samplingincrement = str(samplingincrement)
     radii = str(radii)
     eigens = str(eigens)
-    MILvectors = str(MILvectors)
-    
-    
+   
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
@@ -149,7 +150,9 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
 
     nrrd.write(data1_nrrd,array,header)
     
-
+    # run BoneJ thickness wraapper 
+    # table is results of thickness plugin as csv file 
+    # thickness_tif is numpy array of thickness images 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"",
@@ -158,12 +161,11 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
                          ", samplingincrement="+"\""+samplingincrement+"\"",
                          ", radii="+"\""+radii+"\"",
                          ", eigens="+"\""+eigens+"\"",
-                         ", MILvectors="+"\""+MILvectors+"\"",
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r",) as file:
+    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -186,7 +188,9 @@ def Connectivity(array,voxel_size,fiji_path):
 
     nrrd.write(data1_nrrd,array,header)
     
-
+    # run BoneJ thickness wraapper 
+    # table is results of thickness plugin as csv file 
+    # thickness_tif is numpy array of thickness images 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"", 
@@ -195,7 +199,7 @@ def Connectivity(array,voxel_size,fiji_path):
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r",) as file:
+    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -215,7 +219,9 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
 
     nrrd.write(data1_nrrd,array,header)
     
-
+    # run BoneJ thickness wraapper 
+    # table is results of thickness plugin as csv file 
+    # thickness_tif is numpy array of thickness images 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"",  ", NAME="+"\""+NAME+"\"",
@@ -223,19 +229,18 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r",) as file:
+    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
         
     return metric_dict
-#Run code 
+
 Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
 Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
 Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
 Connectivity_result = Connectivity(array,voxel_size,fiji_path)
-Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False)
-
+Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False)
 
      
    
