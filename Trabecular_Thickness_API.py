@@ -9,6 +9,7 @@
 #@ String showMaps
 #@ String maskArtefacts
 #@ String NAME
+#@ String outputdir
 from ij import IJ
 
 import os
@@ -28,11 +29,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 #Open image from path 
-input_dir = "/gpfs_projects_old/sriharsha.marupudi/Segmentations_Otsu_L1/"
-outputdir = "/gpfs_projects_old/sriharsha.marupudi/Thickness_Measurements_L1/"
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_100/"
+# outputdir = "/gpfs_projects/sriharsha.marupudi/Thickness_Measurements_Print_25/"
 
 #open input image as IJ1-style image to be compatabile with wrapper  
-#IJ.run("Clear BoneJ results");
 IJ.run("Clear BoneJ results");
 IJ.open(image)
 input_Image = IJ.getImage() # BoneJ2 Thickness wrapper requires IJ1 image data, ImagePlus

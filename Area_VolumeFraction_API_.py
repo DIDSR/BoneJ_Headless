@@ -6,6 +6,7 @@
 #@ String NAME 
 #@ String image
 #@ String table_csv
+#@ String outputdir
 from ij import IJ
 from net.imglib2.img import ImagePlusAdapter
 import csv
@@ -29,8 +30,8 @@ from ij.io import FileSaver
 
 
 #Open image from path 
-input_dir = "/gpfs_projects_old/sriharsha.marupudi/Segmentations_Otsu_L1/"
-outputdir = "/gpfs_projects_old/sriharsha.marupudi/Area_VolumeFraction_Measurements_L1/"
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_100"
+# outputdir = "/gpfs_projects/sriharsha.marupudi/Area_VolumeFraction_Measurements_Print_25/"
 IJ.run("Clear BoneJ results");
 #open input image as ImagePlus and converts to ImgPlus to be compatabile with wrapper
 input_image = IJ.openImage(image)

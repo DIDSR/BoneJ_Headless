@@ -9,6 +9,7 @@
 #@ String radii 
 #@ String eigens
 #@ String MILvectors
+#@ String outputdir
 
 
 
@@ -37,10 +38,10 @@ from ij.io import FileSaver
 
 
 #Open image from path 
-input_dir = "/gpfs_projects_old/sriharsha.marupudi/Segmentations_Otsu/_L1"
-outputdir = "/gpfs_projects_old/sriharsha.marupudi/Anisotropy_Measurements_L1/"
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_75/"
+# outputdir = "/gpfs_projects/sriharsha.marupudi/Anisotropy_Measurements_Print_25/"
 IJ.run("Clear BoneJ results");
-#open input image as I21-style image to be compatabile with wrapper  "integerDirections",2000,"IntegarLines",10000,"samplingIncrement",1.73
+#open input image as I21-style image to be compatabile with wrapper  "integerDirections",2000,"IntegarLines",7500,"samplingIncrement",1.73
 input_image = IJ.openImage(image)
 output = ImagePlusAdapter.wrapImgPlus(input_image) 
 wrapper = cs.run("org.bonej.wrapperPlugins.AnisotropyWrapper", False, ["inputImage",output,"directions",NDirs,"lines",nLines,"samplingIncrement",samplingincrement,"printRadii",radii, "printEigens",eigens,"displayMILVectors",MILvectors])
