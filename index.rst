@@ -62,7 +62,7 @@ Detailed description on individual plugins is provided in section :ref:`plugins`
 Installation
 ------------
 
-Fiji can be installed with the followingn link:
+Fiji can be installed with the following link:
 
 *  ``https://imagej.net/software/fiji/downloads``
 
