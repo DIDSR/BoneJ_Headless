@@ -54,9 +54,9 @@ Fits spheres into every background voxel of a segmented image to determine the t
 
 Function
 
-'''
+```
 def Spacing(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False): 
-'''
+```
 
 array = Numpy array of the image
 
