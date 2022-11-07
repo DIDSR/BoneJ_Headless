@@ -24,11 +24,8 @@ Trabecular Thickness
 Fits spheres into every foreground voxel of a segmented image to determine the thickness of the trabecular microstructure. The diameter of the largest sphere that is able to fit inside the foreground voxel and contains the point for each point is measured by the plugin. The plugin outputs the mean thickness of the sample, standard deviation of the sample, and the max thickness value. 
 
     
-Function::
-
-    def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts
+Function:: = def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts
     
-  `` def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts``
 array = Numpy array of the image
 
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Thickness module assumes microns. 
