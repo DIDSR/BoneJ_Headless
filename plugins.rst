@@ -35,6 +35,7 @@ showMaps = True will generate a thickness map which is saved as optional_dict. F
 maskArtefacts = True will remove foreground voxels that are not present in the original image from the final thickness map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
 
 Results
++++++++++++++++++++++++
 
 
 Mean Tb. Th = The mean trabecular spacing value of the image. 
