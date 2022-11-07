@@ -24,7 +24,7 @@ Trabecular Thickness
 Fits spheres into every foreground voxel of a segmented image to determine the thickness of the trabecular microstructure. The diameter of the largest sphere that is able to fit inside the foreground voxel and contains the point for each point is measured by the plugin. The plugin outputs the mean thickness of the sample, standard deviation of the sample, and the max thickness value. 
 
     
-Function: = ``def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts:``
+Function = ``def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts:``
     
 array = Numpy array of the image
 
@@ -51,7 +51,7 @@ Trabecular Spacing
 
 Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin. spacing value.  
 
-Function: = ``def Spacing(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False)``: 
+Function = ``def Spacing(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False)``: 
 
 array = Numpy array of the image
 
@@ -82,7 +82,7 @@ Plugin uses mean intercept length vectors to calculate the degree of anisotropy.
 
 Plugin finds mean intercept length vectors from n directions where points change from the background to the foreground. Parallel lines over an input image are drawn where each line segment in an image sample points from background to foreground. The MIL vectors are then plotted into a point cloud around the origin. The equation of an ellipsoid is solved that fits the point cloud. The Degree of Anisotropy is measured based on the ellipsoid radii. 
 
-Function: ``def Anisotropy(array, voxel_size, fiji_path, NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False):``  
+Function = ``def Anisotropy(array, voxel_size, fiji_path, NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False):``  
 Directions = Number of times the sampling is performed from various directions. Min value is 9. Recommended value is 2000. 
 
 Lines per direction = The number of parallel lines drawn in each direction. Recommended value 10000. 
@@ -112,7 +112,7 @@ Plugin determines the number of connected structures in the image. The connected
 
 Before Connectivity is run the plugin Purify is run within the script. Purify is a preprocessing step that filters an image by removing all particles but the largest foreground and background particles. Once purify is run there is a single connected bone phase and a single connected marrow phase. From there the Euler characteristic is calculated for every bone voxel in the image. The intersection of voxels and stack edges is checked to calculate the bone’s contribution to the Euler characteristic of the bone it is connected to. Connectivity is 1- Δχ, connectivity density is defined as Connectivity/stack volume. 
 
-Function: ``def Connectivity(array,voxel_size,fiji_path):`` 
+Function = ``def Connectivity(array,voxel_size,fiji_path):`` 
 
 array = Numpy array of the image
 
@@ -136,7 +136,7 @@ Area Volume Fraction
 --------------------------------------------
 Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent bone are divided by the total number of voxels in the image. 
 
-Function: ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
+Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
 
 array = Numpy array of the image
 
