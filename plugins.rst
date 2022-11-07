@@ -1,7 +1,7 @@
 .. _bonej-plugins:
 
 =================
-#BoneJ Plugins
+BoneJ Plugins
 =================
 
 This section contians definitions and user instructions for the following plugins
@@ -16,7 +16,7 @@ All  the plugins require 3D 8 bit binary images, the files are written and read 
 
 
 
-##Trabecular Thickness
+Trabecular Thickness
 --------------------
 
 Fits spheres into every foreground voxel of a segmented image to determine the thickness of the trabecular microstructure. The diameter of the largest sphere that is able to fit inside the foreground voxel and contains the point for each point is measured by the plugin. The plugin outputs the mean thickness of the sample, standard deviation of the sample, and the max thickness value. 
@@ -44,7 +44,7 @@ Std Tb. Th = The standard deviation of the trabecular spacing values.
 Max Tb. Th = The max trabecular spacing value of the image. 
 
 
-##Trabecular Spacing
+Trabecular Spacing
 -------------------
 
 Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin. spacing value.  
@@ -71,7 +71,7 @@ Std Tb. Sp = The standard deviation of the trabecular spacing values.
 Max Tb. Sp = The max trabecular spacing value of the image. 
 
 
-##Anisotropy
+Anisotropy
 -------------------
 
 Assigns a numerical value on a scale of 0-1 to quantify trabecular bone’s directionality. Degree of anisotropy is representative of the microstructure’s orientation. The closer to 0 the more isotropic a bone, the closer to 1 the more anisotropic a bone. 
@@ -105,7 +105,7 @@ Eigenvectors and values = Values of the x,y,,z components of the three eigvencto
 
 
 
-##Connectivity
+Connectivity
 -----------------------------------------------
 
 Plugin determines the number of connected structures in the image. The connected structures are representative of trabeculae in a trabecular network. Connectivity is determined from measuring the Euler characteristic denoted χ. The Euler characteristic is a topologically invariant value meant to describe a shape or structure regardless of how it is bent. It is defined as χ = objects – handles + cavities. A handle is analogous to a hole through an object, while a cavity hole enclosed inside of an object. 
@@ -132,7 +132,7 @@ Connectivity = Connectivity of the image described as the number of trabeculae
 Connectivity Density = The number of trabeculae per unit volume
 
 
-##Area Volume Fraction
+Area Volume Fraction
 --------------------------------------------
 Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent bone are divided by the total number of voxels in the image. 
 
