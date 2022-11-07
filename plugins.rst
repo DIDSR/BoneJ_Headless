@@ -63,6 +63,7 @@ showMaps = True will generate a spacing map which is saved as optional_dict. Fal
 maskArtefacts = True will remove background voxels that are not present in the original image from the final spacing map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
 
 Results
++++++++++++++++++++++++
 
 
 Mean Tb. Sp = The mean trabecular spacing value of the image. 
@@ -97,6 +98,7 @@ eigens = True or False. If True is input the eigenvectors and values of the fitt
 It is best to run a convergence analysis to determine the best parameters for Anisotropy. Recommended parameters may not give stable results in a reasonable amount of time. An ImageJ macro has been included for this. 
 
 Results
++++++++++++++++++++++++
 
 Degree of anisotropy = Quantitative value representing the directionality of trabecular bone sample. 0 is isotropic, 1 is anisotropic. The higher the value the more orientation in the microstructure of the bone. 
 
@@ -122,6 +124,7 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing modu
 fiji_path = Path to the users local Fiji installation 
 
 Results
++++++++++++++++++++++++
 
 
 Euler characteristic =  Euler characteristic of the sample if it were floating in space
@@ -146,7 +149,7 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing modu
 fiji_path = Path to the users local Fiji installation 
 
 Results
-
++++++++++++++++++++++++
 
 Bone volume: Volume of bone voxels 
 
