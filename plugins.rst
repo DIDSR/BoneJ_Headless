@@ -27,13 +27,10 @@ Function
 
 ```def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts):```
 
-*Function::
-
-    `def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts)
     
-* Clone the repository::
+* Function::
 
-    git clone git://github.com/Radiomics/pyradiomics
+    def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts
 array = Numpy array of the image
 
 voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Thickness module assumes microns. 
