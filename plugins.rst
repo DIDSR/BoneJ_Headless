@@ -26,6 +26,9 @@ Fits spheres into every foreground voxel of a segmented image to determine the t
 Function
 
 ```def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts):```
+*Function::
+
+    `def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts)
 
 array = Numpy array of the image
 
