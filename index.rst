@@ -57,7 +57,7 @@ Currently supports the following pluins:
 * Connectivity
 
 
-Detailed description onindividual plugins is provided in section :ref:`plugins`.
+Detailed description on individual plugins is provided in section :ref:`plugins`.
 
 Installation
 ------------
