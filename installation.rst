@@ -9,7 +9,7 @@ Fiji Downloads (imagej.net)
 
 2.	After launching Fiji BoneJ navigate to Help, Update. 
 
-3.	Select ,anage update sites 
+3.	Select manage update sites 
 
 4.	Select BoneJ 
 
