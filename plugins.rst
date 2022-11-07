@@ -138,7 +138,7 @@ Connectivity Density = The number of trabeculae per unit volume
 
 Area Volume Fraction
 --------------------------------------------
-Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent bone are divided by the total number of voxels in the image. 
+Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent trabecular bone are divided by the total number of voxels in the image. 
 
 Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
 
