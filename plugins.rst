@@ -83,6 +83,7 @@ Plugin uses mean intercept length vectors to calculate the degree of anisotropy.
 Plugin finds mean intercept length vectors from n directions where points change from the background to the foreground. Parallel lines over an input image are drawn where each line segment in an image sample points from background to foreground. The MIL vectors are then plotted into a point cloud around the origin. The equation of an ellipsoid is solved that fits the point cloud. The Degree of Anisotropy is measured based on the ellipsoid radii. 
 
 Function = ``def Anisotropy(array, voxel_size, fiji_path, NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False, MILvectors = False):``  
+
 Directions = Number of times the sampling is performed from various directions. Min value is 9. Recommended value is 2000. 
 
 Lines per direction = The number of parallel lines drawn in each direction. Recommended value 10000. 
