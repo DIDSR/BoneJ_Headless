@@ -24,13 +24,11 @@ from io.scif.img import ImgOpener
 from org.bonej.utilities import SharedTable
 from ij import ImagePlus
 from ij.io import FileSaver
+
 #Prevents unicode error 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-#Open image from path 
-# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_100/"
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Thickness_Measurements_Print_25/"
 
 #open input image as IJ1-style image to be compatabile with wrapper  
 IJ.run("Clear BoneJ results");
