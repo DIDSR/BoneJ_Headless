@@ -236,13 +236,15 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
         
     return metric_dict
 
-Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
-Connectivity_result = Connectivity(array,voxel_size,fiji_path)
-Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False)
+if __name__ == "__main__":
 
-     
+    Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
+    Connectivity_result = Connectivity(array,voxel_size,fiji_path)
+    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False)
+
+
    
     
     
