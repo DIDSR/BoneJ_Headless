@@ -31,9 +31,7 @@ from ij.io import FileSaver
 
 
 #Open image from path 
-input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/"
 outputdir
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Measurements_Test/" 
 IJ.run("Clear BoneJ results");
 #open input image as ImagePlus and converts to ImgPlus to be compatabile with wrapper
 input_image = IJ.openImage(image)
