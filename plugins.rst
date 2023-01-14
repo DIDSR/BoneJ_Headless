@@ -171,6 +171,18 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assum
 
 fiji_path = Path to the users local Fiji installation 
 
+Sampling Increment: The distance between the sampling points for each vector of the ROI
+
+Vectors: The number of vectors that is sampled at each seed point of the ROI 
+
+Skeleton points per ellipsoid: The density of sampling within the ROI. Set to 1 indicates that ellipsoid is sampled at every seed point in the ROI. 
+
+Contact Sensitivity: How many sampled vectors touch the background of the image prior to stopping dilation 
+
+Maximum Iterations: How many attempts will be made to find larger ellipsoids for fitting into seed points 
+
+Maximum Drift: How far centroid of ellipsoid is displaced from seed point within ROI. 
+
 Results
 +++++++++++++++++++++++
 EF image: Image stack containing EF values
