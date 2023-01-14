@@ -24,8 +24,6 @@ def Thickness():
     plt.xlabel("Thickness (microns)")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    plt.text(0.82, 0.2, 'Mean = {:.2f}'.format(365.15), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {:.2f}'.format(51.90), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_Thickness_Histogram.png")
 
@@ -38,8 +36,6 @@ def Spacing():
     plt.xlabel("Spacing (microns)")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    plt.text(0.82, 0.2, 'Mean = {:.2f}'.format(1186.82), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {:.2f}'.format(185.651), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_Spacing_Histogram.png")
     
@@ -52,8 +48,6 @@ def BVTV():
     plt.xlabel("BV/TV")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    plt.text(0.82, 0.2, 'Mean = {:.2f}'.format(.18), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {:.2f}'.format(.05), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_Area_VolumeFraction_Histogram.png")
     
@@ -67,8 +61,6 @@ def Anisotropy():
     plt.xlabel("DA")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    plt.text(0.82, 0.2, 'Mean = {:.2f}'.format(.43), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {:.2f}'.format(.11), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_Anisotropy_Histogram.png")
     
@@ -83,10 +75,6 @@ def Connectivity():
     plt.xlabel("Connectivity Density ($1/microns^3$)")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    mean = 1.93E09
-    sd = 1.75E09
-    plt.text(0.82, 0.2, 'Mean = {0:0.2e}'.format(mean), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {0:0.2e}'.format(sd), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_Connectivity_Histogram.png")
     
@@ -100,17 +88,15 @@ def EF():
     plt.xlabel("Ellipsoid Factor")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
-    plt.text(0.82, 0.2, 'Mean = {:.2f}'.format(.11), transform=plt.gca().transAxes)
-    plt.text(0.82, 0.3, 'SD = {:.2f}'.format(.07), transform=plt.gca().transAxes)
     plt.show()
     plt.savefig("/gpfs_projects/sriharsha.marupudi/BoneJ_Results_Print_EF_Histogram.png")   
     
     
-# Thickness()
-# Spacing()
-# BVTV()
-# Anisotropy()
+Thickness()
+Spacing()
+BVTV()
+Anisotropy()
 Connectivity()
-# EF()
+EF()
 
 
