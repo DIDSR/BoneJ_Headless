@@ -14,8 +14,7 @@ Domander, Richard, Alessandro A. Felder, and Michael Doube. "BoneJ2-refactoring 
 
 **Note**: All code is under CC0 (Creative Commons 1.0 Universal License) 
 
-*BoneJ Headless Team: Harsha Marupudi, M.Eng. Food and Drug Administration*
-
+VICTRE team: Harsha Marupudi, M.Eng., Qian Cao, Ph.D. US Food and Drug Administration, Center for Devices and Radiological Health, Office of Science and Engineering Labs, Division of Imaging, Diagnostics, and Software Reliability
 Disclaimer
 ----------
 
