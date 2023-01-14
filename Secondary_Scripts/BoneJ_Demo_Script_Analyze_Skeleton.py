@@ -50,13 +50,5 @@ for txt in ROINRRD:
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     b = subprocess.call(fiji_cmd, shell=True)
     #print(table_csv)
-    # Write to a NRRD file: this should be the same image as running the thickness plugin manually in boneJ
-    #img, header = nrrd.read("/gpfs_projects/sriharsha.marupudi/Anisotropy_Measurements/mil.dxf")
-    #print(img,header)
-    with open(f"/gpfs_projects/sriharsha.marupudi/Analyze_Skeleton_Measurements/ROI-{NAME}-table.csv", encoding = "utf8", errors = 'ignore') as file:
-        reader = csv.reader(file)
-        result = {row[0]:row[1:] for row in reader if row and row[0]}
-    print(result)
-    # read table_csv into dictionary {table}
-    
-    #return table, img
+   
+  
