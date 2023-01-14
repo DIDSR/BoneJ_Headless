@@ -91,10 +91,6 @@ for txt in ROINRRD:
                          ", NAME="+"\""+NAME+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     b = subprocess.call(fiji_cmd, shell=True)
-    with open(f"/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_Measurements_Print/ROI-{NAME}-table.csv", "r",) as file:
-        reader = csv.reader(file)
-        result = {row[0]:row[1:] for row in reader if row and row[0]}
-    print(result)
-    
+  
     
     
