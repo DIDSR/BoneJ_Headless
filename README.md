@@ -33,6 +33,13 @@ The code included in this repository will allow you to execute these common micr
 5. Area Volume Fraction 
 6. Connectivity
 
+Additional metrics in progress 
+1. Intertrabecular Angles 
+2. Skeletonize 
+3. Analyze Skeleton 
+4. Fractal Dimension
+5. Surface Area
+
 Scripts can be launched individually through use of modules and functions or as a batch scripts. Acceptable file types include NRRD, NIfTI, and DICOM. All files must be 3D 8 bit images. 
 
 Requirements
