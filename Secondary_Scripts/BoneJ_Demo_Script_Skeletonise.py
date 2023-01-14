@@ -44,7 +44,4 @@ for txt in ROINRRD:
                          ", NAME="+"\""+NAME+"\"",
                          ", skeleton_tif="+"\""+skeleton_tif+"\""+"\'"])
     b = subprocess.call(fiji_cmd, shell=True)
-    
-    #I = plt.imread(f"/gpfs_projects/sriharsha.marupudi/Skeletonise_Measurements/ROI-{NAME}-skeleton.tif")
-    #plt.imshow(I)
-    
+
