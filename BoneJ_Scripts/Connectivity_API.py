@@ -31,8 +31,6 @@ from ij.io import FileSaver
 
 
 #Open image from path 
-# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_100"
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Connectivity_Measurements_Print_25/"
 
 IJ.run("Clear BoneJ results");
 IJ.open(image)
