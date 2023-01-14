@@ -40,6 +40,7 @@ for txt in ROINRRD:
     
     
     tempdir = "/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_Measurements_Print/"
+    outputdir = os.path.join(tempdir)
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
     table_csv = os.path.join(tempdir, "table.csv")
     img_ef_tif = os.path.join(tempdir,"img_ef.tif")
