@@ -5,7 +5,7 @@ Installation
 =================
 
 1.	Fiji can be installed with the following link and selecting the correct installation. 
-Fiji Downloads (imagej.net)
+Fiji Downloads https://imagej.net/software/fiji/downloads
 
 2.	After launching Fiji BoneJ navigate to Help, Update. 
 
