@@ -42,7 +42,6 @@ wrapperThickness = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["
 wrapperThicknessInstance = wrapperThickness.get()
 #Call trabecular thickness map and save
 thickness_tif = wrapperThicknessInstance.getOutput("trabecularMap")
-#trabecular_map.show()
 IJ.save(thickness_tif, outputdir +"ROI-"+ NAME +"-thickness.tif")
 
 table = SharedTable.getTable()
