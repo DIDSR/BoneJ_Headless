@@ -28,8 +28,8 @@ def triplanar_plot_save(image, figName):
 plt.ioff()
 
 
-ROIDir = "/gpfs_projects_old/sriharsha.marupudi/Extract_ROI_Segs_L1/"
-figDir = "/gpfs_projects_old/sriharsha.marupudi/roi_L1_figs_Segmentations_triplanar/"
+ROIDir = "/gpfs_projects/sriharsha.marupudi/Extract_ROI_Segs_L1/"
+figDir = "/gpfs_projects/sriharsha.marupudi/roi_L1_figs_Segmentations_triplanar/"
 sigma = .6
 ROINRRD = glob(ROIDir+"ROI_*.nrrd")
 
@@ -40,7 +40,7 @@ for txt in ROINRRD:
     
     print(f"Previewing normal sample {NAME}.")
     
-    img1,header = nrrd.read(f"/gpfs_projects_old/sriharsha.marupudi/Extract_ROI_Segs_L1/ROI_{NAME}.nrrd")
+    img1,header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Extract_ROI_Segs_L1/ROI_{NAME}.nrrd")
      
     val_marrow = 2e3
     img1[img1<val_marrow] = val_marrow
@@ -55,35 +55,9 @@ for txt in ROINRRD:
     def filter_otsu(img):
         thresh =filters.threshold_otsu(img)
         return img > thresh
-    
-    img_otsu0 =filter_otsu(img)
-    
+       
     img_otsu =filter_otsu(img_ad)
-    
-    img_ad1 = img[:,:,100] > img_ad
-    img_otsu1 = img_ad1 > img_otsu
-
-    
-    def plotall(img1,img2,img3,img4):
-        plt.figure(figsize=(9, 4))
-        plt.subplot(141)
-        plt.imshow(img1[:,:,100], cmap='gray', interpolation='nearest')
-        plt.axis('off')
-        plt.subplot(142)
-        plt.imshow(img2[:,:,100], cmap='gray', interpolation='nearest')
-        plt.axis('off')
-        plt.subplot(143)
-        plt.imshow(img3[:,:,100], cmap='gray', interpolation='nearest')
-        plt.axis('off')
-        plt.subplot(144)
-        plt.imshow(img4[:,:,100], cmap='gray', interpolation='nearest')
-        plt.axis('off')
-        plt.tight_layout()
-        plt.savefig(figDir+f"{NAME}-Segmentation")
-        plt.close()
-        
-     
-    plotall(img, img_otsu0, img1, img_otsu)
+  
    
     nrrd.write(f"/gpfs_projects_old/sriharsha.marupudi/ROI_Segmentations_grayscales_L1/Segmentation-{NAME}.nrrd",img_otsu.astype(np.uint8))
     
