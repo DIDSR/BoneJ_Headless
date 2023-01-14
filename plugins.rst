@@ -187,26 +187,6 @@ Flinn diagram: Image plot of a/b versus b/c values in the ROI
 
 Weighted Flinn plot: Flinn diagram with peaks of intensity proportional to volume occupied by each (a/b, b/c) ratio
 
-Area Volume Fraction
---------------------------------------------
-Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent trabecular bone are divided by the total number of voxels in the image. 
-
-Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
-
-array = Numpy array of the image
-
-voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assumes microns. 
-
-fiji_path = Path to the users local Fiji installation 
-
-Results
-+++++++++++++++++++++++
-
-Bone volume: Volume of bone voxels 
-
-Total volume: Volume of entire image
-
-BV/TV: Ratio of Bone volume to total volume of the image 
 
 
 
