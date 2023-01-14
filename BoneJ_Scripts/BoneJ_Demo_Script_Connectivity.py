@@ -46,5 +46,5 @@ for txt in ROINRRD:
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    #print(table_csv)
+  
 
