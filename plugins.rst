@@ -11,6 +11,8 @@ This section contians definitions and user instructions for the following plugin
 * Anisotropy
 * Connectivity
 * Area Volume Fraction
+* Ellipsoid Factor
+
 
 All  the plugins require 3D 8 bit binary images, the files are written and read as numpy arrays. 
 
@@ -119,7 +121,7 @@ Function = ``def Connectivity(array,voxel_size,fiji_path):``
 
 array = Numpy array of the image
 
-voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Assumes microns
 
 fiji_path = Path to the users local Fiji installation 
 
@@ -144,7 +146,56 @@ Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):``
 
 array = Numpy array of the image
 
-voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assumes microns. 
+
+fiji_path = Path to the users local Fiji installation 
+
+Results
++++++++++++++++++++++++
+
+Bone volume: Volume of bone voxels 
+
+Total volume: Volume of entire image
+
+BV/TV: Ratio of Bone volume to total volume of the image 
+
+Ellipsoid Factor
+--------------------------------------------
+Quantifies the rod and plate geometry of trabecular microstructures. Ellipsoid Factor is evaluated on a scale of -1 to +1, with -1 corresponding to an oblate plate like geometry, and +1 corresponding to a prolate rod like geometry
+
+Function = ``def Ellipsoid Factor(array,voxel_size,fiji_path):`` 
+
+array = Numpy array of the image
+
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assumes microns. 
+
+fiji_path = Path to the users local Fiji installation 
+
+Results
++++++++++++++++++++++++
+EF image: Image stack containing EF values
+
+Short-Mid image: Image stack containing the a/b ratios from iteratively fit ellipsoid 
+
+Mid-Long image: Image stack contining the b/c ratiosfrom iteratively fit ellipsoid 
+
+Volume image: Image stack containing ellipsoid volumes 
+
+Max id image: Image stack containing the ID of the largest ellipsoid at each point in the ROI. ID = 0 is the largest ellipsoid fit to the ROI. -1 is foreground while a large negative number corresponds to a negative background. 
+
+Flinn diagram: Image plot of a/b versus b/c values in the ROI 
+
+Weighted Flinn plot: Flinn diagram with peaks of intensity proportional to volume occupied by each (a/b, b/c) ratio
+
+Area Volume Fraction
+--------------------------------------------
+Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent trabecular bone are divided by the total number of voxels in the image. 
+
+Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
+
+array = Numpy array of the image
+
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assumes microns. 
 
 fiji_path = Path to the users local Fiji installation 
 
