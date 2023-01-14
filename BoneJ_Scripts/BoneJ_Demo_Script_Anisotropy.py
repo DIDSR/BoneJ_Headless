@@ -67,10 +67,4 @@ for txt in ROINRRD:
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
    
-    # with open(f"/gpfs_projects/sriharsha.marupudi/Anisotropy_Measurements_Print_30/ROI-{NAME}-table.csv", "r",) as file:
-    #     reader = csv.reader(file)
-    #     result = {row[0]:row[1:] for row in reader if row and row[0]}
-    # print(result)
-    # read table_csv into dictionary {table}
-    
-    #return table, img
+ 
