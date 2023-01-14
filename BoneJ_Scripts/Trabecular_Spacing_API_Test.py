@@ -30,9 +30,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 #Open image from path 
-input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/"
 outputdir
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Measurements_Test/" 
 
 #open input image as IJ1-style image to be compatabile with wrapper  
 #IJ.run("Clear BoneJ results");
@@ -47,7 +45,6 @@ wrapper = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["inputImag
 wrapperInstance = wrapper.get()
 #Call trabecular spacing map and save
 spacing_tif = wrapperInstance.getOutput("spacingMap")
-#spacing_map.show()
 IJ.save(spacing_tif, outputdir +"ROI-"+ NAME +"-spacing.tif")
 
 table = SharedTable.getTable()
