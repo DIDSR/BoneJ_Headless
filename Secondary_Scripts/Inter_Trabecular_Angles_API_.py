@@ -1,12 +1,13 @@
-# @CommandService cs
+#@ CommandService cs
 #@ DatasetIOService io
 #@ UIService ui
-# @Context ctxt
+#@ Context ctxt
 
 #@ String image
-# String skeleton_tif
+#@ String skeleton_nrrd
 #@ String table_csv
 #@ String NAME
+#@ String outputdir
 from ij import IJ
 import csv
 from math import floor
@@ -23,9 +24,10 @@ from ij import ImagePlus
 from ij.io import FileSaver
 
 #Open image from path 
-input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/"
-input_image_path = input_dir+"ROI-1_67960.nrrd"
-outputdir = "/gpfs_projects/sriharsha.marupudi/Inter_Trabecular_Angles_Measurements/"
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/"
+# input_image_path = input_dir+"ROI-1_67960.nrrd"
+# outputdir = "/gpfs_projects/sriharsha.marupudi/Inter_Trabecular_Angles_Measurements/"
+outputdir
 
 #open input image as IJ1-style image to be compatabile with wrapper  
 IJ.run("Clear BoneJ results");
@@ -41,8 +43,8 @@ wrapper = cs.run("org.bonej.wrapperPlugins.IntertrabecularAngleWrapper", False, 
 
 #Need to confirm largest skeleton is being processed 
 wrapperInstance = wrapper.get()
-skeleton= wrapper.getOutput("")
-IJ.save(skeleton_tif, outputdir+"skeleton.tif")
+#skeleton= wrapper.getOutput("skeletonImage")
+#IJ.save(skeleton_tif, outputdir+"skeleton.tif")
 
 
 table = SharedTable.getTable()

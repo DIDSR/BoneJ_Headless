@@ -11,6 +11,7 @@
 #@ String smallestBoxSize
 #@ String scaleFactor
 #@ String autoParam
+#@ String outputdir
 
 
 
@@ -37,8 +38,9 @@ from ij.io import FileSaver
 
 IJ.run("Clear BoneJ results");
 #Open image from path 
-input_dir = "/gpfs_projects_old/sriharsha.marupudi/Segmentations_Otsu/"
-outputdir = "/gpfs_projects_old/sriharsha.marupudi/Fractal_Dimension_Measurements/"
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu/"
+# outputdir = "/gpfs_projects/sriharsha.marupudi/Fractal_Dimension_Measurements/"
+outputdir
 #IJ.run("Clear BoneJ results");
 #open input image as I21-style image to be compatabile with wrapper "startBoxSize",48,"smallestBoxSize",6,"scaleFactor",1.2,"autoParam",True
 input_image = IJ.openImage(image)
