@@ -24,11 +24,13 @@ from io.scif.img import ImgOpener
 from org.bonej.utilities import SharedTable
 from ij import ImagePlus
 from ij.io import FileSaver
-
 #Prevents unicode error 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+#Open image from path 
+# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_100/"
+outputdir 
 
 #open input image as IJ1-style image to be compatabile with wrapper  
 IJ.run("Clear BoneJ results");
@@ -42,6 +44,7 @@ wrapperThickness = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["
 wrapperThicknessInstance = wrapperThickness.get()
 #Call trabecular thickness map and save
 thickness_tif = wrapperThicknessInstance.getOutput("trabecularMap")
+#trabecular_map.show()
 IJ.save(thickness_tif, outputdir +"ROI-"+ NAME +"-thickness.tif")
 
 table = SharedTable.getTable()

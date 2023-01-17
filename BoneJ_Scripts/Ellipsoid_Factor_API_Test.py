@@ -1,7 +1,7 @@
-#@ CommandService cs
+#@CommandService cs
 #@ DatasetIOService io
 #@ UIService ui
-#@ Context ctxt
+#@Context ctxt
 
 
 #@ String image
@@ -17,7 +17,6 @@
 #@ String img_seed_points_tif
 #@ String img_flinn_peak_plot_tif
 #@ String img_unweighted_flinn_plot_tif
-#@ String NAME 
 #@ String nVectors 
 #@ String vectorIncrement
 #@ String skipRatio
@@ -31,8 +30,8 @@
 #@ String showFlinnPlots 
 #@ String showConvergence 
 #@ String showSecondaryImages
+#@ String NAME
 #@ String outputdir
-
 
 from ij import IJ
 from net.imglib2.img import ImagePlusAdapter
@@ -50,16 +49,12 @@ from ij import ImagePlus
 import net.imagej.ImgPlus;
 from ij.io import FileSaver
 #Open image from path 
-# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentaitons_Otsu_Print_75/"
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_Measurements_Print_75/"
-outputdir
+outputdir 
 IJ.run("Clear BoneJ results");
 #open input image as I2-style image to be compatabile with wrapper
 input_image = IJ.openImage(image)
 output = ImagePlusAdapter.wrapImgPlus(input_image) 
-# input_image_ij1 = IJ.run(output,"Multiply...", "value=255 stack"); 
-
-#"inputImage",output,"nVectors",75,"vectorIncrement",.435,"skipRatio",1,"contactSensitivity",1,"maxIterations",75,"maxDrift",0.40,"runs",1,"seedOnDistanceRidge",True,"distanceThreshold",0.60,"seedOnTopologyPreserving",True,"showFlinnPlots",True,"showConvergence",True,"showSecondaryImages",True,"])
+#"inputImage",output,"nVectors",100,"vectorIncrement",3,"skipRatio",1,"contactSensitivity",1,"maxIterations",50,"maxDrift",1.0,"runs",1,"seedOnDistanceRidge",True,"distanceThreshold",0.8,"seedOnTopologyPreserving",True,"showFlinnPlots",True,"showConvergence",True,"showSecondaryImages",True,"])
 #Run Ellipsoid Factor Plugin specifying parameters 
 wrapper = cs.run("org.bonej.wrapperPlugins.EllipsoidFactorWrapper", False, ["inputImage",output,"nVectors",nVectors,"vectorIncrement",vectorIncrement,"skipRatio",skipRatio,"contactSensitivity",contactSensitivity,"maxIterations",maxIterations,"maxDrift",maxDrift,"runs",runs,"seedOnDistanceRidge",seedOnDistanceRidge,"distanceThreshold",distanceThreshold,"seedOnTopologyPreserving",seedOnTopologyPreserving,"showFlinnPlots",showFlinnPlots,"showConvergence",showConvergence,"showSecondaryImages",showSecondaryImages])
 wrapperInstance = wrapper.get()
@@ -68,41 +63,6 @@ outputs = wrapperInstance.getOutput("ellipsoidFactorOutputImages")
 EF = outputs.get(0)
 
 
-d = DefaultDataset(ctxt,EF)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ef.tif")
-
-V = outputs.get(1)
-
-d = DefaultDataset(ctxt,V)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_volume.tif")
-
-#ID = outputs.get(2)
-#d = DefaultDataset(ctxt,ID)
-#io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_id2.tif")
-
-AB = outputs.get(6)
-d = DefaultDataset(ctxt,AB)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ab.tif")
-
-BC = outputs.get(7)
-d = DefaultDataset(ctxt,BC)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_bc.tif")
-
-#A = outputs.get(3)
-#d = DefaultDataset(ctxt,A)
-#io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_a1.tif")
-
-B = outputs.get(4)
-d = DefaultDataset(ctxt,B)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_b.tif")
-
-C = outputs.get(5)
-d = DefaultDataset(ctxt,C)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_c.tif")
-
-FlinnPlots = outputs.get(9)
-d = DefaultDataset(ctxt,FlinnPlots)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_flinn_peak_plot.tif")
 
 table =SharedTable.getTable()
 
@@ -123,7 +83,45 @@ for i in range(0,len(table)):
 	f.write('\n')
 f.close()
 			
-print(table)
+# print(table)
+
+
+
+d = DefaultDataset(ctxt,EF)
+io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ef.tif")
+
+# V = outputs.get(1)
+
+# d = DefaultDataset(ctxt,V)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_volume.tif")
+
+# #ID = outputs.get(2)
+# #d = DefaultDataset(ctxt,ID)
+# #io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_id2.tif")
+
+# AB = outputs.get(6)
+# d = DefaultDataset(ctxt,AB)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ab.tif")
+
+# BC = outputs.get(7)
+# d = DefaultDataset(ctxt,BC)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_bc.tif")
+
+# #A = outputs.get(3)
+# #d = DefaultDataset(ctxt,A)
+# #io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_a1.tif")
+
+# B = outputs.get(4)
+# d = DefaultDataset(ctxt,B)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_b.tif")
+
+# C = outputs.get(5)
+# d = DefaultDataset(ctxt,C)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_c.tif")
+
+# FlinnPlots = outputs.get(9)
+# d = DefaultDataset(ctxt,FlinnPlots)
+# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_flinn_peak_plot.tif")
 
 
 
