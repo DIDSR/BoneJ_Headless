@@ -3,6 +3,7 @@ BoneJ Headless Scripts for Python
 ===========
 
 ***BoneJ Headless Python Wrapper Scripts for Bone Morphological Analysis***
+![image](https://user-images.githubusercontent.com/67400847/213315203-396b2c1f-0000-48b1-8ff1-def6596cc23b.png)
 
 Microstructural metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstructural metrics and bone analysis with unique plugins not available from vendors. The plugins can be automated with simple Fiji macros, but this still requires GUI support. This repository allows for automation of BoneJ without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and a simple method of parameter sweeping to optimize BoneJ plugins. The Division of Imaging, Diagnostics, and Software Reliability (DIDSR) at the U.S. Food and Drug Administration developed BoneJ Headless a Python wrapper that automates BoneJ without any GUI dependence. This plugin was used on several microCT images and compared to microstructural metrics from other sources. All scripts are written in Python and can only be executed on Linux OS. 
 
