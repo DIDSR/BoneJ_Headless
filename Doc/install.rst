@@ -1,3 +1,5 @@
+.. _bonej_headless-installation-label:
+
 Installation
 ===============
 
