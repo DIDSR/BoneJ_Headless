@@ -48,8 +48,9 @@ Std Tb. Th = The standard deviation of the trabecular spacing values.
 Max Tb. Th = The max trabecular spacing value of the image. 
 
 
+------------------------------------
 Trabecular Spacing
--------------------
+------------------------------------
 
 Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin. spacing value.  
 
@@ -76,8 +77,9 @@ Std Tb. Sp = The standard deviation of the trabecular spacing values.
 Max Tb. Sp = The max trabecular spacing value of the image. 
 
 
+------------------------------------
 Anisotropy
--------------------
+------------------------------------
 
 Assigns a numerical value on a scale of 0-1 to quantify trabecular bone’s directionality. Degree of anisotropy is representative of the microstructure’s orientation. The closer to 0 the more isotropic a bone, the closer to 1 the more anisotropic a bone. 
 
@@ -110,9 +112,9 @@ Radii of fitted ellipsoid = Radii lengths, a<b<c of the ellipsoid fit to the poi
 Eigenvectors and values = Values of the x,y,,z components of the three eigvenctors of the ellipsoid fit to the point cloud (m00,m01,m02..). Eigenvalues are listed as D1,D2,D3  which correspond 1/c^2 ,1/b^2 ,1/a^2 , a,b,c are the radii of the ellipsoid fit to the point cloud vector. 
 
 
-
-Connectivity
------------------------------------------------
+------------------------------------
+Connectivity 
+------------------------------------
 
 Plugin determines the number of connected structures in the image. The connected structures are representative of trabeculae in a trabecular network. Connectivity is determined from measuring the Euler characteristic denoted χ. The Euler characteristic is a topologically invariant value meant to describe a shape or structure regardless of how it is bent. It is defined as χ = objects – handles + cavities. A handle is analogous to a hole through an object, while a cavity hole enclosed inside of an object. 
 
@@ -139,8 +141,9 @@ Connectivity = Connectivity of the image described as the number of trabeculae
 Connectivity Density = The number of trabeculae per unit volume
 
 
-Area Volume Fraction
---------------------------------------------
+------------------------------------
+Area Volume Fraction 
+------------------------------------
 Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent trabecular bone are divided by the total number of voxels in the image. 
 
 Function = ``def Area_VolumeFraction(array,voxel_size,fiji_path):`` 
@@ -160,8 +163,9 @@ Total volume: Volume of entire image
 
 BV/TV: Ratio of Bone volume to total volume of the image 
 
+------------------------------------
 Ellipsoid Factor
---------------------------------------------
+------------------------------------
 Quantifies the rod and plate geometry of trabecular microstructures. Ellipsoid Factor is evaluated on a scale of -1 to +1, with -1 corresponding to an oblate plate like geometry, and +1 corresponding to a prolate rod like geometry
 
 Function = ``def Ellipsoid Factor(array,voxel_size,fiji_path):`` 
