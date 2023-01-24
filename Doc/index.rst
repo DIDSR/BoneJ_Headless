@@ -60,17 +60,13 @@ Currently supports the following plugins:
 * Connectivity
 * Ellipsoid Factor 
 
-Secondary plugins include: 
-
-* Skeletonize 
-
-* Analyze Skeleton 
+Secondary plugins:
 
 * Inter-trabecular Angles
-
 * Surface Area 
-
 * Fractal Dimension
+* Skeletonize
+* Analyze Skeleton
 
 
 Detailed description on individual plugins is provided in section :ref:`plugins`.
