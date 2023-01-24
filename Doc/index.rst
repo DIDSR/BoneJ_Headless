@@ -2,7 +2,7 @@ Welcome to BoneJ Headless documentation!
 =====================================
 
 The following is a documentation of how to use the BoneJ modules and scripts that have been developed for the Quantitative Bone Texture Project. The BoneJ Module scrips were written in Python with Fiji scripts being written with Jython. To run these scripts there needs to be a working installation of Fiji with BoneJ installed, additionally files must be 3D 8-bit binary files. All functions utilize a macro file that is included with the modules written in Jython that is run within Fiji. 
-The scripts rely on invoking Fiji from the system’s command line. Fiji is called in headless mode, thus no GUI will appear. The macro files with Fiji scripts written in Jython are run to return the final results. 
+The scripts rely on invoking Fiji from the system’s command line. Fiji is called in headless mode, thus no GUI will appear.
 
 **Citations:**
 
