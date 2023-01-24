@@ -1,8 +1,7 @@
 Welcome to BoneJ Headless documentation!
 =====================================
 
-The following is a documentation of how to use the BoneJ modules and scripts that have been developed for the Quantitative Bone Texture Project. The BoneJ Module scrips were written in Python with Fiji scripts being written with Jython. To run these scripts there needs to be a working installation of Fiji with BoneJ installed, additionally files must be 3D 8-bit binary files. All functions utilize a macro file that is included with the modules written in Jython that is run within Fiji. 
-The scripts rely on invoking Fiji from the system’s command line. Fiji is called in headless mode, thus no GUI will appear.
+Microstructural metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstructural metrics and bone analysis with unique plugins not available from vendors. The plugins can be automated with simple Fiji macros, but this still requires GUI support. This repository allows for automation of BoneJ without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and a simple method of parameter sweeping to optimize BoneJ plugins. The Division of Imaging, Diagnostics, and Software Reliability (DIDSR) at the U.S. Food and Drug Administration developed BoneJ Headless a Python wrapper that automates BoneJ without any GUI dependence. This plugin was used on several microCT images and compared to microstructural metrics from other sources. All scripts are written in Python and can only be executed on Linux OS.
 
 **Citations:**
 
