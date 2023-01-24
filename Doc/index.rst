@@ -35,29 +35,20 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Contents:
+   :hidden:
 
-   pipeline
-   started
-   advanced
-   victreclass
-   
-   
+   Home <self>
 
+.. toctree::
+   :maxdepth: 2
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   installation
+   plugins
 
 Plugins
 ---------------
 
-Currently supports the following pluins:
+Currently supports the following plugins:
 
 * Trabecular Thickness 
 * Trabecular Spacing 
@@ -68,9 +59,13 @@ Currently supports the following pluins:
 
 Secondary plugins include: 
 * Skeletonize 
+
 * Analyze Skeleton 
+
 * Inter-trabecular Angles
+
 * Surface Area 
+
 * Fractal Dimension
 
 
