@@ -58,6 +58,7 @@ Currently supports the following plugins:
 * Ellipsoid Factor 
 
 Secondary plugins include: 
+
 * Skeletonize 
 
 * Analyze Skeleton 
