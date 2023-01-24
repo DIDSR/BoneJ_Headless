@@ -1,4 +1,4 @@
-.. _bonej-plugins:
+.. _bonej-plugins-label:
 
 =================
 BoneJ Plugins
