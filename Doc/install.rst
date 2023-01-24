@@ -130,7 +130,7 @@ Fiji can be installed from the official website. BoneJ must be added as a plugin
 
 Clone the repository
 
-git clone https://github.com/BoneJ_Headless
+git clone https://github.com/harshamarupudi56/BoneJ_Headless
 
 Execute the installation script:
 
