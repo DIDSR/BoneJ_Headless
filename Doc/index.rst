@@ -78,6 +78,12 @@ Fiji can be installed with the following link:
 For more detailed installation instructions for BoneJ,
 see https://imagej.net/plugins/bonej.
 
+Pyradiomics Indices and Tables
+------------------------------
+
+* :ref:`install`
+* :ref:`plugins`
+* :ref:`search`
 
 
 
