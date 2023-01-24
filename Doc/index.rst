@@ -45,7 +45,7 @@ Table of Contents
    installation
    plugins
    
-* :ref:`installation`
+* :ref:`bonej-plugins-label`
 * :ref:`plugins`
 
 Plugins
