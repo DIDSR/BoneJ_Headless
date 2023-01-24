@@ -64,6 +64,14 @@ Currently supports the following pluins:
 * Anisotropy
 * Area Volume Fraction
 * Connectivity
+* Ellipsoid Factor 
+
+Secondary plugins include: 
+* Skeletonize 
+* Analyze Skeleton 
+* Inter-trabecular Angles
+* Surface Area 
+* Fractal Dimension
 
 
 Detailed description on individual plugins is provided in section :ref:`plugins`.
