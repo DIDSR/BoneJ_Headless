@@ -42,11 +42,8 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
-   installation
+   install
    plugins
-   
-* :ref:`bonej-plugins-label`
-* :ref:`plugins`
 
 Plugins
 ---------------
