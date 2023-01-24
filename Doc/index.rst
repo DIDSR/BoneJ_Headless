@@ -32,8 +32,7 @@ Rasband, W.S., ImageJ, U. S. National Institutes of Health, Bethesda, Maryland, 
 
 
 Table of Contents
------------------
-
+==================
 .. toctree::
    :hidden:
 
@@ -46,7 +45,7 @@ Table of Contents
    plugins
 
 Plugins
----------------
+==================
 
 Currently supports the following plugins:
 
@@ -69,7 +68,7 @@ Secondary plugins:
 Detailed description on individual plugins is provided in section :ref:`plugins`.
 
 Installation
-------------
+==================
 
 Fiji can be installed with the following link:
 
