@@ -84,6 +84,55 @@ see https://imagej.net/plugins/bonej.
 
 
 
+Table of Contents
+-----------------
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
+   pipeline
+   started
+   advanced
+   victreclass
+   
+   
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+Plugins
+---------------
+
+Currently supports the following pluins:
+
+* Trabecular Thickness 
+* Trabecular Spacing 
+* Anisotropy
+* Area Volume Fraction
+* Connectivity
+
+
+Detailed description on individual plugins is provided in section :ref:`plugins`.
+
+Installation
+------------
+
+Fiji can be installed with the following link:
+
+*  ``https://imagej.net/software/fiji/downloads``
+
+For more detailed installation instructions for BoneJ,
+see https://imagej.net/plugins/bonej.
+
+
+
 
 
 
