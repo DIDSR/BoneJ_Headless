@@ -35,20 +35,24 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :hidden:
+   :maxdepth: 3
+   :caption: Contents:
 
-   Home <self>
+   pipeline
+   started
+   advanced
+   victreclass
+   
+   
 
-.. toctree::
-   :maxdepth: 2
 
-   installation
-   usage
-   plugins
-   contributing
-   developers
-   FAQs <faq>
-   changes
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 Plugins
 ---------------
