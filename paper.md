@@ -1,4 +1,5 @@
 title: 'BoneJ Headless: Automated Software for Skeletal Microstructure Analysis'
+
 tags:
   - Python
   - Fiji 
@@ -7,6 +8,7 @@ tags:
   - microarchitecture metrics 
   - bone 
   - trabecular bone 
+
 authors:
   - name: Harsha Marupudi 
     orcid: 0000-0002-6287-2387
