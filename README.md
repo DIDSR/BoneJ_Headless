@@ -100,6 +100,6 @@ Each example requires an input and output directory to set by the user, along wi
 Documentation
 -------------
 
-Full documentation can be found here:https://github.com/harshamarupudi56/BoneJ_Headless/blob/main/BoneJ%20Documentation.docx
+Full documentation can be found here:https://bonej-headless.readthedocs.io/en/latest/index.html#
 
 *This code is currently in development, use with caution.*
