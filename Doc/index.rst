@@ -51,7 +51,8 @@ Fiji can be installed with the following link:
 For more detailed installation instructions for BoneJ,
 see https://imagej.net/plugins/bonej.
 
-BoneJ Headless team: Harsha Marupudi, Qian Cao
+**BoneJ Headless Team:**
+Harsha Marupudi, Qian Cao, Ravi Samala, Nicholas Petrick
 
 **Citations:**
 
