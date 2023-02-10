@@ -16,6 +16,7 @@ Table of Contents
    install
    plugins
    secondaryplugins
+   examples
 
 Plugins
 ==================
