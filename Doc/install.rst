@@ -80,6 +80,7 @@ First try BoneJ_Module.py to launch individual metrics on a single image:
 Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
 > All ``image segmentation`` files are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in software Fiji as well. 
+
 Documentation
 -------------
 
