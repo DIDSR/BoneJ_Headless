@@ -1,7 +1,7 @@
 .. _bonej-plugins-label:
 
 =================
-BoneJ Plugins
+Primary Plugins
 =================
 
 This section contians definitions and user instructions for the following plugins
