@@ -15,6 +15,7 @@ Table of Contents
 
    install
    plugins
+   secondaryplugins
 
 Plugins
 ==================
