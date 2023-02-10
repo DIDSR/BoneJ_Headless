@@ -56,7 +56,7 @@ Installation
 Before proceeding, make sure you have all the requirements listed above.
 
 Fiji can be installed from the [official website](https://imagej.net/software/fiji/downloads). 
-BoneJ must be added as a plugin within the Fiji installation. Instructions can be found from the [official website](https://imagej.net/plugins/bonej#installation).
+BoneJ must be added as a plugin within the Fiji installation. Instructions can be found from the [https://imagej.net/plugins/bonej#installation].
 
 Clone the repository 
 
