@@ -6,11 +6,11 @@ BoneJ Plugins
 
 This section contians definitions and user instructions for the following plugins
 
-* Trabecular Thickness
-* Trabecular Spacing
+* Thickness
+* Spacing
 * Anisotropy
 * Connectivity
-* Area Volume Fraction
+* Bone Volume Fraction
 * Ellipsoid Factor
 
 
@@ -19,7 +19,7 @@ All  the plugins require 3D 8 bit binary images, the files are written and read 
 
 
 ------------------------------------
-Trabecular Thickness
+Thickness
 ------------------------------------
 
 Fits spheres into every foreground voxel of a segmented image to determine the thickness of the trabecular microstructure. The diameter of the largest sphere that is able to fit inside the foreground voxel and contains the point for each point is measured by the plugin. The plugin outputs the mean thickness of the sample, standard deviation of the sample, and the max thickness value. 
@@ -49,7 +49,7 @@ Max Tb. Th = The max trabecular spacing value of the image.
 
 
 ------------------------------------
-Trabecular Spacing
+Spacing
 ------------------------------------
 
 Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin. spacing value.  
@@ -142,7 +142,7 @@ Connectivity Density = The number of trabeculae per unit volume
 
 
 ------------------------------------
-Area Volume Fraction 
+Bone Volume Fraction 
 ------------------------------------
 Calculates Bone Volume/Total Volume, the volume of mineralized bone per unit volume of the sample. Foreground voxels which represent trabecular bone are divided by the total number of voxels in the image. 
 
