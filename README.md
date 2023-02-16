@@ -4,7 +4,7 @@ BoneJ Headless Scripts for Python
 
 ***BoneJ Headless Python Wrapper Scripts for Bone Morphological Analysis***
 
-Microstructure metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstructural metrics and bone analysis with unique plugins not available from vendors. The plugins can be automated with simple Fiji macros, but this still requires GUI support. This repository allows for automation of BoneJ without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and a simple method of parameter sweeping to optimize BoneJ plugins. The Division of Imaging, Diagnostics, and Software Reliability (DIDSR) at the U.S. Food and Drug Administration developed BoneJ Headless a Python wrapper that automates BoneJ without any GUI dependence. This plugin was used on several microCT images and compared to microstructural metrics from other sources. All scripts are written in Python and can only be executed on Linux OS. 
+Microstructure metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstrucutre metrics and bone analysis with unique plugins not available from commercial scanners. The plugins can be automated with simple Fiji macros, but this still requires some GUI support. This repository allows for automation of BoneJ without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and scripts to optimize parameters for specific metrics. The Division of Imaging, Diagnostics, and Software Reliability (DIDSR) at the U.S. Food and Drug Administration developed BoneJ Headless, a Python wrapper that automates BoneJ without any GUI dependence. The pugins were used to compute micorstructure metrics for several microCT images of lumbar vertebrae. All scripts are written in Python and can only be executed on Linux OS. 
 
 * **Citation:** Domander, Richard, Alessandro A. Felder, and Michael Doube. "BoneJ2-refactoring established research software." Wellcome Open Research 6 (2021).
 Domander, Richard, Alessandro A. Felder, and Michael Doube. "BoneJ2-refactoring established research software." Wellcome Open Research 6 (2021).
@@ -24,23 +24,23 @@ This software and documentation (the "Software") were developed at the Food and 
 
 BoneJ Headless Plugins
 -------------------
-The code included in this repository will allow you to execute these common microstructural metrics:
+The code included in this repository will allow you to execute these common microstructure metrics:
 
 1. Trabecular Thickness
 2. Trabecular Spacing
 3. Anisotropy
 4. Ellipsoid Factor
-5. Area Volume Fraction 
+5. Bone Volume Fraction 
 6. Connectivity
 
-Additional metrics in progress 
+Secondary metrics not as commonly used in literature: 
 1. Intertrabecular Angles 
 2. Skeletonize 
 3. Analyze Skeleton 
 4. Fractal Dimension
 5. Surface Area
 
-Scripts can be launched individually through use of modules and functions or as a batch scripts. Acceptable file types include NRRD, NIfTI, and DICOM. All files must be 3D 8 bit images. 
+Scripts can be launched individually through use of modules/functions or as a batch scripts. Acceptable file types include NRRD, NIfTI, and DICOM. All files must be 3D 8 bit images and be able to read as numpy arrays. 
 
 Requirements
 ------------
