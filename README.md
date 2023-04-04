@@ -10,7 +10,7 @@ Microstructure metrics are calculated to characterize bone morphology and skelet
 Domander, Richard, Alessandro A. Felder, and Michael Doube. "BoneJ2-refactoring established research software." Wellcome Open Research 6 (2021).
 
 
-* **Documentation**: Full documentation can be found here: https://github.com/harshamarupudi56/BoneJ_Headless/blob/main/BoneJ%20Documentation.docx
+* **Documentation**: Full documentation can be found here: https://bonej-headless.readthedocs.io/en/latest/index.html
 
 **Note**: All code is under CC0 (Creative Commons 1.0 Universal License) 
 
