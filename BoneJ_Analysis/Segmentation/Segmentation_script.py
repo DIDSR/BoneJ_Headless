@@ -14,13 +14,11 @@ from skimage import filters
 from skimage import measure
 from skimage import exposure
 from medpy import filter
-figDir = "/gpfs_projects/sriharsha.marupudi/roi_figs_Segmentations_triplanar/"
+figDir = ".../{NAME}.png"
+outDir = ".../{NAME}.nrrd"
 sigma = .6
-
-
-NAME = "1_761-67651-L45"
-
-img1,header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/extract_rois_output_grayscale/ROI_{NAME}.nrrd")
+volume = "...nrrd"
+img1,header = nrrd.read(volume)
 
 val_marrow = 2e3
 img1[img1<val_marrow] = val_marrow
@@ -34,7 +32,8 @@ def filter_otsu(img):
     thresh =filters.threshold_otsu(img)
     return img > thresh
 img_otsu =filter_otsu(img_ad)
-nrrd.write(f"/gpfs_projects_old/sriharsha.marupudi/ROI_Segmentations_otsu_grayscales/Segmentation-{NAME}.nrrd",img_otsu.astype(np.uint8)
+
+nrrd.write(outDir,img_otsu.astype(np.uint8)
 
 plt.figure(figsize=(9, 3.5))
 plt.subplot(131)
