@@ -32,7 +32,6 @@ sys.setdefaultencoding('utf-8')
 outputdir
 
 #open input image as IJ1-style image to be compatabile with wrapper  
-#IJ.run("Clear BoneJ results");
 IJ.run("Clear BoneJ results");
 IJ.open(image)
 input_Image = IJ.getImage() # BoneJ2 Thickness wrapper requires IJ1 image data, ImagePlus
