@@ -13,28 +13,23 @@ import os
 import subprocess 
 from glob import glob
 
-
-#from file import NAME 
-
-ROIDir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print_25/"
+ROIDir = "/BoneJ_Headless/ROIs/"
 showMaps ="True"
 maskArtefacts = "True"
 
-ROINRRD = glob(ROIDir+"Segmentation-grayscale-Print-*.nrrd")
+ROINRRD = glob(ROIDir)
 
 
 for txt in ROINRRD:
     
-    NAME = os.path.basename(txt).replace("Segmentation-grayscale-Print-","").replace(".nrrd","")
-    print(f"output ROI-{NAME}.")
-    tempdir = "/gpfs_projects/sriharsha.marupudi/Thickness_Measurements_Print_25/"
+    tempdir = ".../tempdir/"
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
     thickness_tif = os.path.join(tempdir,"thickness.tif")
     table_csv = os.path.join(tempdir,"table.csv")
     outputdir = os.path.join(tempdir)
 
 # TODO: from {file with your BoneJ wrapper} import compute_bonej_thickness
-    data1,data1header1 = nrrd.read(ROIDir+f"Segmentation-grayscale-Print-{NAME}.nrrd")
+    data1,data1header1 = nrrd.read(volume)
 ### save data1 to temporaryDirectory
     header = {'units': ['um', 'um', 'um'],'spacings': [51.29980,51.29980,51.29980]}
     nrrd.write(data1_nrrd,data1,header)
