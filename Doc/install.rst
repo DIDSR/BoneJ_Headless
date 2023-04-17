@@ -57,6 +57,8 @@ Before proceeding, make sure you have all the requirements listed above.
 
 Fiji can be installed from the https://imagej.net/software/fiji/downloads. 
 BoneJ must be added as a plugin within the Fiji installation. Instructions can be found from the https://imagej.net/plugins/bonej#installation.
+(![](https://github.com/DIDSR/VICTRE_PIPELINE/actions/workflows/test.yml/badge.svg) ![](https://img.shields.io/github/license/DIDSR/VICTRE_PIPELINE)
+
 
 Clone the repository 
 
@@ -79,11 +81,6 @@ First try BoneJ_Module.py to launch individual metrics on a single image:
 
 Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
-> All ``image segmentation`` files are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in software Fiji as well. 
-
-Documentation
--------------
-
-Full documentation can be found here:https://github.com/harshamarupudi56/BoneJ_Headless/blob/main/BoneJ%20Documentation.docx
+> All ROIs are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in Fiji/ImageJ as well. Any file type can be used as long as they are 3D binary 8 bit files. Files are read as numpy arrays by the plugins. 
 
 *This code is currently in development, use with caution.*
