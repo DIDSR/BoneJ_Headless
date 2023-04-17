@@ -55,9 +55,15 @@ Installation
 
 Before proceeding, make sure you have all the requirements listed above.
 
-Fiji can be installed from the https://imagej.net/software/fiji/downloads. 
-BoneJ must be added as a plugin within the Fiji installation. Instructions can be found from the https://imagej.net/plugins/bonej#installation.
-(![](https://github.com/DIDSR/VICTRE_PIPELINE/actions/workflows/test.yml/badge.svg) ![](https://img.shields.io/github/license/DIDSR/VICTRE_PIPELINE)
+Fiji can be installed here: https://imagej.net/software/fiji/downloads. 
+BoneJ must be added as a plugin within the Fiji installation. 
+
+*Launch Fiji
+*From the menu select Help › Update…
+*Select manage update sites
+*Select BoneJ
+*Close manage update sites
+*Select Apply changes
 
 
 Clone the repository 
@@ -73,9 +79,11 @@ Install the required python libraries.
 Usage
 -----
 
-First try BoneJ_Module.py to launch individual metrics on a single image:
+First try BoneJ_Module.py located in Examples to launch individual metrics on a single image:
 
 `BoneJ_Module.py`
+
+> This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Any of the plugins can be chosen and different parameter setttings can be selected for each individual microstructure metric.
 
 > You might need to use `python3` instead of `python`.
 
