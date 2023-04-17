@@ -22,7 +22,7 @@ ROINRRD = glob(ROIDir)
 
 for txt in ROINRRD:
     
-    tempdir = ".../tempdir/"
+    tempdir = ".../Measurements/"
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
     thickness_tif = os.path.join(tempdir,"thickness.tif")
     table_csv = os.path.join(tempdir,"table.csv")
@@ -37,7 +37,7 @@ for txt in ROINRRD:
 
 # TODO: run your BoneJ thickness wrapper
 # table is the boneJ table, thickness_tif is a numpy array containing thickness image
-    macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Thickness_API.py"
+    macro_file = "/BoneJ_Headless/Trabecular_Thickness_API.py"
 
     fiji_path = "~/Fiji.app/ImageJ-linux64" #home directory
 #Run BoneJ in headless mode in commandline with arguments  
