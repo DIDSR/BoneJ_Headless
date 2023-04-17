@@ -50,8 +50,7 @@ from ij import ImagePlus
 import net.imagej.ImgPlus;
 from ij.io import FileSaver
 #Open image from path 
-# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentaitons_Otsu_Print_75/"
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_Measurements_Print_75/"
+
 outputdir
 IJ.run("Clear BoneJ results");
 #open input image as I2-style image to be compatabile with wrapper
