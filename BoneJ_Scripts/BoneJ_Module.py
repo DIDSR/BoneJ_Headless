@@ -21,7 +21,6 @@ import sys, os
 
 
 # BoneJ Function wrapper
-# def BoneJ(array,voxel_size,Fiji_path):
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
