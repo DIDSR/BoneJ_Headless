@@ -9,7 +9,7 @@ BoneJ Module
 .. code-block:: python
     :linenos:
     
-    
+    # Can run any of the microstructure metrics using these modules.
     import numpy as np
     import nrrd
     import csv 
@@ -315,6 +315,7 @@ Anisotropy Parameter Convergence
 ------------------------------------
 .. code-block:: python
     :linenos:
+    #A script to determine at what parameter values anisotropy converges. A csv file is output that can analyze for converged value. 
     
     import numpy as np
     import nrrd
@@ -407,6 +408,20 @@ Anisotropy Parameter Convergence
 
         return metric_dict
 
+
+   
+
+
+    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_list, samplingincrement = 1.73, radii = False, eigens = False) 
+   
+
+
+
+------------------------------------
+Ellipsoid Factor Convergence
+------------------------------------
+.. code-block:: python
+    :linenos:
 
     nVectors_list = [100,200,300,400]
     VectorIncrement_list = [1,2,3]
@@ -512,8 +527,6 @@ Anisotropy Parameter Convergence
                                     return metric_dict       
 
 
-
-    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_list, samplingincrement = 1.73, radii = False, eigens = False) 
     Ellipsoid_Factor_result = Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = nVectors_list,
     vectorIncrement = VectorIncrement_list,
     skipRatio = skipRatio_list,
@@ -527,11 +540,3 @@ Anisotropy Parameter Convergence
     showFlinnPlots = False,
     showConvergence = False,
     showSecondaryImages = False)
-
-
-
-
-
-
-
-
