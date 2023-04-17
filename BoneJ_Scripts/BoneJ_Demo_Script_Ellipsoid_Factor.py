@@ -14,7 +14,7 @@ import os
 import subprocess 
 from glob import glob
 
-ROIDir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print/"
+ROIDir = "/BoneJ_Headless_ROIs/"
 nVectors = "100"
 vectorIncrement = ".435"
 skipRatio = "1"
@@ -30,16 +30,16 @@ showConvergence = "True"
 showSecondaryImages = "True"
 
 
-ROINRRD = glob(ROIDir+"Segmentation-grayscale-Print-*.nrrd")
+ROINRRD = glob(ROIDir+"*.nrrd")
 
 for txt in ROINRRD:
     
-    NAME = os.path.basename(txt).replace("Segmentation-grayscale-Print-","").replace(".nrrd","")
+    NAME = os.path.basename(txt)..replace(".nrrd","")
 
     print(f"output ROI-{NAME}.")
     
     
-    tempdir = "/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_Measurements_Print/"
+    tempdir = "/...Measurements/"
     outputdir = os.path.join(tempdir)
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
     table_csv = os.path.join(tempdir, "table.csv")
@@ -57,7 +57,7 @@ for txt in ROINRRD:
     
     
     # TODO: from {file with your BoneJ wrapper} import compute_bonej_thickness
-    data1,data1header1 = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print/Segmentation-grayscale-Print-{NAME}.nrrd")
+    data1,data1header1 = nrrd.read(ROIDir+f"{NAME}.nrrd")
     ### save data1 to temporaryDirectory
     header = {'units': ['um', 'um', 'um'],'spacings': [51.29980,51.29980,51.29980]}
     nrrd.write(data1_nrrd,data1,header)
@@ -65,7 +65,7 @@ for txt in ROINRRD:
     
     # TODO: run your BoneJ thickness wrapper
     # table is the boneJ table, thickness_image is a numpy array containing thickness image
-    macro_file = "/gpfs_projects/sriharsha.marupudi/Ellipsoid_Factor_API.py"
+    macro_file = "/BoneJ_Headless/Ellipsoid_Factor_API.py"
     
     fiji_path = "~/Fiji.app/ImageJ-linux64" #home directory
     
