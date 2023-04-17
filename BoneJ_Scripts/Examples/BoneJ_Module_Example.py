@@ -18,13 +18,9 @@ import sys, os
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
 
-NAME = "1_06604"
-# array,array1header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/Segmentation-grayscale-{NAME}.nrrd")  # should be a numpy array
-array,array1header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print/Segmentation-grayscale-Print-{NAME}.nrrd")
+array,array1header = nrrd.read(volume) #Should be numpy array
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
-
-
 
 # feed in numpy array
 
