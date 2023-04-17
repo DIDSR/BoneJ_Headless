@@ -36,8 +36,7 @@ from ij.io import FileSaver
 
 
 #Open image from path 
-outputdir
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Measurements_Test/" 
+outputdir 
 IJ.run("Clear BoneJ results");
 #open input image as I21-style image to be compatabile with wrapper  "integerDirections",2000,"IntegarLines",10000,"samplingIncrement",1.73
 input_image = IJ.openImage(image)
