@@ -59,10 +59,15 @@ Fiji can be installed here: https://imagej.net/software/fiji/downloads.
 BoneJ must be added as a plugin within the Fiji installation. 
 
 *Launch Fiji
+
 *From the menu select Help › Update…
+
 *Select manage update sites
+
 *Select BoneJ
+
 *Close manage update sites
+
 *Select Apply changes
 
 
