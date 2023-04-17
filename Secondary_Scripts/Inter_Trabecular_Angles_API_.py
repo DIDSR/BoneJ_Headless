@@ -24,9 +24,6 @@ from ij import ImagePlus
 from ij.io import FileSaver
 
 #Open image from path 
-# input_dir = "/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/"
-# input_image_path = input_dir+"ROI-1_67960.nrrd"
-# outputdir = "/gpfs_projects/sriharsha.marupudi/Inter_Trabecular_Angles_Measurements/"
 outputdir
 
 #open input image as IJ1-style image to be compatabile with wrapper  
