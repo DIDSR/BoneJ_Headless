@@ -47,7 +47,7 @@ for txt in ROINRRD:
     
     # TODO: run your BoneJ thickness wrapper
     # table is the boneJ table, thickness_image is a numpy array containing thickness image
-    macro_file = "/gpfs_projects/sriharsha.marupudi/Anisotropy_API.py"
+    macro_file = "/BoneJ_Headless/Anisotropy_API.py"
     
     fiji_path = "~/Fiji.app/ImageJ-linux64" # home direcotry
     
