@@ -13,21 +13,21 @@ import subprocess
 import matplotlib.pyplot as plt
 
 from glob import glob
-ROIDir = "/gpfs_projects/sriharsha.marupudi/extract_rois_output/"
+ROIDir = "/BoneJ_Headles/ROIs/"
 
-ROINRRD = glob(ROIDir+"ROI-*.nrrd")
+ROINRRD = glob(ROIDir+"*.nrrd")
 
 for txt in ROINRRD:
     
-    NAME = os.path.basename(txt).replace("ROI-","").replace(".nrrd","")
+    NAME = os.path.basename(txt).replace(".nrrd","")
 
     print(f"output ROI{NAME}.")
-    tempdir = "/gpfs_projects/sriharsha.marupudi/Skeletonise_Measurements"
+    tempdir = "/...Measurements/"
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
     skeleton_tif = os.path.join(tempdir,"skeleton_tif")
     
     # TODO: from {file with your BoneJ wrapper} import compute_bonej_thickness
-    data1,data1header1 = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/extract_rois_output/ROI-{NAME}.nrrd")
+    data1,data1header1 = nrrd.read(ROIDir+f"{NAME}.nrrd")
     ### save data1 to temporaryDirectory
     header = {'units': ['um', 'um', 'um'],'spacings': [51.29980,51.29980,51.29980]}
     nrrd.write(data1_nrrd,data1,header)
@@ -35,7 +35,7 @@ for txt in ROINRRD:
     
     # TODO: run your BoneJ thickness wrapper
     # table is the boneJ table, thickness_image is a numpy array containing thickness image
-    macro_file = "/gpfs_projects/sriharsha.marupudi/Skeletonise.py"
+    macro_file = "/BoneJ_Headless/Skeletonise.py"
     
     fiji_path = "~/Fiji.app/ImageJ-linux64" #home directory
     
