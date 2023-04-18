@@ -313,9 +313,10 @@ BoneJ Module
 ------------------------------------
 Anisotropy Parameter Convergence
 ------------------------------------
+A script to determine at what parameter values anisotropy converges. A csv file is output that can analyze for converged value. 
+
 .. code-block:: python
     :linenos:
-    #A script to determine at what parameter values anisotropy converges. A csv file is output that can analyze for converged value. 
     
     import numpy as np
     import nrrd
