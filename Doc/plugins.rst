@@ -166,7 +166,7 @@ BV/TV: Ratio of Bone volume to total volume of the image
 ------------------------------------
 Ellipsoid Factor
 ------------------------------------
-Quantifies the rod and plate geometry of trabecular microstructures. Ellipsoid Factor is evaluated on a scale of -1 to +1, with -1 corresponding to an oblate plate like geometry, and +1 corresponding to a prolate rod like geometry
+Quantifies the rod and plate geometry of trabecular microstructures. Ellipsoid Factor is evaluated on a scale of -1 to +1, with -1 corresponding to an oblate plate like geometry, and +1 corresponding to a prolate rod like geometry. Ellipsoids are iteratively fit into foreground voxels in the image. TProlate, oblate, and intermediate ellipsoid axis lengths are used to quantify how rod-like or plate-like the structure is at a specific point. 
 
 Function = ``def Ellipsoid Factor(array,voxel_size,fiji_path):`` 
 
@@ -190,6 +190,20 @@ Maximum Drift: How far centroid of ellipsoid is displaced from seed point within
 
 Results
 +++++++++++++++++++++++
+Median EF: Average EF value for the sample. On a scale of -1 to +1. Values closer to -1, indicate the structures in the sample have an oblate plate-like geometry. Values closer to +1, indicate the structures have a javeline rod-like geometry. 
+
+Max EF: Largest EF value for a sample. 
+
+Min EF: Lowest EF value for a sample. 
+
+Filling Percentage: The percentage of voxels that are successfully fit with ellipsoids. This value must be greater then 90% for EF values to be accurate. 
+
+Number of Ellipoids Found in Total: Total number of ellipsoids fit into the foreground. 
+
+
+Image Results
++++++++++++++++++++++++
+
 EF image: Image stack containing EF values
 
 Short-Mid image: Image stack containing the a/b ratios from iteratively fit ellipsoid 
