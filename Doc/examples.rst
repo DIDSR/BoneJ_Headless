@@ -325,17 +325,8 @@ A script to determine at what parameter values anisotropy converges. A csv file 
     import tempfile 
     import sys 
     import matplotlib.pyplot as plt 
-
     from contextlib import contextmanager
     import sys, os
-
-
-    # BoneJ Function wrapper
-    # def BoneJ(array,voxel_size,Fiji_path):
-
-    # Define function for each individual plugin 
-    #Require installation of Fiji with BoneJ plugins
-
 
     array,array1header = nrrd.read(volume)  # should be a numpy array
     voxel_size = [51.29980, 51.29980, 51.29980] #microns 
@@ -421,6 +412,10 @@ Ellipsoid Factor Convergence
 ------------------------------------
 .. code-block:: python
     :linenos:
+    
+    array,array1header = nrrd.read(volume)  # should be a numpy array
+    voxel_size = [51.29980, 51.29980, 51.29980] #microns 
+    fiji_path = "~/Fiji.app/ImageJ-linux64"
 
     nVectors_list = [100,200,300,400]
     VectorIncrement_list = [1,2,3]
