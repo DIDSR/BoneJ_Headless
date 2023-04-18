@@ -8,27 +8,27 @@ Requirements
 
 dependencies:
 
-*python=3.7
-*numpy
-*scipy
-*numba
-*mkl
-*matplotlib
-*scikit-image
-*scikit-learn
-*spyder
-*ipython
-*glob2
-*pip:
-*pynrrd # image/data file formats
-*pydicom
-*h5py
-*nibabel
-*python-csv
-*temp
-*sys
-*os
-*subprocess
+* python=3.7
+* numpy
+* scipy
+* numba
+* mkl
+* matplotlib
+* scikit-image
+* scikit-learn
+* spyder
+* ipython
+* glob2
+* pip:
+* pynrrd # image/data file formats
+* pydicom
+* h5py
+* nibabel
+* python-csv
+* temp
+* sys
+* os
+* subprocess
 
 Installation
 ------------
