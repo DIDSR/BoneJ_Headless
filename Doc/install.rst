@@ -8,47 +8,47 @@ Requirements
 
 dependencies:
 
-python=3.7
+*python=3.7
 
-numpy
+*numpy
 
-scipy
+*scipy
 
-numba
+*numba
 
-mkl
+*mkl
 
-matplotlib
+*matplotlib
 
-scikit-image
+*scikit-image
 
-scikit-learn
+*scikit-learn
 
-spyder
+*spyder
 
-ipython
+*ipython
 
-glob2
+*glob2
 
-pip:
+*pip:
 
-pynrrd # image/data file formats
+*pynrrd # image/data file formats
 
-pydicom
+*pydicom
 
-h5py
+*h5py
 
-nibabel
+*nibabel
 
-python-csv
+*python-csv
 
-temp
+*temp
 
-sys
+*sys
 
-os
+*os
 
-subprocess
+*subprocess
 
 Installation
 ------------
