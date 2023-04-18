@@ -6,7 +6,6 @@ Examples
 ------------------------------------
 BoneJ Module
 ------------------------------------
-Can run any of the individual microstructure metrics using these modules. 
 .. code-block:: python
     :linenos:
     
