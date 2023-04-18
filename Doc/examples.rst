@@ -6,10 +6,10 @@ Examples
 ------------------------------------
 BoneJ Module
 ------------------------------------
+Can run any of the individual microstructure metrics using these modules. 
 .. code-block:: python
     :linenos:
     
-    # Can run any of the microstructure metrics using these modules.
     import numpy as np
     import nrrd
     import csv 
@@ -19,7 +19,6 @@ BoneJ Module
     import tempfile 
     import sys 
     import matplotlib.pyplot as plt 
-
     from contextlib import contextmanager
     import sys, os
 
