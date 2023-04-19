@@ -24,7 +24,6 @@ BoneJ Module
 
     # BoneJ Function wrapper
     # Define function for each individual plugin 
-    #Require installation of Fiji with BoneJ plugins
     volume = "...nrrd"
 
     array,array1header = nrrd.read(volume)
@@ -372,9 +371,6 @@ A script to determine at what parameter values anisotropy converges. A csv file 
 
                 nrrd.write(data1_nrrd,array,header)
 
-                # run BoneJ thickness wraapper 
-                # table is results of thickness plugin as csv file 
-                # thickness_tif is numpy array of thickness images 
 
                 fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                                  " \'image="+"\""+data1_nrrd+"\"",
