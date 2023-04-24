@@ -50,6 +50,8 @@ Anisotropy Parameter Convergence
 ------------------------------------
 .. code-block:: python
     :linenos:
+    
+    
     import numpy as np
     import nrrd
     import csv 
@@ -87,6 +89,8 @@ Ellipsoid Factor Convergence
 ------------------------------------
 .. code-block:: python
     :linenos:
+    
+    
     import numpy as np
     import nrrd
     import csv 
