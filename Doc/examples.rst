@@ -88,7 +88,6 @@ Ellipsoid Factor Convergence
 A script to determine convergence of filling percentage based on varying Ellipsoid Factor parameters. 
 .. code-block:: python
     :linenos:
-    
     import numpy as np
     import nrrd
     import csv 
