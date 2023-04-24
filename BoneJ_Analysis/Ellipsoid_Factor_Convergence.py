@@ -10,7 +10,7 @@ maxDrift_list = [1,2,3]
 maxIterations_list = [30,40,50]
 distanceThreshold_list = [.2,.4,.6,.8,1.0]
 
-def Ellipsoid_Factor (array,voxel_size,fiji_path,nVectors = nVectors_list,
+def Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,nVectors = nVectors_list,
 vectorIncrement = VectorIncrement_list,
 skipRatio = skipRatio_list,
 contactSensitivity = contactSensitivity_list,
@@ -106,7 +106,7 @@ showSecondaryImages = False):
                                 return metric_dict       
 
 
-Ellipsoid_Factor_result = Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = nVectors_list,
+Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,nVectors = nVectors_list,
 vectorIncrement = VectorIncrement_list,
 skipRatio = skipRatio_list,
 contactSensitivity = contactSensitivity_list,
