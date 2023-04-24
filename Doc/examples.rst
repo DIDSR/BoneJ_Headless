@@ -85,7 +85,6 @@ A script to determine at what parameter values anisotropy converges. A csv file 
 ------------------------------------
 Ellipsoid Factor Convergence
 ------------------------------------
-A script to determine convergence of filling percentage based on varying Ellipsoid Factor parameters. 
 .. code-block:: python
     :linenos:
     import numpy as np
