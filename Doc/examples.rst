@@ -1,5 +1,7 @@
 .. _bonej-examples-label:
 
+BoneJ Module allows each individual plugin to be imported and run on an image sample. Anisotropy convergence varies input parameters until a converged value for degree of anisotropy is reached. Ellipsoid Factor convergence varies input parameters until a filling percentage (the percentage of foreground voxels fit with ellipsoids) is greater then 90%. 
+
 =================
 Examples
 =================
@@ -46,8 +48,6 @@ BoneJ Module
 ------------------------------------
 Anisotropy Parameter Convergence
 ------------------------------------
-A script to determine at what parameter values anisotropy converges. A csv file is output that can analyze for converged value. 
-
 .. code-block:: python
     :linenos:
     import numpy as np
