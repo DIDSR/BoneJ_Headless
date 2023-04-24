@@ -31,7 +31,7 @@ NDirs_list = [16,32,64,128,256,512,1024,2048,4096,8192]
 csv_dir = "/BoneJ_Headless/Anisotropy_Convergence_Test.csv" #location of csv file storing anisotropy convergence measurements 
 
          
-def Anisotropy(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_list, samplingincrement = 1.73, radii = False, eigens = False):
+def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_list, samplingincrement = 1.73, radii = False, eigens = False):
     
   
     
@@ -88,7 +88,4 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_lis
 
     return metric_dict
 
-
-
-
-Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines =nLines_list, samplingincrement = 1.73, radii = False, eigens = False) 
+Anisotropy_result = Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs=NDirs_list, nLines=nLines_list, samplingincrement=1.73, radii=False, eigens=False) 
