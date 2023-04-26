@@ -115,7 +115,7 @@ Ellipsoid Factor Convergence
     import Ellipsoid_Factor_Convergence 
 
     if __name__ == "__main__":  
-    Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,csv_dir=csv+dir,nVectors = nVectors_list,
+    Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,csv_dir=csv_dir,nVectors = nVectors_list,
     vectorIncrement = VectorIncrement_list,
     skipRatio = skipRatio_list,
     contactSensitivity = contactSensitivity_list,
