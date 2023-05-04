@@ -135,8 +135,8 @@ Results
 A plot display box count and box size is genreated. The plot is on a log scale. 
 
 
-Fractal Dimension:Rrepresented as the slope from linear regression fit to box size vs box count. 
-$r^2$: The goodness of fit for the regression line ofthe box size vs box count plot. Values closer to 1 are considered stronger. 
+Fractal Dimension = =Rrepresented as the slope from linear regression fit to box size vs box count. 
+$r^2$ = The goodness of fit for the regression line ofthe box size vs box count plot. Values closer to 1 are considered stronger. 
 
 ------------------------------------
 Intertrabecular Angles
@@ -144,7 +144,8 @@ Intertrabecular Angles
 
 This plugin computes the angles between trabeculae in bone images. The input image is skeletonised. A graph of the largest skeleton by number of nodes is generated. THe skeleton is composed of nodes(vertices) and connecting edges(branches).The edges correspond to trabeculae with the nodes corresponding to where the trabeculae meet in the bone. 
 
-Function = ``Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence,maximumValence,marginCutOff,minimumTrabecularLength,iteratePruning,printCentroids,useClusters,printCulledEdgePercentages): ``
+Function = ``Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence,maximumValence,marginCutOff
+,minimumTrabecularLength,iteratePruning,printCentroids,useClusters,printCulledEdgePercentages):``
 
 minimumValence = The minimum number of branches for a node to be analyzed.  
 
