@@ -26,10 +26,8 @@ import sys, os
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
-
-NAME = "1_06604"
-# array,array1header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_L1/Segmentation-grayscale-{NAME}.nrrd")  # should be a numpy array
-array,array1header = nrrd.read(f"/gpfs_projects/sriharsha.marupudi/Segmentations_Otsu_Print/Segmentation-grayscale-Print-{NAME}.nrrd")
+NAME = 
+array,array1header = nrrd.read(volume+NAME)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
@@ -74,11 +72,7 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
-    
-       
-            
-           
-        
+             
     return metric_dict
     
 def Surface_Area(array,voxel_size,fiji_path):
@@ -109,13 +103,8 @@ def Surface_Area(array,voxel_size,fiji_path):
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
-        
-       
-        
+          
     return metric_dict
-
-            
-       
 
 def Skeletonise(array,voxel_size,fiji_path):
     
@@ -131,7 +120,6 @@ def Skeletonise(array,voxel_size,fiji_path):
 
     nrrd.write(data1_nrrd,array,header)
     
-   
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"", 
@@ -195,12 +183,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
            z_center = skeleton_tif.shape[2] // 2
            plt.imshow(skeleton_tif[:, :, z_center]);plt.show()
         
-        
-        # optional_dict={}
-        # if displaySkeletons==True:
-        #     with open(outputdir+f"ROI-{NAME}-skeleton.tif", 'rb') as f:
-        #         skeleton_tif = f.read()
-        #     optional_dict["skeleton_tif"] = skeleton_tif
+  
         
     return metric_dict, skeleton_tif
 
