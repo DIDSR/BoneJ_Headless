@@ -32,11 +32,11 @@ Currently supports the following plugins:
 
 Secondary plugins:
 
-* Inter-trabecular Angles
 * Surface Area 
 * Fractal Dimension
-* Skeletonize
+* Skeletonise
 * Analyze Skeleton
+* Intertrabecular Angles
 
 
 Detailed description on individual plugins is provided in section :ref:`plugins`.
