@@ -177,7 +177,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
         print(metric_dict)
        
         optional_dict={}
-        if displaySkeletons:
+        if displaySkeletons=="True":
            skeleton_tif = outputdir +"ROI-"+NAME+"-skeleton.tif"
            skeleton_tif=tiff.imread(skeleton_tif)
            z_center = skeleton_tif.shape[2] // 2
