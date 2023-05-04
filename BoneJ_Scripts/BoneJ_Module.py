@@ -68,13 +68,15 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         print(metric_dict)
     
         optional_dict={}
-        if showMaps==True:
-            with open(outputdir+f"ROI-{NAME}-thickness.tif", 'rb') as f:
-                thickness_tif = f.read()
-            optional_dict["thickness_tif"] = thickness_tif
-            
-           
-        
+        if showMaps:
+            thickness_tif = outputdir +"ROI-"+ NAME +"-thickness.tif"
+            thickness_tif=tiff.imread(thickness_tif)
+            z_center = thickness_tif.shape[2] // 2
+            plt.imshow(thickness_tif[:, :, z_center]);plt.show()
+            # with open(outputdir+f"ROI-{NAME}-thickness.tif", 'rb') as f:
+            #     thickness_tif = f.read()
+            # optional_dict["thickness_tif"] = thickness_tif
+       
     return metric_dict, optional_dict
     
 def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
@@ -113,12 +115,17 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         print(metric_dict)
         
         optional_dict={}
-        if showMaps==True:
-            with open(outputdir+f"ROI-{NAME}-spacing.tif", 'rb') as f:
-                spacing_tif = f.read()
-            optional_dict["spacing_tif"] = spacing_tif
+        if showMaps:
+            spacing_tif = outputdir +"ROI-"+ NAME +"-spacing.tif"
+            spacing_tif=tiff.imread(spacing_tif)
+            z_center = spacing_tif.shape[2] // 2
+            plt.imshow(spacing_tif[:, :, z_center]);plt.show()
+        #if showMaps==True:
+            #with open(outputdir+f"ROI-{NAME}-spacing.tif", 'rb') as f:
+                #spacing_tif = f.read()
+            #optional_dict["spacing_tif"] = spacing_tif
         
-    return metric_dict, optional_dict
+    return metric_dict, spacing_tif
 
             
        
