@@ -74,8 +74,11 @@ verbose = If True, the following information is displayed. skeleton ID,calibrate
 and the Euclidean distance between the extreme points. 
 
 displaySkeletons= If True, the skeleton of the image will be displayed as a tiff image. 
+
+
 Results
 +++++++++++++++++++++++
+
 Image stack of labelled branches and junctions 
 
 If show trees is selected, an image stack of labelled tree is saved. Each individual tree will appear in red. 
@@ -123,6 +126,7 @@ smallestBoxSize = The minimum size in pixels of a box in the grid. If the box si
 scaleFactor =  The value used to divide the box after each iteration of the plugin. A value of 2.0 will decrease the box by half after each step. Default = 1.2. 
 
 autoParam = If True, default parameters will be used. 
+
 Results
 +++++++++++++++++++++++
 A plot display box count and box size is genreated. The plot is on a log scale. 
