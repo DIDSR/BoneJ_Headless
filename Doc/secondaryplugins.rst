@@ -135,7 +135,8 @@ Results
 A plot display box count and box size is genreated. The plot is on a log scale. 
 
 
-Fractal Dimension = =Rrepresented as the slope from linear regression fit to box size vs box count. 
+Fractal Dimension = Represented as the slope from linear regression fit to box size vs box count. 
+
 $r^2$ = The goodness of fit for the regression line ofthe box size vs box count plot. Values closer to 1 are considered stronger. 
 
 ------------------------------------
