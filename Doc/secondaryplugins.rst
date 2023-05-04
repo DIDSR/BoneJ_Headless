@@ -42,7 +42,7 @@ Skeletonise
 ------------------------------------
 Computes topological skeleton of input image. Noise in the image should be reduced. 
 
-Function = ``def Skeletonise(array, voxel_size, fiji_path, ):``
+Function = ``def Skeletonise(array, voxel_size, fiji_path):``
 
 
 Results
@@ -55,8 +55,8 @@ Analzye Skeleton
 ------------------------------------
 Measure the number of branches and junctiuons of a skeletonized image. 
 
-Function = ``def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod,pruneEnds,excludeRoi,calculateShortestPaths,verbose=True,displaySkeletons)
-:``
+Function = ``def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod,pruneEnds,
+excludeRoi,calculateShortestPaths,verbose=True,displaySkeletons):``
 
 array = Numpy array of the image
 
@@ -64,7 +64,9 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assum
 
 fiji_path = Path to the users local Fiji installation 
 
-pruneCycleMethod = Prune loops in the skeleton. Options are None, Shortest branch, Lowest intensity voxel, or Lowest intensity branch. None indicates no pruning. Shortest branch indicates the middle point of the shortest branch will be cut. Lowest intensity voxel indicates the darkest voxel will be set to 0. Lowest intensity branch indicates the darkest average branch of the loop branches will be cut in the darkest voxel.
+pruneCycleMethod = Prune loops in the skeleton. Options are None, Shortest branch, Lowest intensity voxel, or Lowest intensity branch. None indicates no pruning. 
+Shortest branch indicates the middle point of the shortest branch will be cut. Lowest intensity voxel indicates the darkest voxel will be set to 0. 
+Lowest intensity branch indicates the darkest average branch of the loop branches will be cut in the darkest voxel.
 
 pruneEnds = If True, the ends of branches with endpoints will be cut. 
 
