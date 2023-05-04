@@ -87,9 +87,9 @@ If show trees is selected, an image stack of labelled tree is saved. Each indivi
 
 Table will display: 
 
-Image: Name of image 
+Image= Name of image 
 
-Tree: Identifier
+Tree= Identifier
 
 Branches: Number of branches
 
@@ -146,27 +146,27 @@ This plugin computes the angles between trabeculae in bone images. The input ima
 
 Function = ``Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence,maximumValence,marginCutOff,minimumTrabecularLength,iteratePruning,printCentroids,useClusters,printCulledEdgePercentages): ``
 
-minimumValence: The minimum number of branches for a node to be analyzed.  
+minimumValence = The minimum number of branches for a node to be analyzed.  
 
-maximumValence: The maximum number of branches for a node to be analyzed. 
+maximumValence = The maximum number of branches for a node to be analyzed. 
 
-minimumTrabecularLength: The minimum length to retain a branch following pruning. The length is in the units of image calibration, microns, mm, etc. 
+minimumTrabecularLength = The minimum length to retain a branch following pruning. The length is in the units of image calibration, microns, mm, etc. 
 
-marginCutOff: The minimum distance of a node from from the image edge to be analyzed. Too many nodes close to the edges can result in decreasing accuracy. 
+marginCutOff = The minimum distance of a node from from the image edge to be analyzed. Too many nodes close to the edges can result in decreasing accuracy. 
 
-iteratePruning: if True, the skeleton will be prunted until there are no more short branches. 
+iteratePruning = If True, the skeleton will be prunted until there are no more short branches. 
 
-useClusters: If True, results are pruned independently of graph transversal order. 
+useClusters = If True, results are pruned independently of graph transversal order. 
 
-printCentroids: If True, the centroids of the node pairs on the ends of each edge in the skeleton will be displayed. .
+printCentroids = If True, the centroids of the node pairs on the ends of each edge in the skeleton will be displayed. .
 
-PrintCulledEdgePercentages: If True, statistics of the pruned edges will be displayed. 
+PrintCulledEdgePercentages = If True, statistics of the pruned edges will be displayed. 
 
 Results
 +++++++++++++++++++++++
-Intertrabecular angles: The angles in radians between each branch of each node that was analyzed by the plugin. The results are sorted into columns based on the number of branches per individual node. 
+Intertrabecular angles = The angles in radians between each branch of each node that was analyzed by the plugin. The results are sorted into columns based on the number of branches per individual node. 
 
-Centroids: If printCentroids is True, the table of the center coordinates of the node pairs at the ends of each edge.
+Centroids = If printCentroids is True, the table of the center coordinates of the node pairs at the ends of each edge.
 
-Culled edge percentages: If PrintCulledEdgePercentages is True, percentages of the different types of pruned edges is displayed. 
+Culled edge percentages =  If PrintCulledEdgePercentages is True, percentages of the different types of pruned edges is displayed. 
 
