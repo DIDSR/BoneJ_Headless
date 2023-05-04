@@ -103,5 +103,5 @@ Documentation
 Full documentation can be found here:https://bonej-headless.readthedocs.io/en/latest/index.html#
 
 *This code is currently in development, use with caution.*
-![03929](https://user-images.githubusercontent.com/67400847/232593792-628c179b-fe39-47e3-a099-27cffa9dd0b7.png)
+
 
