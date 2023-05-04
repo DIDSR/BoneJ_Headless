@@ -41,6 +41,7 @@ Surface Area = surface area of resultant mesh in units of microns.
 Skeletonise
 ------------------------------------
 Computes topological skeleton of input image. Noise in the image should be reduced. 
+
 Function = ``def Skeletonise(array, voxel_size, fiji_path, ):``
 
 
@@ -53,6 +54,7 @@ Returns skeleton of binary image as a tiff file.
 Analzye Skeleton
 ------------------------------------
 Measure the number of branches and junctiuons of a skeletonized image. 
+
 Function = ``def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod,pruneEnds,excludeRoi,calculateShortestPaths,verbose=True,displaySkeletons)
 :``
 
@@ -86,6 +88,7 @@ If show trees is selected, an image stack of labelled tree is saved. Each indivi
 Table will display: 
 
 Image: Name of image 
+
 Tree: Identifier
 
 Branches: Number of branches
