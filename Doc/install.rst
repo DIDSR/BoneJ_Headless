@@ -63,9 +63,20 @@ First try BoneJ_Module.py located in Examples to launch individual metrics on a 
 
 `BoneJ_Module.py`
 
-* This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Any of the plugins can be chosen and different parameter setttings can be selected for each individual microstructure metric.
+* This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Any of the primary microstructure metrics can be loaded and computed for an individual image. Users can also set specified microstructure metrics. 
 
-* You might need to use `python3` instead of `python`.
+`BoneJ_Module_Secondary.py`
+
+* This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Any of the secondary microstructure metrics can be loaded and computed for an individual image. Users can also set specified microstructure metrics. 
+
+
+`Anisotropy_Parameter_Convergence.py`
+
+* This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Anisotropy is varied across user's specified values for the input parameters. Results can be plotted for a stable result.
+
+'Ellipsoid Factor Convergence'
+
+* This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Ellipsoid is varied across user's specified values for the input parameters. Results can be plotted for a stable result, which is defined as greater then 90% filling percentage.
 
 * Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
