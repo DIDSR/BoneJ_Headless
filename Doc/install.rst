@@ -74,7 +74,7 @@ First try BoneJ_Module.py located in Examples to launch individual metrics on a 
 
 * This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Anisotropy is varied across user's specified values for the input parameters. Results can be plotted for a stable result.
 
-'Ellipsoid Factor Convergence'
+`Ellipsoid_Factor_Parameter_Convergence.py`
 
 * This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Ellipsoid is varied across user's specified values for the input parameters. Results can be plotted for a stable result, which is defined as greater then 90% filling percentage.
 
