@@ -59,7 +59,9 @@ Install the required python libraries.
 Usage
 -----
 
-First try BoneJ_Module.py located in Examples to launch individual metrics on a single image:
+First try BoneJ_Module.py located in Examples to launch individual metrics on a single image. Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
+
+All ROIs are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in Fiji/ImageJ as well. Any file type can be used as long as they are 3D binary 8 bit files. Files are read as numpy arrays by the plugins. :
 
 `BoneJ_Module.py`
 
@@ -78,8 +80,6 @@ First try BoneJ_Module.py located in Examples to launch individual metrics on a 
 
 * This example allows a user to load an ROI, after defining voxel size of the image, and the location of Fiji installation. Ellipsoid is varied across user's specified values for the input parameters. Results can be plotted for a stable result, which is defined as greater then 90% filling percentage.
 
-* Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
-* All ROIs are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in Fiji/ImageJ as well. Any file type can be used as long as they are 3D binary 8 bit files. Files are read as numpy arrays by the plugins. 
 
 *This code is currently in development, use with caution.*
