@@ -11,12 +11,12 @@ import matplotlib.pyplot as plt
 from contextlib import contextmanager
 import sys, os
 
-import Thickness 
-import Spacing
-import Area_VolumeFraction
-import Connectivity 
-import Anisotropy 
-import Ellipsoid_Factor
+from BoneJ_Module import Thickness 
+from BoneJ_Module import Spacing
+from BoneJ_Module import Area_VolumeFraction
+from BoneJ_Module import Connectivity 
+from BoneJ_Module import Anisotropy 
+from BoneJ_Module import Ellipsoid_Factor
 
  if __name__ == "__main__":    
   Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
