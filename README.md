@@ -79,10 +79,6 @@ Clone the repository
 
 `git clone https://github.com/BoneJ_Headless`
 
-Execute the installation script:
-
-`source install.sh`
-
 Install the required python libraries. 
 
 Usage
