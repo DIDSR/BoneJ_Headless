@@ -47,7 +47,7 @@ Clone the repository
 
 Execute the installation script:
 
-`source install.sh`
+`pip install -r requirements.txt`
 
 Install the required python libraries. 
 
