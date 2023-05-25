@@ -45,8 +45,6 @@ Clone the repository
 
 `git clone https://github.com/BoneJ_Headless`
 
-Execute the installation script:
-
 `pip install -r requirements.txt`
 
 Install the required python libraries. 
