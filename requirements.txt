@@ -1,0 +1,17 @@
+h5py
+numpy
+pynrrd
+pydicom
+nibabel
+scipy
+scikit-learn
+numba
+mkl
+matplotlib
+scikit-image
+glob
+python-csv
+temp
+sys
+os
+subprocess
