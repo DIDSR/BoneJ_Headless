@@ -1,7 +1,7 @@
 Welcome to BoneJ Headless Documentation!
 =====================================
 
-Microstructure metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstructural metrics and bone analysis with unique plugins not available from vendors. The plugins can be automated with simple Fiji macros, but this still requires GUI support. This repository allows for automation of BoneJ without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and a simple method of parameter sweeping to optimize BoneJ plugins. This repository was used to analyze several microCT images and compared microstructure metrics from other sources. All scripts are written in Python and can only be executed on Linux OS.
+Microstructure metrics are calculated to characterize bone morphology and skeletal geometry. BoneJ is a Fiji plugin for calculation of microstructure metrics and bone analysis with unique plugins not available from vendors. The plugins can be automated with simple Fiji macros, but this still requires GUI support. This repository allows for automation of BoneJ in Python without GUI dependence and can allow for quick processing of large datasets, access to Python libraries, and a simple method of parameter sweeping to optimize BoneJ plugins. This repository was used to analyze several microCT images and compared microstructure metrics from other sources. All scripts are written in Python and can only be executed on Linux OS.
 
 Table of Contents
 ==================
