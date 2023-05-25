@@ -41,31 +41,6 @@ Secondary metrics not as commonly used in literature:
 5. Surface Area
 
 Scripts can be launched individually through use of modules/functions or as a batch scripts. Acceptable file types include NRRD, NIfTI, and DICOM. All files must be 3D 8 bit images and be able to read as numpy arrays. 
-
-Requirements
-------------
-dependencies:
-  - python=3.7
-  - numpy
-  - scipy
-  - numba
-  - mkl
-  - matplotlib
-  - scikit-image
-  - scikit-learn
-  - spyder
-  - ipython
-  - glob2
-  - pip:
-    - pynrrd # image/data file formats
-    - pydicom
-    - h5py
-    - nibabel
-    - python-csv
-    - temp
-    - sys
-    - os
-    - subprocess
   
 Installation
 ------------
@@ -81,18 +56,20 @@ Clone the repository
 
 Install the required python libraries. 
 
+`pip install -r requirements.txt`
+
 Usage
 -----
 
 First try BoneJ_Module.py to load and run metrics on a single image:
 
-`BoneJ_Module.py`
+`BoneJ_Module_Example.py`
 
 > You might need to use `python3` instead of `python`.
 
 Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
-> All ``image segmentation`` files are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in software Fiji as well. 
+> All ``example ROIs`` are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in software Fiji as well. 
 Documentation
 -------------
 
