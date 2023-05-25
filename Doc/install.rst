@@ -8,7 +8,6 @@ Requirements
 
 dependencies:
 
-* python=3.7
 * numpy
 * scipy
 * numba
@@ -16,15 +15,11 @@ dependencies:
 * matplotlib
 * scikit-image
 * scikit-learn
-* spyder
-* ipython
-* glob2
-* pip:
-* pynrrd # image/data file formats
+* glob
+* pynrrd 
 * pydicom
 * h5py
 * nibabel
-* python-csv
 * temp
 * sys
 * os
