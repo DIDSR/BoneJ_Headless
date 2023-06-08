@@ -11,11 +11,11 @@ import tifffile as tiff
 from contextlib import contextmanager
 import sys, os
 
-from BoneJ_Module import Fractal_Dimension  
-from BoneJ_Module import Surface_Area 
-from BoneJ_Module import Analyze_Skeleton 
-from BoneJ_Module import Intertrabecular_Angles 
-from BoneJ_Module import Skeletonise 
+from BoneJ_Module_Secondary import Fractal_Dimension  
+from BoneJ_Module_Secondary import Surface_Area 
+from BoneJ_Module_Secondary import Analyze_Skeleton 
+from BoneJ_Module_Secondary import Intertrabecular_Angles 
+from BoneJ_Module_Secondary import Skeletonise 
 
  if __name__ == "__main__":   
  Fractal_Dimension_Results=Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize=48,smallestBoxSize=6,scaleFactor=1.2,autoParam=False)
