@@ -24,7 +24,7 @@ This software and documentation was developed at the Food and Drug Administratio
 
 BoneJ Headless Plugins
 -------------------
-The code included in this repository will allow you to execute these common microstructure metrics:
+The code included in this repository will allow you to compute these common microstructure metrics:
 
 1. Thickness
 2. Spacing
@@ -33,14 +33,14 @@ The code included in this repository will allow you to execute these common micr
 5. Bone Volume Fraction 
 6. Connectivity
 
-Secondary metrics not as commonly used in literature: 
+Secondary metrics not as commonly used in literature are also included here: 
 1. Intertrabecular Angles 
 2. Skeletonize 
 3. Analyze Skeleton 
 4. Fractal Dimension
 5. Surface Area
 
-Scripts can be launched individually through use of modules/functions or as a batch scripts. Acceptable file types include NRRD, NIfTI, and DICOM. All files must be 3D 8 bit images and be able to read as numpy arrays. 
+Functions can be used for batch processing or processing only one input image. BoneJ Headless takes binary numpy arrays as inputs. 
   
 Installation
 ------------
@@ -61,7 +61,7 @@ Install the required python libraries.
 Usage
 -----
 
-First try BoneJ_Module.py to load and run metrics on a single image:
+First try BoneJ_Module.py to load and run metrics on a single image. You can import any of the available metrics and adjust input paremeters.:
 
 `BoneJ_Module_Example.py`
 
@@ -69,7 +69,7 @@ First try BoneJ_Module.py to load and run metrics on a single image:
 
 Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
-> All ``example ROIs`` are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in software Fiji as well. 
+> All ``example ROIs`` are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in the Fiji softwrae as well. 
 Documentation
 -------------
 
