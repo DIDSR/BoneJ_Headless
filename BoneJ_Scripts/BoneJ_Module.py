@@ -11,6 +11,8 @@ from glob import glob
 import tempfile 
 import sys 
 import matplotlib.pyplot as plt 
+import tifffile as tiff
+
 
 from contextlib import contextmanager
 import sys, os
