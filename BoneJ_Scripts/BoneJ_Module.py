@@ -12,8 +12,6 @@ import tempfile
 import sys 
 import matplotlib.pyplot as plt 
 import tifffile as tiff
-
-
 from contextlib import contextmanager
 import sys, os
 
@@ -22,8 +20,11 @@ import sys, os
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
-
-array,array1header = nrrd.read(volume)
+filepath = "/.../ROIs/Shrew.nrrd"
+base_filename = os.path.basename(filepath)
+filename_parts = base_filename.split('.')
+NAME = filename_parts[0]
+array,array1header = nrrd.read(filepath)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 # feed in numpy array
