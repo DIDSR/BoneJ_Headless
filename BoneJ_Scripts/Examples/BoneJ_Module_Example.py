@@ -16,8 +16,11 @@ from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
 from BoneJ_Module import Ellipsoid_Factor
 
-NAME = "emu"
-array,array1header = nrrd.read(f"/BoneJ_Headless-main/ROIs/{NAME}.nrrd")
+filepath = "/.../ROIs/Shrew.nrrd"
+base_filename = os.path.basename(filepath)
+filename_parts = base_filename.split('.')
+NAME = filename_parts[0]
+array,array1header = nrrd.read(filepath)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
