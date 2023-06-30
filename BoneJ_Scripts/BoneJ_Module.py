@@ -16,16 +16,7 @@ from contextlib import contextmanager
 import sys, os
 
 
-# BoneJ Function wrapper
-    
-# Define function for each individual plugin 
-#Require installation of Fiji with BoneJ plugins
-filepath = "/.../ROIs/Shrew.nrrd"
 
-array,array1header = nrrd.read(filepath)
-voxel_size = [51.29980, 51.29980, 51.29980] #microns 
-fiji_path = "~/Fiji.app/ImageJ-linux64"
-# feed in numpy array
 
 def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     base_filename = os.path.basename(filepath)
@@ -310,19 +301,29 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
 
-        
-Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
-Connectivity_result = Connectivity(array,voxel_size,fiji_path)
-Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, 
-radii = False, eigens = False)
-Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
-,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True)
-     
-   
+if __name__ == "__main__":
     
+    # BoneJ Function wrapper
+        
+    # Define function for each individual plugin 
+    #Require installation of Fiji with BoneJ plugins
+    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/Shrew.nrrd"
+
+    array,array1header = nrrd.read(filepath)
+    voxel_size = [51.29980, 51.29980, 51.29980] #microns 
+    fiji_path = "~/Fiji.app/ImageJ-linux64"
+    # feed in numpy array
+       
+    Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
+    Connectivity_result = Connectivity(array,voxel_size,fiji_path)
+    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, 
+    radii = False, eigens = False)
+    Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
+    ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
+    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True)
+         
     
     
     
