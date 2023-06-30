@@ -16,9 +16,11 @@ from BoneJ_Module_Secondary import Surface_Area
 from BoneJ_Module_Secondary import Analyze_Skeleton 
 from BoneJ_Module_Secondary import Intertrabecular_Angles 
 from BoneJ_Module_Secondary import Skeletonise 
-
-NAME = "emu"
-array,array1header = nrrd.read(f"/BoneJ_Headless-main/ROIs/{NAME}.nrrd")
+filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/Shrew.nrrd"
+base_filename = os.path.basename(filepath)
+filename_parts = base_filename.split('.')
+NAME = filename_parts[0]
+array,array1header = nrrd.read(filepath)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
