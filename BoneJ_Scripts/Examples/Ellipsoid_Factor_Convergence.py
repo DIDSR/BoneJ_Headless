@@ -10,8 +10,11 @@ import matplotlib.pyplot as plt
 from contextlib import contextmanager
 import sys, os
 
-
-array,array1header = nrrd.read(volume)  # should be a numpy array
+filepath = "/...ROIs/Shrew.nrrd"
+base_filename = os.path.basename(filepath)
+filename_parts = base_filename.split('.')
+NAME = filename_parts[0]
+array,array1header = nrrd.read(filepath)  # should be a numpy array
 voxel_size = [51.29980, 51.29980, 51.29980] #microns
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
