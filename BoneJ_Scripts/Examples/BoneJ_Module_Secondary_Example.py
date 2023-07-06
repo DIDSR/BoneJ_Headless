@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import tifffile as tiff 
 from contextlib import contextmanager
 import sys, os
-#sys.path.append('/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/BoneJ_Scripts/')
+#sys.path.append('/.../BoneJ_Headless-main/BoneJ_Scripts/')
 
 from BoneJ_Module_Secondary import Fractal_Dimension  
 from BoneJ_Module_Secondary import Surface_Area 
@@ -19,7 +19,7 @@ from BoneJ_Module_Secondary import Intertrabecular_Angles
 from BoneJ_Module_Secondary import Skeletonise 
 
 
-filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+filepath = "/.../BoneJ_Headless-main/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath) 
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
