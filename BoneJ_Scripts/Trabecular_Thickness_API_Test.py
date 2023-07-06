@@ -44,12 +44,12 @@ wrapperThicknessInstance = wrapperThickness.get()
 #Call trabecular thickness map and save
 thickness_tif = wrapperThicknessInstance.getOutput("trabecularMap")
 #trabecular_map.show()
-IJ.save(thickness_tif, outputdir +"ROI-"+ NAME +"-thickness.tif")
+IJ.save(thickness_tif, outputdir +"thickness.tif")
 
 table = SharedTable.getTable()
 # print(table)
 
-f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
+f = open(outputdir+"table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 

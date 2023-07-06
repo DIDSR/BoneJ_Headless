@@ -42,7 +42,7 @@ wrapperBVInstance = wrapperBV.get()
 #Save results to csv file 
 table =SharedTable.getTable()
 # print(table)
-f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
+f = open(outputdir+"table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 

@@ -2,26 +2,25 @@
 # -*- coding: utf-8 -*-
 
 
-import numpy as np
 import nrrd
 import csv 
 import os
 import subprocess 
-from glob import glob
 import tempfile 
-import sys 
 import matplotlib.pyplot as plt 
 import tifffile as tiff
-from contextlib import contextmanager
-import sys, os
+import os 
+# BoneJ Function wrapper
+    
+# Define function for each individual plugin 
+#Require installation of Fiji with BoneJ plugins
 
 
-
+# feed in numpy array
 
 def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
+    
+    
     showMaps = str(showMaps)
     maskArtefacts = str(maskArtefacts)
     tempdir = tempfile.TemporaryDirectory()
@@ -29,7 +28,8 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     thickness_tif = os.path.join(tempdir.name, "thickness.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Trabecular_Thickness_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Trabecular_Thickness_API_Test.py"))
+
     
 
     # save to temporary directory
@@ -44,7 +44,6 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", thickness_tif="+"\""+thickness_tif+"\"",\
                      ", outputdir="+"\""+outputdir+"\"",
-                     ", NAME="+"\""+NAME+"\"",
                      ", showMaps="+"\""+showMaps+"\"",
                      ", maskArtefacts="+"\""+maskArtefacts+"\"",
                      ", table_csv="+"\""+table_csv+"\""+"\'"])
@@ -52,14 +51,14 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     
  
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
     
         optional_dict={}
         if showMaps=="True":
-            thickness_tif = outputdir +"ROI-"+ NAME +"-thickness.tif"
+            thickness_tif = outputdir +"thickness.tif"
             thickness_tif=tiff.imread(thickness_tif)
             z_center = thickness_tif.shape[2] // 2
             plt.imshow(thickness_tif[:, :, z_center]);plt.show()
@@ -70,9 +69,6 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     return metric_dict, optional_dict
     
 def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
     mapChoice = "Trabecular spacing"
     showMaps = str(showMaps)
     maskArtefacts = str(maskArtefacts)
@@ -81,7 +77,7 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     spacing_tif = os.path.join(tempdir.name, "spacing.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Trabecular_Spacing_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Trabecular_Spacing_API_Test.py"))
 
     
     # save to temporary directory
@@ -93,7 +89,6 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", spacing_tif="+"\""+spacing_tif+"\"",\
                      ", outputdir="+"\""+outputdir+"\"",
-                     ", NAME="+"\""+NAME+"\"",
                      ", showMaps="+"\""+showMaps+"\"",
                      ", maskArtefacts="+"\""+maskArtefacts+"\"",
                      ", mapChoice="+"\""+mapChoice+"\"",
@@ -102,14 +97,14 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     
 
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
         
         optional_dict={}
         if showMaps=="True":
-            spacing_tif = outputdir +"ROI-"+ NAME +"-spacing.tif"
+            spacing_tif = outputdir +"spacing.tif"
             spacing_tif=tiff.imread(spacing_tif)
             z_center = spacing_tif.shape[2] // 2
             plt.imshow(spacing_tif[:, :, z_center]);plt.show()
@@ -123,9 +118,6 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             
        
 def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
     NDirs = str(NDirs)
     nLines = str(nLines)
     samplingincrement = str(samplingincrement)
@@ -136,7 +128,7 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Anisotropy_API_Test.py")
+    macro_file =os.path.abspath(os.path.join(os.path.dirname(__file__),"Anisotropy_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -147,7 +139,7 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"",
-                         ", NAME="+"\""+NAME+"\"",", NDirs="+"\""+NDirs+"\"",
+                         ", NDirs="+"\""+NDirs+"\"",
                          ", nLines="+"\""+nLines+"\"",
                          ", samplingincrement="+"\""+samplingincrement+"\"",
                          ", radii="+"\""+radii+"\"",
@@ -156,7 +148,7 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -167,14 +159,11 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
         
 
 def Connectivity(array,voxel_size,fiji_path):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Connectivity_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Connectivity_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -185,12 +174,11 @@ def Connectivity(array,voxel_size,fiji_path):
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"", 
-                         ", NAME="+"\""+NAME+"\"",
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -198,14 +186,11 @@ def Connectivity(array,voxel_size,fiji_path):
     return metric_dict
     
 def Area_VolumeFraction(array,voxel_size,fiji_path):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Area_VolumeFraction_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Area_VolumeFraction_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -214,12 +199,12 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
     
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
-                         " \'image="+"\""+data1_nrrd+"\"",  ", NAME="+"\""+NAME+"\"",
+                         " \'image="+"\""+data1_nrrd+"\"",  
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -229,9 +214,6 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
 def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
 ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
 ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True):
-    base_filename = os.path.basename(filepath)
-    filename_parts = base_filename.split('.')
-    NAME = filename_parts[0]
     nVectors =str(nVectors)
     vectorIncrement = str(vectorIncrement)
     skipRatio = str(skipRatio)
@@ -262,7 +244,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Ellipsoid_Factor_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Ellipsoid_Factor_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -292,23 +274,19 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
                          ", showConvergence="+"\""+showConvergence+"\"",
                          ", showSecondaryImages="+"\""+showSecondaryImages+"\"",
                          ", outputdir="+"\""+outputdir+"\"",
-                         ", NAME="+"\""+NAME+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     
-    b = subprocess.call(fiji_cmd, shell=True)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    b = subprocess.call(fiji_cmd,shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
 
-if __name__ == "__main__":
-    
-    # BoneJ Function wrapper
-        
-    # Define function for each individual plugin 
-    #Require installation of Fiji with BoneJ plugins
-    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/Shrew.nrrd"
 
+if __name__ == "__main__":
+
+    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/Shrew.nrrd"
+    
     array,array1header = nrrd.read(filepath)
     voxel_size = [51.29980, 51.29980, 51.29980] #microns 
     fiji_path = "~/Fiji.app/ImageJ-linux64"
@@ -323,9 +301,7 @@ if __name__ == "__main__":
     Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
     ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
     ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True)
-         
-    
-    
+        
     
 
 

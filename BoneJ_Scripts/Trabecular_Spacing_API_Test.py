@@ -46,12 +46,12 @@ wrapperInstance = wrapper.get()
 #Call trabecular spacing map and save
 spacing_tif = wrapperInstance.getOutput("spacingMap")
 #spacing_map.show()
-IJ.save(spacing_tif, outputdir +"ROI-"+ NAME +"-spacing.tif")
+IJ.save(spacing_tif, outputdir +"spacing.tif")
 
 table = SharedTable.getTable()
 # print(table)
 
-f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
+f = open(outputdir+"table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 

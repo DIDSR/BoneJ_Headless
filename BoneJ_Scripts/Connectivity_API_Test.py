@@ -48,7 +48,7 @@ wrapperInstance = wrapper.get()
 table =SharedTable.getTable()
 # print(table)
 
-f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
+f = open(outputdir+"table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 

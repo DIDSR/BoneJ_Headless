@@ -67,7 +67,7 @@ EF = outputs.get(0)
 table =SharedTable.getTable()
 
 
-f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
+f = open(outputdir+"table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 
@@ -88,40 +88,40 @@ f.close()
 
 
 d = DefaultDataset(ctxt,EF)
-io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ef.tif")
+io.save(d, outputdir+"/"+"img_ef.tif")
 
 # V = outputs.get(1)
 
 # d = DefaultDataset(ctxt,V)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_volume.tif")
+# io.save(d, outputdir+"/"+"img_volume.tif")
 
 # #ID = outputs.get(2)
 # #d = DefaultDataset(ctxt,ID)
-# #io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_id2.tif")
+# #io.save(d, outputdir+"/"+"img_id2.tif")
 
 # AB = outputs.get(6)
 # d = DefaultDataset(ctxt,AB)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_ab.tif")
+# io.save(d, outputdir+"/"+"img_ab.tif")
 
 # BC = outputs.get(7)
 # d = DefaultDataset(ctxt,BC)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_bc.tif")
+# io.save(d, outputdir+"/"+"img_bc.tif")
 
 # #A = outputs.get(3)
 # #d = DefaultDataset(ctxt,A)
-# #io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_a1.tif")
+# #io.save(d, outputdir+"/"+"img_a1.tif")
 
 # B = outputs.get(4)
 # d = DefaultDataset(ctxt,B)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_b.tif")
+# io.save(d, outputdir+"/"+"img_b.tif")
 
 # C = outputs.get(5)
 # d = DefaultDataset(ctxt,C)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_c.tif")
+# io.save(d, outputdir+"/"+"img_c.tif")
 
 # FlinnPlots = outputs.get(9)
 # d = DefaultDataset(ctxt,FlinnPlots)
-# io.save(d, outputdir+"/"+"ROI-"+NAME+"-img_flinn_peak_plot.tif")
+# io.save(d, outputdir+"/"+"img_flinn_peak_plot.tif")
 
 
 

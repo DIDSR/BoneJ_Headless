@@ -42,8 +42,7 @@ input_image_ij1 = IJ.run(input_Image,"Multiply...", "value=255 stack");
 wrapper = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["inputImage",input_Image, "mapChoice",mapChoice,"showMaps",showMaps,"maskArtefacts",maskArtefacts])
 wrapperInstance = wrapper.get()
 #Call trabecular spacing map and save
-spacing_tif = wrapperInstance.getOutput("spacingMap")
-IJ.save(spacing_tif, outputdir +"ROI-"+ NAME +"-spacing.tif")
+spacing_tif = wrapperInstance.getOutput("spacingMap")IJ.save(spacing_tif, outputdir +"ROI-"+ NAME +"-spacing.tif")
 
 table = SharedTable.getTable()
 print(table)
