@@ -26,8 +26,8 @@ import sys, os
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
-NAME = 
-array,array1header = nrrd.read(volume+NAME)
+filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+array,array1header = nrrd.read(filepath)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
@@ -47,7 +47,7 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Fractal_Dimension_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Fractal_Dimension_API_Test.py"))
     
 
     # save to temporary directory
@@ -59,7 +59,6 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", startBoxSize="+"\""+startBoxSize+"\"",\
                      ", outputdir="+"\""+outputdir+"\"",
-                     ", NAME="+"\""+NAME+"\"",
                      ", smallestBoxSize="+"\""+smallestBoxSize+"\"",
                      ", scaleFactor="+"\""+scaleFactor+"\"",
                      ", autoParam="+"\""+autoParam+"\"",
@@ -68,7 +67,7 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     
  
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -81,7 +80,7 @@ def Surface_Area(array,voxel_size,fiji_path):
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Surface_Area_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Surface_Area_API_Test.py"))
 
     
     # save to temporary directory
@@ -93,13 +92,12 @@ def Surface_Area(array,voxel_size,fiji_path):
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"",
                      ", outputdir="+"\""+outputdir+"\"",
-                     ", NAME="+"\""+NAME+"\"",
                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     
 
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
@@ -113,7 +111,7 @@ def Skeletonise(array,voxel_size,fiji_path):
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
     skeleton_tif = os.path.join(tempdir.name, "skeleton.tif")
-    macro_file = os.path.abspath("Skeletonise_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Skeletonise_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -123,14 +121,13 @@ def Skeletonise(array,voxel_size,fiji_path):
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                          " \'image="+"\""+data1_nrrd+"\"", 
-                         ", NAME="+"\""+NAME+"\"",
                          ", skeleton_tif="+"\""+skeleton_tif+"\"",
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     plt.figure()
-    skeleton_tif = outputdir+f"{NAME}-skeleton.tif"
+    skeleton_tif = outputdir+f"skeleton.tif"
     skeleton_tif=tiff.imread(skeleton_tif)
     z_center = skeleton_tif.shape[2] // 2
     plt.imshow(skeleton_tif[:, :, z_center])
@@ -152,7 +149,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name,"outputdir")
     skeleton_tif = os.path.join(tempdir.name,"skeleton.tif")
-    macro_file = os.path.abspath("Analyze_Skeleton_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Analyze_Skeleton_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -160,7 +157,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
     nrrd.write(data1_nrrd,array,header)
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
-                         " \'image="+"\""+data1_nrrd+"\"",  ", NAME="+"\""+NAME+"\"",
+                         " \'image="+"\""+data1_nrrd+"\"",  
                          ", pruneCycleMethod="+"\""+pruneCycleMethod+"\"",
                          ", pruneEnds="+"\""+pruneEnds+"\"",
                          ", excludeRoi="+"\""+excludeRoi+"\"",
@@ -171,14 +168,14 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
     b = subprocess.call(fiji_cmd,shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"ROI-{NAME}-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
        
         optional_dict={}
         if displaySkeletons=="True":
-           skeleton_tif = outputdir +"ROI-"+NAME+"-skeleton.tif"
+           skeleton_tif = outputdir +"skeleton.tif"
            skeleton_tif=tiff.imread(skeleton_tif)
            z_center = skeleton_tif.shape[2] // 2
            plt.imshow(skeleton_tif[:, :, z_center]);plt.show()
@@ -203,7 +200,7 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
     skeleton_tif = os.path.join(tempdir.name,"skeleton.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath("Inter_Trabecular_Angles_API_Test.py")
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Inter_Trabecular_Angles_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -220,26 +217,26 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
                          ", printCulledEdgePercentages="+"\""+printCulledEdgePercentages+"\"",
                          ", outputdir="+"\""+outputdir+"\"",
                          ", skeleton_tif="+"\""+skeleton_tif+"\"",
-                         ", NAME="+"\""+NAME+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     
     b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+"ROI-"+NAME+"-table.csv", "r", encoding='utf-8') as file:
+    with open(outputdir+"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
         print(metric_dict)
 
+if __name__ == "__main__":
 
-Fractal_Dimension_Results = Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize=48,smallestBoxSize=6,scaleFactor=1.2,autoParam=True)
-Surface_Area_Result= Surface_Area(array,voxel_size,fiji_path)
-Analzye_Skeleton_Result = Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=True,excludeRoi=False,calculateShortestPaths=True,verbose=True,displaySkeletons=True)
-Intertrabecular_Angles_Result = Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,iteratePruning=False,printCentroids=False,useClusters=False,printCulledEdgePercentages=False)
-Skeletonise_Result=Skeletonise(array,voxel_size,fiji_path)
-
-   
+    Fractal_Dimension_Results = Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize=48,smallestBoxSize=6,scaleFactor=1.2,autoParam=True)
+    Surface_Area_Result= Surface_Area(array,voxel_size,fiji_path)
+    Analzye_Skeleton_Result = Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=True,excludeRoi=False,calculateShortestPaths=True,verbose=True,displaySkeletons=True)
+    Intertrabecular_Angles_Result = Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,iteratePruning=False,printCentroids=False,useClusters=False,printCulledEdgePercentages=False)
+    Skeletonise_Result=Skeletonise(array,voxel_size,fiji_path)
     
-    
-    
+       
+        
+        
+        
     
 
 

@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-
 import nrrd
 import csv 
 import os
@@ -9,7 +7,6 @@ import subprocess
 import tempfile 
 import matplotlib.pyplot as plt 
 import tifffile as tiff
-import os 
 # BoneJ Function wrapper
     
 # Define function for each individual plugin 
@@ -28,7 +25,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     thickness_tif = os.path.join(tempdir.name, "thickness.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Trabecular_Thickness_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Trabecular_Thickness_API_Test.py"))
 
     
 
@@ -77,7 +74,7 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     spacing_tif = os.path.join(tempdir.name, "spacing.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Trabecular_Spacing_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Trabecular_Spacing_API_Test.py"))
 
     
     # save to temporary directory
@@ -128,7 +125,7 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file =os.path.abspath(os.path.join(os.path.dirname(__file__),"Anisotropy_API_Test.py"))
+    macro_file =os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Anisotropy_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -163,7 +160,7 @@ def Connectivity(array,voxel_size,fiji_path):
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Connectivity_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Connectivity_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -190,7 +187,7 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Area_VolumeFraction_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Area_VolumeFraction_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -244,7 +241,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Ellipsoid_Factor_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Ellipsoid_Factor_API_Test.py"))
     
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}

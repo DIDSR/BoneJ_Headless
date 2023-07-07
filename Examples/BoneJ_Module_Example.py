@@ -11,7 +11,7 @@ import tifffile as tiff
 from contextlib import contextmanager
 import sys, os
 
-sys.path.append('/.../BoneJ_Headless-main/BoneJ_Scripts/')
+# sys.path.append('/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/BoneJ_Scripts/')
 from BoneJ_Module import Thickness
 from BoneJ_Module import Spacing
 from BoneJ_Module import Area_VolumeFraction
@@ -19,7 +19,7 @@ from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
 from BoneJ_Module import Ellipsoid_Factor
 
-filepath = "/.../BoneJ_Headless-main/ROIs/emu.nrrd"
+filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath) 
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
