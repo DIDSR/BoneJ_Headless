@@ -26,7 +26,7 @@ import sys, os
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
-filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath)
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
