@@ -2,4 +2,3 @@ pynrrd
 pydicom
 nibabel
 SimpleITK
-
