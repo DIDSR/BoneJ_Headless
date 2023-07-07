@@ -55,7 +55,7 @@ def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines
             data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
             table_csv = os.path.join(tempdir.name,"table.csv")
             outputdir = os.path.join(tempdir.name, "outputdir")
-            macro_file = os.path.abspath("Anisotropy_API_Test.py")
+            macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Anisotropy_API_Test.py"))
             csv_Dir  = csv_dir
             # save to temporary directory
             header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -77,7 +77,7 @@ def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines
                              ", table_csv="+"\""+table_csv+"\""+"\'"])
             
             b = subprocess.call(fiji_cmd, shell=True)
-            with open(outputdir+f"ROI-{NAME}-table.csv", "r",encoding='utf-8') as file:
+            with open(outputdir+f"table.csv", "r",encoding='utf-8') as file:
                 reader = csv.reader(file)
                 metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
                 print(metric_dict)
