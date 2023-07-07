@@ -68,7 +68,7 @@ def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines
             
             fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                              " \'image="+"\""+data1_nrrd+"\"",
-                             ", NAME="+"\""+NAME+"\"",", NDirs="+"\""+NDirs+"\"",
+                             ", NDirs="+"\""+NDirs+"\"",
                              ", nLines="+"\""+nLines+"\"",
                              ", samplingincrement="+"\""+samplingincrement+"\"",
                              ", radii="+"\""+radii+"\"",
