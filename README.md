@@ -41,6 +41,7 @@ Secondary metrics not as commonly used in literature are also included here:
 5. Surface Area
 
 Functions can be used for batch processing or processing only one input image. BoneJ Headless takes binary numpy arrays as inputs. 
+The Examples folder shows how to import specific metrics to use for processing. The scripts labelled BoneJ_Scripts and Secondary_Scripts include batch scripts for large processing
   
 Installation
 ------------
