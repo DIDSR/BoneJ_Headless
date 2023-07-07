@@ -18,7 +18,7 @@ from BoneJ_Module import Analyze_Skeleton
 from BoneJ_Module import Intertrabecular_Angles
 from BoneJ_Module import Skeletonise
 
-filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath) 
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
