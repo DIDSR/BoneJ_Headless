@@ -1,7 +1,5 @@
-h5py
 pynrrd
 pydicom
 nibabel
-mkl
 SimpleITK
-ut
+
