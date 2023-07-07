@@ -60,7 +60,8 @@ showSecondaryImages = False):
                                 img_seed_points_tif = os.path.join(tempdir.name,"img_seed_points.tif")
                                 img_flinn_peak_plot_tif = os.path.join(tempdir.name,"img_flinn_peak_plot.tif")
                                 img_unweighted_flinn_plot_tif = os.path.join(tempdir.name,"img_unweighted_flinn_plot.tif")
-                                macro_file = os.path.abspath("Ellipsoid_Factor_API_Test.py")
+                                macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Ellipsoid_Factor_API_Test.py"))
+
 
                                 # save to temporary directory
                                 header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -92,7 +93,6 @@ showSecondaryImages = False):
                                                      ", showConvergence="+"\""+showConvergence+"\"",
                                                      ", showSecondaryImages="+"\""+showSecondaryImages+"\"",
                                                      ", outputdir="+"\""+outputdir+"\"",
-                                                     ", NAME="+"\""+NAME+"\"",
                                                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
                                 print(f"{NAME}")             
