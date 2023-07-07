@@ -55,7 +55,7 @@ def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines
             data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
             table_csv = os.path.join(tempdir.name,"table.csv")
             outputdir = os.path.join(tempdir.name, "outputdir")
-            macro_file = os.path.abspath("Anisotropy_API_Test.py")
+            macro_file =os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Anisotropy_API_Test.py"))
             csv_Dir  = csv_dir
             # save to temporary directory
             header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
@@ -68,7 +68,7 @@ def Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs = NDirs_list, nLines
             
             fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                              " \'image="+"\""+data1_nrrd+"\"",
-                             ", NAME="+"\""+NAME+"\"",", NDirs="+"\""+NDirs+"\"",
+                             ", NDirs="+"\""+NDirs+"\"",
                              ", nLines="+"\""+nLines+"\"",
                              ", samplingincrement="+"\""+samplingincrement+"\"",
                              ", radii="+"\""+radii+"\"",
