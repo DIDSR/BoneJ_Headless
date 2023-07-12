@@ -33,8 +33,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
     nrrd.write(data1_nrrd,array,header)
-    # macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Thickness_API_Test.py"
-    # run BoneJ thickness wraapper 
+    # run BoneJ thickness wrapper 
     # table is results of thickness plugin as csv file 
     # thickness_tif is numpy array of thickness images 
     
@@ -50,8 +49,19 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
  
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
-        metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        metric_dict = {row[0]: row[1:] for row in reader if row and row[0]} 
+
+       
+    clean_metric_dict = {
+        key: value[0].strip('"')
+        for key, value in metric_dict.items()
+    }
+
+    for idx, (key, value) in enumerate (clean_metric_dict.items()):
+        if idx ==0:
+            continue
+        print(key + ":", value)
+
     
         optional_dict={}
         if showMaps=="True":
@@ -59,11 +69,9 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             thickness_tif=tiff.imread(thickness_tif)
             z_center = thickness_tif.shape[2] // 2
             plt.imshow(thickness_tif[:, :, z_center]);plt.show()
-            # with open(outputdir+f"ROI-{NAME}-thickness.tif", 'rb') as f:
-            #     thickness_tif = f.read()
-            # optional_dict["thickness_tif"] = thickness_tif
+             
        
-    return metric_dict, optional_dict
+    return clean_metric_dict, optional_dict
     
 def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     mapChoice = "Trabecular spacing"
@@ -97,20 +105,26 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
         
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+                
         optional_dict={}
         if showMaps=="True":
             spacing_tif = outputdir +"spacing.tif"
             spacing_tif=tiff.imread(spacing_tif)
             z_center = spacing_tif.shape[2] // 2
             plt.imshow(spacing_tif[:, :, z_center]);plt.show()
-        #if showMaps==True:
-            #with open(outputdir+f"ROI-{NAME}-spacing.tif", 'rb') as f:
-                #spacing_tif = f.read()
-            #optional_dict["spacing_tif"] = spacing_tif
         
-    return metric_dict, spacing_tif
+        
+    return clean_metric_dict, spacing_tif
 
             
        
@@ -148,10 +162,20 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
-        
 
-    return metric_dict
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)        
+
+      
+
+    return clean_metric_dict
 
         
 
@@ -178,9 +202,16 @@ def Connectivity(array,voxel_size,fiji_path):
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
-        
-    return metric_dict
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)                  
+    return clean_metric_dict
     
 def Area_VolumeFraction(array,voxel_size,fiji_path):
     tempdir = tempfile.TemporaryDirectory()
@@ -204,9 +235,17 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
         
-    return metric_dict
+    return clean_metric_dict
 
 def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
 ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
@@ -277,15 +316,24 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+    return clean_metric_dict
 
 
 if __name__ == "__main__":
 
-    filepath = "/BoneJ_Headless-main/ROIs/Shrew.nrrd"
+    filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
     
     array,array1header = nrrd.read(filepath)
-    voxel_size = [51.29980, 51.29980, 51.29980] #microns 
+    voxel_size = [25,25,25] #microns 
     fiji_path = "~/Fiji.app/ImageJ-linux64"
     # feed in numpy array
        
@@ -299,8 +347,3 @@ if __name__ == "__main__":
     ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
     ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True)
         
-    
-
-
-    
-   
