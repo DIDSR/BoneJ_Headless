@@ -282,7 +282,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
 
 if __name__ == "__main__":
 
-    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/Shrew.nrrd"
+    filepath = "/BoneJ_Headless-main/ROIs/Shrew.nrrd"
     
     array,array1header = nrrd.read(filepath)
     voxel_size = [51.29980, 51.29980, 51.29980] #microns 
