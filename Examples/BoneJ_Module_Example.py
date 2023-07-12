@@ -11,7 +11,6 @@ import tifffile as tiff
 from contextlib import contextmanager
 import sys, os
 
-# sys.path.append('/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/BoneJ_Scripts/')
 from BoneJ_Module import Thickness
 from BoneJ_Module import Spacing
 from BoneJ_Module import Area_VolumeFraction
