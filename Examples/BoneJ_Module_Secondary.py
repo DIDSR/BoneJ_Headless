@@ -5,7 +5,6 @@ Created on Fri Jun 10 15:01:19 2022
 
 @author: sriharsha.marupudi
 """
-
 import numpy as np
 import nrrd
 import csv 
@@ -26,10 +25,6 @@ import sys, os
     
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
-filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
-array,array1header = nrrd.read(filepath)
-voxel_size = [51.29980, 51.29980, 51.29980] #microns 
-fiji_path = "~/Fiji.app/ImageJ-linux64"
 
 
 
@@ -70,9 +65,18 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+
              
-    return metric_dict
+    return clean_metric_dict
     
 def Surface_Area(array,voxel_size,fiji_path):
     
@@ -100,9 +104,18 @@ def Surface_Area(array,voxel_size,fiji_path):
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+
           
-    return metric_dict
+    return clean_metric_dict
 
 def Skeletonise(array,voxel_size,fiji_path):
     
@@ -171,8 +184,16 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
-       
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+
         optional_dict={}
         if displaySkeletons=="True":
            skeleton_tif = outputdir +"skeleton.tif"
@@ -182,7 +203,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
         
   
         
-    return metric_dict, skeleton_tif
+    return clean_metric_dict, skeleton_tif
 
 def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,useClusters=False,iteratePruning=False,printCentroids=False,printCulledEdgePercentages=False,showSkeleton=False):
     
@@ -223,22 +244,27 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
     with open(outputdir+"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        print(metric_dict)
+        clean_metric_dict = {
+            key: value[0].strip('"')
+            for key, value in metric_dict.items()
+        }
+
+        for idx, (key, value) in enumerate (clean_metric_dict.items()):
+            if idx ==0:
+                continue
+            print(key + ":", value)
+    return clean_metric_dict
+
 
 if __name__ == "__main__":
-
+    filepath = "/gpfs_projects/sriharsha.marupudi/Bone_Volume_Np_Arrays/volume1_1.nrrd"
+    
+    array,array1header = nrrd.read(filepath)
+    voxel_size = [25,25,25] #microns 
+    fiji_path = "~/Fiji.app/ImageJ-linux64"
     Fractal_Dimension_Results = Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize=48,smallestBoxSize=6,scaleFactor=1.2,autoParam=True)
     Surface_Area_Result= Surface_Area(array,voxel_size,fiji_path)
     Analzye_Skeleton_Result = Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=True,excludeRoi=False,calculateShortestPaths=True,verbose=True,displaySkeletons=True)
     Intertrabecular_Angles_Result = Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,iteratePruning=False,printCentroids=False,useClusters=False,printCulledEdgePercentages=False)
     Skeletonise_Result=Skeletonise(array,voxel_size,fiji_path)
     
-       
-        
-        
-        
-    
-
-
-    
-   
