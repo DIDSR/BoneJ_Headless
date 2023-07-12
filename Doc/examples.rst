@@ -107,7 +107,7 @@ Anisotropy Parameter Convergence
     nLines_list = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384]
     NDirs_list = [16,32,64,128,256,512,1024,2048,4096,8192]
     csv_dir = "/BoneJ_Headless/Anisotropy_Convergence_Test.csv" #location of csv file storing anisotropy convergence measurements 
-    import Anisotropy_Convergence
+    from Anisotropy_Parameter_Convergence import Anisotropy_Convergence
 
     if __name__ == "__main__":   
       Anisotropy_convergence_result=Anisotropy_Convergence(array,voxel_size,fiji_path,NDirs=NDirs_list, nLines=nLines_list, samplingincrement=1.73, radii=False, eigens=False,csv_dir=csv_dir)
@@ -147,7 +147,7 @@ Ellipsoid Factor Convergence
     NDirs_list = [16,32,64,128,256,512,1024,2048,4096,8192]
     csv_dir = "/BoneJ_Headless/Ellipsoid_Factor_Convergence_Test.csv" #location of csv file storing anisotropy convergence measurements 
    
-    import Ellipsoid_Factor_Convergence 
+    from Ellipsoid_Factor_Convergence import Ellipsoid_Factor_Convergence 
 
     if __name__ == "__main__":  
         Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,csv_dir=csv_dir,nVectors = nVectors_list,
