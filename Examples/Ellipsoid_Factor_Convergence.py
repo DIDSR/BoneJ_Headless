@@ -9,7 +9,7 @@ import sys
 import matplotlib.pyplot as plt
 from contextlib import contextmanager
 import sys, os
-filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+filepath = "/BoneJ_Headless-main/ROIs/emu.nrrd"
 
 array,array1header = nrrd.read(filepath)  # should be a numpy array
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
