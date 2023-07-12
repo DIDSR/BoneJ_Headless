@@ -1,4 +1,17 @@
-array,array1header = nrrd.read(volume)  # should be a numpy array
+import numpy as np
+import nrrd
+import csv
+import os
+import subprocess
+from glob import glob
+import tempfile
+import sys
+import matplotlib.pyplot as plt
+from contextlib import contextmanager
+import sys, os
+filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+
+array,array1header = nrrd.read(filepath)  # should be a numpy array
 voxel_size = [51.29980, 51.29980, 51.29980] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
@@ -62,7 +75,6 @@ showSecondaryImages = False):
                                 img_unweighted_flinn_plot_tif = os.path.join(tempdir.name,"img_unweighted_flinn_plot.tif")
                                 macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Ellipsoid_Factor_API_Test.py"))
 
-
                                 # save to temporary directory
                                 header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
@@ -95,27 +107,27 @@ showSecondaryImages = False):
                                                      ", outputdir="+"\""+outputdir+"\"",
                                                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
-                                print(f"{NAME}")             
                                 b = subprocess.call(fiji_cmd, shell=True)
-                                with open(outputdir+f"ROI-{NAME}-table.csv", "r",encoding='utf-8') as file:
+                                with open(outputdir+f"table.csv", "r",encoding='utf-8') as file:
                                     reader = csv.reader(file)
                                     metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
                                     print(metric_dict)
 
 
                                 return metric_dict       
+if __name__ == "__main__":
 
 
-Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,nVectors = nVectors_list,
-vectorIncrement = VectorIncrement_list,
-skipRatio = skipRatio_list,
-contactSensitivity = contactSensitivity_list,
-maxIterations = maxIterations_list,
-maxDrift = maxDrift_list,
-runs = 1,
-seedOnDistanceRidge = True,
-distanceThreshold = .8,
-seedOnTopologyPreserving = True,
-showFlinnPlots = False,
-showConvergence = False,
-showSecondaryImages = False)
+    Ellipsoid_Factor_result = Ellipsoid_Factor_Convergence(array,voxel_size,fiji_path,nVectors = nVectors_list,
+    vectorIncrement = VectorIncrement_list,
+    skipRatio = skipRatio_list,
+    contactSensitivity = contactSensitivity_list,
+    maxIterations = maxIterations_list,
+    maxDrift = maxDrift_list,
+    runs = 1,
+    seedOnDistanceRidge = True,
+    distanceThreshold = .8,
+    seedOnTopologyPreserving = True,
+    showFlinnPlots = False,
+    showConvergence = False,
+    showSecondaryImages = False)
