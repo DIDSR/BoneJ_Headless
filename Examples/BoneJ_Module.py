@@ -27,15 +27,13 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     outputdir = os.path.join(tempdir.name, "outputdir")
     macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Trabecular_Thickness_API_Test.py"))
 
-    
-
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
     nrrd.write(data1_nrrd,array,header)
-    # run BoneJ thickness wrapper 
+    # Write numpy array to nrrd file to read into Fiji  
     # table is results of thickness plugin as csv file 
-    # thickness_tif is numpy array of thickness images 
+     
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", thickness_tif="+"\""+thickness_tif+"\"",\
@@ -63,7 +61,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         print(key + ":", value)
 
     
-        optional_dict={}
+        
         if showMaps=="True":
             thickness_tif = outputdir +"thickness.tif"
             thickness_tif=tiff.imread(thickness_tif)
@@ -71,7 +69,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             plt.imshow(thickness_tif[:, :, z_center]);plt.show()
              
        
-    return clean_metric_dict, optional_dict
+    return clean_metric_dict, thickness_tif
     
 def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     mapChoice = "Trabecular spacing"
@@ -116,7 +114,7 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
                 continue
             print(key + ":", value)
                 
-        optional_dict={}
+        
         if showMaps=="True":
             spacing_tif = outputdir +"spacing.tif"
             spacing_tif=tiff.imread(spacing_tif)
