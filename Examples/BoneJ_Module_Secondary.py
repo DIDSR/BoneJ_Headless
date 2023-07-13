@@ -194,7 +194,7 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
                 continue
             print(key + ":", value)
 
-        optional_dict={}
+        
         if displaySkeletons=="True":
            skeleton_tif = outputdir +"skeleton.tif"
            skeleton_tif=tiff.imread(skeleton_tif)
