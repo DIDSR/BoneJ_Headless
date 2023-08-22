@@ -8,7 +8,7 @@ import tempfile
 import matplotlib.pyplot as plt 
 import tifffile as tiff
 # BoneJ Function wrapper
-    
+# Change csv writing to have os.path.join() to avoid issues    
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
 
