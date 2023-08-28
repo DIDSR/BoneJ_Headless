@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import nrrd
+import numpy as np 
 import csv 
 import os
 import subprocess 
@@ -8,15 +9,28 @@ import tempfile
 import matplotlib.pyplot as plt 
 import tifffile as tiff
 # BoneJ Function wrapper
-# Change csv writing to have os.path.join() to avoid issues    
+    
 # Define function for each individual plugin 
 #Require installation of Fiji with BoneJ plugins
 
 
 # feed in numpy array
+ 
 
+    
+    
 def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
     
     showMaps = str(showMaps)
     maskArtefacts = str(maskArtefacts)
@@ -27,13 +41,15 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     outputdir = os.path.join(tempdir.name, "outputdir")
     macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "Macros/Trabecular_Thickness_API_Test.py"))
 
+    
+
     # save to temporary directory
     header = {'units': ['um', 'um', 'um'],'spacings': voxel_size}
 
     nrrd.write(data1_nrrd,array,header)
-    # Write numpy array to nrrd file to read into Fiji  
+    # run BoneJ thickness wrapper 
     # table is results of thickness plugin as csv file 
-     
+    # thickness_tif is numpy array of thickness images 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
                      " \'image="+"\""+data1_nrrd+"\"", ", thickness_tif="+"\""+thickness_tif+"\"",\
@@ -47,8 +63,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
  
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
-        metric_dict = {row[0]: row[1:] for row in reader if row and row[0]} 
-
+        metric_dict = {row[0]: row[1:] for row in reader if row and row[0]}  
        
     clean_metric_dict = {
         key: value[0].strip('"')
@@ -61,20 +76,32 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         print(key + ":", value)
 
     
-        
+    
     if showMaps=="True":
         thickness_tif = outputdir +"thickness.tif"
         thickness_tif=tiff.imread(thickness_tif)
         z_center = thickness_tif.shape[2] // 2
-        plt.imshow(thickness_tif[:, :, z_center])
+        plt.figure();plt.imshow(thickness_tif[:, :, z_center])
         plt.title("thickness map")
         plt.axis("off")
         plt.show()
              
        
-    return clean_metric_dict, thickness_tif
+    return clean_metric_dict,thickness_tif
     
 def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
+    
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
+     
     mapChoice = "Trabecular spacing"
     showMaps = str(showMaps)
     maskArtefacts = str(maskArtefacts)
@@ -122,7 +149,7 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             spacing_tif = outputdir +"spacing.tif"
             spacing_tif=tiff.imread(spacing_tif)
             z_center = spacing_tif.shape[2] // 2
-            plt.imshow(spacing_tif[:, :, z_center])
+            plt.figure();plt.imshow(spacing_tif[:, :, z_center])
             plt.title("spacing map")
             plt.axis("off")
             plt.show()
@@ -133,6 +160,17 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             
        
 def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, radii = False, eigens = False):
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
+    
     NDirs = str(NDirs)
     nLines = str(nLines)
     samplingincrement = str(samplingincrement)
@@ -184,6 +222,17 @@ def Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, sampling
         
 
 def Connectivity(array,voxel_size,fiji_path):
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
+    
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
@@ -218,6 +267,17 @@ def Connectivity(array,voxel_size,fiji_path):
     return clean_metric_dict
     
 def Area_VolumeFraction(array,voxel_size,fiji_path):
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
+     
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
@@ -250,10 +310,22 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
             print(key + ":", value)
         
     return clean_metric_dict
-    
+
 def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
-,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True):
+,maxIterations = 100,maxDrift = 1.73,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
+,showFlinnPlots = True,showConvergence = True,showSecondaryImages = False,showMaps = True):
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
+    
+    unique_values = np.unique(array)
+    binary = len(unique_values) == 2 and np.array_equal(unique_values, [0, 255])
+
+    if not binary:
+        print("Error: The input array is not binary.")
+        return 
+    
+     
     nVectors =str(nVectors)
     vectorIncrement = str(vectorIncrement)
     skipRatio = str(skipRatio)
@@ -317,7 +389,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     
-    b = subprocess.call(fiji_cmd,shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    b= subprocess.call(fiji_cmd,shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
@@ -330,7 +402,8 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
             if idx ==0:
                 continue
             print(key + ":", value)
-                        output_names = [
+            
+            output_names = [
     "img_ef",
     "img_volume",
     "img_ab",
@@ -348,7 +421,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
             z_center = img_tif.shape[2] // 2
             plt.figure()
             plt.imshow(img_tif[:, :, z_center])
-            plt.title(name)  
+            plt.title(name) 
             plt.axis("off")
             plt.show()  
     return clean_metric_dict, img_tif
@@ -356,20 +429,21 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
 
 if __name__ == "__main__":
 
-    filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
-    
+    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+    #8 bit 3D numpy array 
     array,array1header = nrrd.read(filepath)
     voxel_size = [25,25,25] #microns 
     fiji_path = "~/Fiji.app/ImageJ-linux64"
-    # feed in numpy array
        
     Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
     Connectivity_result = Connectivity(array,voxel_size,fiji_path)
-    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73, 
+    Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,
     radii = False, eigens = False)
     Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
     ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True)
-        
+    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True) 
+
+    
+   

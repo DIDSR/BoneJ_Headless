@@ -5,6 +5,7 @@ Created on Fri Jun 10 15:01:19 2022
 
 @author: sriharsha.marupudi
 """
+
 import numpy as np
 import nrrd
 import csv 
@@ -32,7 +33,15 @@ import sys, os
 # "startBoxSize",48,"smallestBoxSize",6,"scaleFactor",1.2,"autoParam",True
 
 def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,scaleFactor,autoParam):
+
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
     
+    unique_values = np.unique(array)
+    if len(unique_values) != 2 or 0 not in unique_values or 255 not in unique_values:
+        print("Error: The input array is not a binary array.")
+        return    
     startBoxSize = str(startBoxSize)
     smallestBoxSize=str(smallestBoxSize)
     scaleFactor=str(scaleFactor)
@@ -79,7 +88,15 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
     return clean_metric_dict
     
 def Surface_Area(array,voxel_size,fiji_path):
+
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
     
+    unique_values = np.unique(array)
+    if len(unique_values) != 2 or 0 not in unique_values or 255 not in unique_values:
+        print("Error: The input array is not a binary array.")
+        return    
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
@@ -118,7 +135,15 @@ def Surface_Area(array,voxel_size,fiji_path):
     return clean_metric_dict
 
 def Skeletonise(array,voxel_size,fiji_path):
+
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
     
+    unique_values = np.unique(array)
+    if len(unique_values) != 2 or 0 not in unique_values or 255 not in unique_values:
+        print("Error: The input array is not a binary array.")
+        return    
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
     table_csv = os.path.join(tempdir.name,"table.csv")
@@ -149,7 +174,15 @@ def Skeletonise(array,voxel_size,fiji_path):
         
 
 def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=True,excludeRoi=False,calculateShortestPaths=True,verbose=True,displaySkeletons=False):
+
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
     
+    unique_values = np.unique(array)
+    if len(unique_values) != 2 or 0 not in unique_values or 255 not in unique_values:
+        print("Error: The input array is not a binary array.")
+        return    
     pruneCycleMethod =str(pruneCycleMethod)
     pruneEnds = str(pruneEnds)
     excludeRoi = str(excludeRoi)
@@ -206,7 +239,15 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
     return clean_metric_dict, skeleton_tif
 
 def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,useClusters=False,iteratePruning=False,printCentroids=False,printCulledEdgePercentages=False,showSkeleton=False):
+
+    if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
+        print("Error: The input array is not an 8-bit array.")
+        return
     
+    unique_values = np.unique(array)
+    if len(unique_values) != 2 or 0 not in unique_values or 255 not in unique_values:
+        print("Error: The input array is not a binary array.")
+        return    
     minimumValence = str(minimumValence)
     maximumValence = str(maximumValence)
     marginCutOff = str(marginCutOff)
@@ -257,8 +298,7 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
 
 
 if __name__ == "__main__":
-    filepath = "/gpfs_projects/sriharsha.marupudi/Bone_Volume_Np_Arrays/volume1_1.nrrd"
-    
+    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
     array,array1header = nrrd.read(filepath)
     voxel_size = [25,25,25] #microns 
     fiji_path = "~/Fiji.app/ImageJ-linux64"
@@ -268,3 +308,12 @@ if __name__ == "__main__":
     Intertrabecular_Angles_Result = Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,iteratePruning=False,printCentroids=False,useClusters=False,printCulledEdgePercentages=False)
     Skeletonise_Result=Skeletonise(array,voxel_size,fiji_path)
     
+       
+        
+        
+        
+    
+
+
+    
+   
