@@ -16,21 +16,8 @@ import tempfile
 import sys 
 import matplotlib.pyplot as plt 
 import tifffile as tiff
-
 from contextlib import contextmanager
 import sys, os
-
-
-# BoneJ Function wrapper
-# def BoneJ(array,voxel_size,Fiji_path):
-    
-# Define function for each individual plugin 
-#Require installation of Fiji with BoneJ plugins
-
-
-
-# feed in numpy array
-# "startBoxSize",48,"smallestBoxSize",6,"scaleFactor",1.2,"autoParam",True
 
 def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,scaleFactor,autoParam):
 
@@ -298,7 +285,7 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
 
 
 if __name__ == "__main__":
-    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+    filepath = "/BoneJ_Headless-main/ROIs/emu.nrrd"
     array,array1header = nrrd.read(filepath)
     voxel_size = [25,25,25] #microns 
     fiji_path = "~/Fiji.app/ImageJ-linux64"
