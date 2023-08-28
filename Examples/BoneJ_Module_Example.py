@@ -32,7 +32,7 @@ if __name__ == "__main__":
     radii = False, eigens = False)
     Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
     ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True) 
+    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True) 
     
     
         
