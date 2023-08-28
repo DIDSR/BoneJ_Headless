@@ -188,6 +188,8 @@ Maximum Iterations: How many attempts will be made to find larger ellipsoids for
 
 Maximum Drift: How far centroid of ellipsoid is displaced from seed point within ROI. 
 
+Show Maps: Indicate if the user wants to output all the images genearted by Ellipsoid Factor. 
+
 Results
 +++++++++++++++++++++++
 Median EF: Average EF value for the sample. On a scale of -1 to +1. Values closer to -1, indicate the structures in the sample have an oblate plate-like geometry. Values closer to +1, indicate the structures have a javeline rod-like geometry. 
@@ -208,7 +210,7 @@ EF image: Image stack containing EF values
 
 Short-Mid image: Image stack containing the a/b ratios from iteratively fit ellipsoid 
 
-Mid-Long image: Image stack contining the b/c ratiosfrom iteratively fit ellipsoid 
+Mid-Long image: Image stack contining the b/c ratios from iteratively fit ellipsoid 
 
 Volume image: Image stack containing ellipsoid volumes 
 
