@@ -62,11 +62,14 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
 
     
         
-        if showMaps=="True":
-            thickness_tif = outputdir +"thickness.tif"
-            thickness_tif=tiff.imread(thickness_tif)
-            z_center = thickness_tif.shape[2] // 2
-            plt.imshow(thickness_tif[:, :, z_center]);plt.show()
+    if showMaps=="True":
+        thickness_tif = outputdir +"thickness.tif"
+        thickness_tif=tiff.imread(thickness_tif)
+        z_center = thickness_tif.shape[2] // 2
+        plt.imshow(thickness_tif[:, :, z_center])
+        plt.title("thickness map")
+        plt.axis("off")
+        plt.show()
              
        
     return clean_metric_dict, thickness_tif
@@ -119,7 +122,10 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
             spacing_tif = outputdir +"spacing.tif"
             spacing_tif=tiff.imread(spacing_tif)
             z_center = spacing_tif.shape[2] // 2
-            plt.imshow(spacing_tif[:, :, z_center]);plt.show()
+            plt.imshow(spacing_tif[:, :, z_center])
+            plt.title("spacing map")
+            plt.axis("off")
+            plt.show()
         
         
     return clean_metric_dict, spacing_tif
@@ -343,6 +349,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
             plt.figure()
             plt.imshow(img_tif[:, :, z_center])
             plt.title(name)  
+            plt.axis("off")
             plt.show()  
     return clean_metric_dict, img_tif
 
