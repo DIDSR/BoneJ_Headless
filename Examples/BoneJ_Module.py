@@ -244,10 +244,10 @@ def Area_VolumeFraction(array,voxel_size,fiji_path):
             print(key + ":", value)
         
     return clean_metric_dict
-
+    
 def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
 ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True):
+,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True):
     nVectors =str(nVectors)
     vectorIncrement = str(vectorIncrement)
     skipRatio = str(skipRatio)
@@ -261,6 +261,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
     showFlinnPlots = str(showFlinnPlots)
     showConvergence = str(showConvergence)
     showSecondaryImages = str(showSecondaryImages)
+    showMaps = str(showMaps)
     
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name,"img.nrrd")
@@ -323,7 +324,27 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
             if idx ==0:
                 continue
             print(key + ":", value)
-    return clean_metric_dict
+                        output_names = [
+    "img_ef",
+    "img_volume",
+    "img_ab",
+    "img_bc",
+    "img_b",
+    "img_c",
+    "img_flinn_peak_plot"]
+        
+    for name in output_names:
+        
+        optional_dict={}
+        if showMaps=="True":
+            img_path = outputdir + name + ".tif"
+            img_tif = tiff.imread(img_path)
+            z_center = img_tif.shape[2] // 2
+            plt.figure()
+            plt.imshow(img_tif[:, :, z_center])
+            plt.title(name)  
+            plt.show()  
+    return clean_metric_dict, img_tif
 
 
 if __name__ == "__main__":
@@ -343,5 +364,5 @@ if __name__ == "__main__":
     radii = False, eigens = False)
     Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
     ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True)
+    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True)
         
