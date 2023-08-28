@@ -8,17 +8,7 @@ import subprocess
 import tempfile 
 import matplotlib.pyplot as plt 
 import tifffile as tiff
-# BoneJ Function wrapper
-    
-# Define function for each individual plugin 
-#Require installation of Fiji with BoneJ plugins
-
-
-# feed in numpy array
- 
-
-    
-    
+        
 def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     
     if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
@@ -429,7 +419,7 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
 
 if __name__ == "__main__":
 
-    filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/emu.nrrd"
+    filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
     #8 bit 3D numpy array 
     array,array1header = nrrd.read(filepath)
     voxel_size = [25,25,25] #microns 
