@@ -70,7 +70,7 @@ First try BoneJ_Module.py to load and run metrics on a single image. You can imp
 
 Each example requires an input and output directory to set by the user, along with the voxel size of the image, and the Fiji directory path. 
 
-> All ``example ROIs`` are acompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in the Fiji software as well. 
+> All ``example ROIs`` are accompanied by an ``.nrrd``. The ``.nrrd`` file can be opened in the Fiji software as well. 
 Documentation
 -------------
 
