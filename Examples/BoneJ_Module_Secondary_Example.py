@@ -20,7 +20,7 @@ from BoneJ_Module_Secondary import Skeletonise
 
 filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath) 
-voxel_size = [51.29980, 51.29980, 51.29980] #microns 
+voxel_size = [25, 25, 25] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 if __name__ == "__main__":
 
