@@ -20,7 +20,7 @@ from BoneJ_Module import Ellipsoid_Factor
 
 filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
 array,array1header = nrrd.read(filepath) 
-voxel_size = [51.29980, 51.29980, 51.29980] #microns 
+voxel_size = [25, 25, 25] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
 if __name__ == "__main__":
@@ -30,8 +30,8 @@ if __name__ == "__main__":
     Connectivity_result = Connectivity(array,voxel_size,fiji_path)
     Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,
     radii = False, eigens = False)
-    Ellipsoid_Factor_result = Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
-    ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
+    Ellipsoid_Factor_result = Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =50,contactSensitivity = 1
+    ,maxIterations = 100,maxDrift = 1.73,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
     ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True) 
     
     
