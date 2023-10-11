@@ -176,19 +176,33 @@ voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Module assum
 
 fiji_path = Path to the users local Fiji installation 
 
-Sampling Increment: The distance between the sampling points for each vector of the ROI
+nVectors: The number of vectors that is sampled at each seed point of the ROI. Default 100. 
 
-Vectors: The number of vectors that is sampled at each seed point of the ROI 
+vectorIncrement: The distance between the sampling points for each vector of the ROI. Default 0.435. 
 
-Skeleton points per ellipsoid: The density of sampling within the ROI. Set to 1 indicates that ellipsoid is sampled at every seed point in the ROI. 
+skipRatio: The density of sampling within the ROI. Set to 1 indicates that ellipsoid is sampled at every seed point in the ROI. Default 50. 
 
-Contact Sensitivity: How many sampled vectors touch the background of the image prior to stopping dilation 
+contactSensitivity: How many sampled vectors touch the background of the image prior to stopping dilation.  Default 1. 
 
-Maximum Iterations: How many attempts will be made to find larger ellipsoids for fitting into seed points 
+maxIterations: How many attempts will be made to find larger ellipsoids for fitting into seed points. Default 100. 
 
-Maximum Drift: How far centroid of ellipsoid is displaced from seed point within ROI. 
+maxDrift: How far centroid of ellipsoid is displaced from seed point within ROI. Default 1.73. 
 
-Show Maps: Indicate if the user wants to output all the images genearted by Ellipsoid Factor. 
+runs: Number of time Ellipsoid Factor is run, results are averaged. Default 1. 
+
+distanceThreshold: Threshold for distance ridge, default 0.60. 
+
+seedonDistanceEdge: Uses distance ridge to determine the centroids for fit ellipsoids. Default True. 
+
+seedOnTopologyPreserving: Medial axis thinning is used to determine starting point for fit ellipsoids. Default True. 
+
+showFlinnPlots: Generate plots showing the ratio between ellipsod axes. Ratio of axes a/b and b/a will be shown on Cartesian axes. Default True 
+
+showConvergence: Displays convergence of Ellipsoid Factor algorithim. Default True. 
+
+showSecondaryImages: Generate image stacks showing the following plots: seed points, ellipsoid axis ratios, a/b and b/c., ellipsoid axis lengths, a, b, c,, ellipsoid ID, ellipsoid volume. Default False. 
+
+showMaps: Indicate if the user wants to output all the images genearted by Ellipsoid Factor. Default True. 
 
 Results
 +++++++++++++++++++++++
