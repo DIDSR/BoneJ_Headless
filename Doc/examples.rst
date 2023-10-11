@@ -8,7 +8,7 @@ BoneJ Module
 .. code-block:: python
     :linenos:
     
-    import numpy as np
+    import numpy as np 
     import nrrd
     import os
     import subprocess
@@ -37,7 +37,7 @@ BoneJ Module
          Connectivity_result = Connectivity(array,voxel_size,fiji_path)
          Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,
          radii = False, eigens = False)
-         Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
+         Ellipsoid_Factor_result = Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =1,contactSensitivity = 1
          ,maxIterations = 100,maxDrift = .4,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
          ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True)
 
