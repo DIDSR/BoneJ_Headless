@@ -2,3 +2,5 @@ pynrrd
 pydicom
 nibabel
 SimpleITK
+tifffile 
+ 
