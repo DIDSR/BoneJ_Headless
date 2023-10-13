@@ -9,7 +9,7 @@ import sys
 import matplotlib.pyplot as plt
 import tifffile as tiff
 from contextlib import contextmanager
-import sys, os
+import sys 
 
 from BoneJ_Module import Thickness
 from BoneJ_Module import Spacing
