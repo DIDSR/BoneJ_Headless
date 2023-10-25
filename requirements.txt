@@ -7,8 +7,8 @@ subprocess
 tempfile
 sys
 matplotlib=3.4.3
-contextlib
+contextlib2 = 0.6.0.post1
 os
 numpy=1.26.0
-glob
+glob2 = 0.7
 csv=1.0
