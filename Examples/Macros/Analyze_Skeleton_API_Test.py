@@ -3,7 +3,6 @@
 #@ UIService ui
 #@ Context ctxt
 
-#@ String NAME 
 #@ String image
 #@ String skeleton_tif
 #@ String table_csv
