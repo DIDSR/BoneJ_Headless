@@ -6,7 +6,6 @@
 
 #@ String image
 #@ String table_csv
-#@ String NAME
 #@ String startBoxSize 
 #@ String smallestBoxSize
 #@ String scaleFactor
