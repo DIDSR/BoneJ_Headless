@@ -30,7 +30,6 @@
 #@ String showFlinnPlots 
 #@ String showConvergence 
 #@ String showSecondaryImages
-#@ String NAME
 #@ String outputdir
 
 from ij import IJ
