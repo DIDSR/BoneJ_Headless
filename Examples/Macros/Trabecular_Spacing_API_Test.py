@@ -9,7 +9,6 @@
 #@ String table_csv
 #@ String showMaps
 #@ String maskArtefacts
-#@ String NAME
 #@String outputdir
 from ij import IJ
 
