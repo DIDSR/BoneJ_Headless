@@ -315,7 +315,6 @@ def Ellipsoid_Factor(array,voxel_size,fiji_path,nVectors = 100,vectorIncrement =
         print("Error: The input array is not binary.")
         return 
     
-     
     nVectors =str(nVectors)
     vectorIncrement = str(vectorIncrement)
     skipRatio = str(skipRatio)
