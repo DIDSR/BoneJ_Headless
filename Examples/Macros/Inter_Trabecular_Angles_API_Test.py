@@ -6,7 +6,6 @@
 #@ String skeleton_nrrd
 #@ String table_csv
 #@ String outputdir
-#@ String NAME
 #@ String iteratePruning
 #@ String minimumValence
 #@ String maximumValence
