@@ -6,7 +6,6 @@
 
 #@ String image
 #@ String table_csv
-#@ String NAME
 from ij import IJ
 from net.imglib2.img import ImagePlusAdapter
 import csv

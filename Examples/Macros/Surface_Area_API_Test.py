@@ -2,7 +2,6 @@
 #@ DatasetIOService io
 #@ UIService ui
 # @Context ctxt
-#@ String NAME
 
 
 #@ String image

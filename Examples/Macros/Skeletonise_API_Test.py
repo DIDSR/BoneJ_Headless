@@ -5,7 +5,6 @@
 
 #@ String image
 #@ String skeleton_tif
-#@ String NAME
 #@ String outputdir
 from ij import IJ
 import csv

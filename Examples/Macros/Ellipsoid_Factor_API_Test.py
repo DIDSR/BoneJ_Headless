@@ -1,3 +1,36 @@
+#@CommandService cs
+#@ DatasetIOService io
+#@ UIService ui
+#@Context ctxt
+
+
+#@ String image
+#@ String table_csv
+#@ String img_ef_tif
+#@ String img_volume_tif
+#@ String img_id_tif
+#@ String img_a_tif
+#@ String img_b_tif
+#@ String img_c_tif
+#@ String img_ab_tif
+#@ String img_bc_tif
+#@ String img_seed_points_tif
+#@ String img_flinn_peak_plot_tif
+#@ String img_unweighted_flinn_plot_tif
+#@ String nVectors 
+#@ String vectorIncrement
+#@ String skipRatio
+#@ String contactSensitivity
+#@ String maxIterations
+#@ String maxDrift
+#@ String runs
+#@ String distanceThreshold
+#@ String seedOnDistanceRidge
+#@ String seedOnTopologyPreserving
+#@ String showFlinnPlots 
+#@ String showConvergence 
+#@ String showSecondaryImages
+#@ String outputdir
 
 from ij import IJ
 from net.imglib2.img import ImagePlusAdapter
