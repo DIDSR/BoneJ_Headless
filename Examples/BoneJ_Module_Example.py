@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import tifffile as tiff
 from contextlib import contextmanager
 import sys 
+from argparse import ArgumentParser
 
 from BoneJ_Module import Thickness
 from BoneJ_Module import Spacing
@@ -24,6 +25,31 @@ voxel_size = [25, 25, 25] #microns
 fiji_path = "~/Fiji.app/ImageJ-linux64"
 
 if __name__ == "__main__":
+    # set up argument parser -> ROI and fiji_path
+    parser = ArgumentParser()
+    parser.add_argument("-i", "--input", "--ROI", dest="ROI", default=os.path.join(os.path.dirname(os.path.dirname(__file__)), "ROIs/emu.nrrd"))
+    parser.add_argument("-f", "--fiji", "--fiji-path", dest="fiji_path", default="~/Fiji.app/ImageJ-linux64")
+    args = parser.parse_args()
+    
+    fiji_path = args.fiji_path
+    filepath = args.ROI
+    
+    
+    # Check that those filepaths actually exist
+    if os.path.exists(fiji_path):
+      print(f"Fiji installation specified: {fiji_path}")
+    else:
+      print(f"Unrecognized file path: {fiji_path}")
+    
+    if os.path.exists(filepath):
+      print(f"Loading ROI from {filepath}")
+    else:
+      raise Exception(f"Unrecognized file path: {filepath}")
+    
+    # read array
+    array, array1header = nrrd.read(filepath)
+    
+    
     Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
