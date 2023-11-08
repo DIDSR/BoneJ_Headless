@@ -9,7 +9,6 @@
 #@ String img_ef_tif
 #@ String img_volume_tif
 #@ String img_id_tif
-#@ String img_a_tif
 #@ String img_b_tif
 #@ String img_c_tif
 #@ String img_ab_tif
