@@ -19,13 +19,14 @@ from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
 from BoneJ_Module import Ellipsoid_Factor
 
-filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
-array,array1header = nrrd.read(filepath) 
+import time
+
+#filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
+#array,array1header = nrrd.read(filepath) 
 voxel_size = [25, 25, 25] #microns 
-fiji_path = "~/Fiji.app/ImageJ-linux64"
+#fiji_path = "~/Fiji.app/ImageJ-linux64"
 
 if __name__ == "__main__":
-    # set up argument parser -> ROI and fiji_path
     parser = ArgumentParser()
     parser.add_argument("-i", "--input", "--ROI", dest="ROI", default=os.path.join(os.path.dirname(os.path.dirname(__file__)), "ROIs/emu.nrrd"))
     parser.add_argument("-f", "--fiji", "--fiji-path", dest="fiji_path", default="~/Fiji.app/ImageJ-linux64")
@@ -49,7 +50,6 @@ if __name__ == "__main__":
     # read array
     array, array1header = nrrd.read(filepath)
     
-    
     Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
@@ -58,8 +58,7 @@ if __name__ == "__main__":
     radii = False, eigens = False)
     Ellipsoid_Factor_result = Ellipsoid_Factor(array, voxel_size, fiji_path,nVectors = 100,vectorIncrement =.435,skipRatio =50,contactSensitivity = 1
     ,maxIterations = 100,maxDrift = 1.73,runs = 1,seedOnDistanceRidge = True,distanceThreshold = .6,seedOnTopologyPreserving = True
-    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True) 
-    
+    ,showFlinnPlots = True,showConvergence = True,showSecondaryImages = True,showMaps = True)
     
         
        
