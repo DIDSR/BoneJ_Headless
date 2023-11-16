@@ -1,0 +1,71 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+  requirements.txt
+  
+%post
+  apt -y update
+  apt -y install wget zlib1g-dev libbz2-dev
+  apt -y install libssl-dev openssl make gcc
+  
+  ### install java
+  # installing dbus runs into issues running the post script, this is the workaround
+  apt -y download dbus
+  dpkg --unpack dbus*.deb
+  rm /var/lib/dpkg/info/dbus.postinst -f
+  apt --fix-broken -y install
+  apt install -yf dbus
+  
+  # same thing for systemd
+  apt -y download systemd
+  dpkg --unpack systemd*.deb
+  rm /var/lib/dpkg/info/systemd.postinst -f
+  apt --fix-broken -y install
+  
+  # finally install java 8
+  apt install -y openjdk-8-jdk
+  
+  # download ImageJ
+  apt -y install wget unzip
+  wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip
+  unzip fiji-linux64.zip
+  
+  # add BoneJ plugin
+  ./Fiji.app/ImageJ-linux64 --update add-update-sites "BoneJ" "https://sites.imagej.net/BoneJ/"
+  ./Fiji.app/ImageJ-linux64 --update update
+  
+  # install tkinter (this is to be able to use plt.show()
+  DEBIAN_FRONTEND=noninteractive apt -y install python3-tk tk-dev 
+  
+  # install python 3.9.7
+  wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+  tar xzvf Python-3.9.7.tgz
+  cd Python-3.9.7
+  ./configure
+  make
+  make install
+  cd ..
+  
+  # adjust alias (so that we can call python instead of python3.9) -> only works for w/in the post section
+  alias python="/usr/local/bin/python3.9"
+  
+  # install pip and adjust alias
+  apt -y install python-pip
+  python -m pip install --upgrade wheel setuptools pip
+    
+  # set up python environment 
+  pip3 install -r requirements.txt 
+  
+  
+
+####################
+# Example apps
+####################
+
+%apprun example
+  echo "Running example..."
+  python3.9 Examples/BoneJ_Module_Example.py -f /Fiji.app/ImageJ-linux64
+  
+%apphelp example
+  The app "example" runs an example of the BoneJ Headless Module by running the python script: Examples/BoneJ_Module_Example.py.
