@@ -18,10 +18,10 @@ from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
 from BoneJ_Module import Ellipsoid_Factor
 
-filepath = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/"
+filepath = "/BoneJ_Headless-main/ROIs/"
 voxel_size = [25,25,25] #microns 
 fiji_path = "~/Fiji.app/ImageJ-linux64"
-outdir = "/gpfs_projects/sriharsha.marupudi/BoneJ_Headless-main/ROIs/"
+outdir = "/BoneJ_Headless-main/ROIs/"
 csv_path = outdir + "output_metrics.csv"
 
 with open(csv_path, 'w', newline='') as csv_file:
