@@ -1,7 +1,7 @@
-#@CommandService cs
+#@ CommandService cs
 #@ DatasetIOService io
 #@ UIService ui
-#@Context ctxt
+#@ Context ctxt
 
 
 #@ String image
@@ -31,6 +31,7 @@
 #@ String showConvergence 
 #@ String showSecondaryImages
 #@ String outputdir
+
 
 from ij import IJ
 from net.imglib2.img import ImagePlusAdapter
