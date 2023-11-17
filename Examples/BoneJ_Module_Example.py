@@ -19,12 +19,7 @@ from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
 from BoneJ_Module import Ellipsoid_Factor
 
-import time
-
-#filepath = "/BoneJ_Headless/ROIs/emu.nrrd"
-#array,array1header = nrrd.read(filepath) 
 voxel_size = [25, 25, 25] #microns 
-#fiji_path = "~/Fiji.app/ImageJ-linux64"
 
 if __name__ == "__main__":
     parser = ArgumentParser()
