@@ -13,7 +13,7 @@ import sys
 from argparse import ArgumentParser
 
 from BoneJ_Module import Thickness
-from BoneJ_Module import Spacing
+from BoneJ_Module import Separation
 from BoneJ_Module import Area_VolumeFraction
 from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     array, array1header = nrrd.read(filepath)
     
     Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-    Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Separation_result = Separation(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
     Connectivity_result = Connectivity(array,voxel_size,fiji_path)
     Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,

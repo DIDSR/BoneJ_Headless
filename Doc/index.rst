@@ -24,7 +24,7 @@ Plugins
 Currently supports the following plugins:
 
 * Trabecular Thickness 
-* Trabecular Spacing 
+* Trabecular Separation
 * Anisotropy
 * Area Volume Fraction
 * Connectivity

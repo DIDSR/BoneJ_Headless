@@ -4,12 +4,13 @@
 # @Context ctxt
 
 #@ String image
-#@ String spacing_tif
+#@ String separation_tif
 #@ String mapChoice
 #@ String table_csv
 #@ String showMaps
 #@ String maskArtefacts
-#@String outputdir
+#@ String NAME
+#@ String outputdir
 from ij import IJ
 
 import os
@@ -29,10 +30,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 #Open image from path 
-outputdir
 
 #open input image as IJ1-style image to be compatabile with wrapper  
-#IJ.run("Clear BoneJ results");
 IJ.run("Clear BoneJ results");
 IJ.open(image)
 input_Image = IJ.getImage() # BoneJ2 Thickness wrapper requires IJ1 image data, ImagePlus
@@ -42,15 +41,13 @@ input_image_ij1 = IJ.run(input_Image,"Multiply...", "value=255 stack");
 #Run Trabecular Thickness Plugin specifying parameters 
 wrapper = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["inputImage",input_Image, "mapChoice",mapChoice,"showMaps",showMaps,"maskArtefacts",maskArtefacts])
 wrapperInstance = wrapper.get()
-#Call trabecular spacing map and save
-spacing_tif = wrapperInstance.getOutput("spacingMap")
-#spacing_map.show()
-IJ.save(spacing_tif, outputdir +"spacing.tif")
+#Call trabecular separation map and save
+separation_tif = wrapperInstance.getOutput("separationMap")IJ.save(separation_tif, outputdir +"ROI-"+ NAME +"-separation.tif")
 
 table = SharedTable.getTable()
-# print(table)
+print(table)
 
-f = open(outputdir+"table.csv", 'wb')
+f = open(outputdir+"ROI-"+NAME+"-table.csv", 'wb')
 f.write('\n')
 f.write("rowname,")
 

@@ -22,11 +22,11 @@ def Thickness():
     plt.ylabel("Number of ROIs")
     plt.show()
 
-def Spacing(): 
+def Separation(): 
     data=pd.read_csv("/..csv)
     data.plot(kind='hist',bins=12)
-    plt.title("Spacing")
-    plt.xlabel("Spacing (microns)")
+    plt.title("Separation")
+    plt.xlabel("Separation (microns)")
     # plt.ylim([0,20])
     plt.ylabel("Number of ROIs")
     plt.show()
@@ -69,7 +69,7 @@ def EF():
     
     
 Thickness()
-Spacing()
+Separation()
 BVTV()
 Anisotropy()
 Connectivity()

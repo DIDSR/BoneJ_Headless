@@ -13,7 +13,7 @@ import csv
 from argparse import ArgumentParser
 
 from BoneJ_Module import Thickness
-from BoneJ_Module import Spacing
+from BoneJ_Module import Separation
 from BoneJ_Module import Area_VolumeFraction
 from BoneJ_Module import Connectivity
 from BoneJ_Module import Anisotropy
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         NAME = os.path.basename(file).replace(".nrrd","")
         array,array1header = nrrd.read(filepath+NAME+".nrrd") 
         Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-        Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+        Separation_result = Separation(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
         Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
         Connectivity_result = Connectivity(array,voxel_size,fiji_path)
         Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     
         # write results to csv
         csv_results = [f"{NAME}",
-                      Thickness_result[0]['Tb.Th Mean (µm)'],Spacing_result[0]['Tb.Sp Mean (µm)'],Anisotropy_result['DA'],
+                      Thickness_result[0]['Tb.Th Mean (µm)'],Separation_result[0]['Tb.Sp Mean (µm)'],Anisotropy_result['DA'],
                       Area_VolumeFraction_result['BV/TV'],
                       Connectivity_result['Conn.D (µm⁻³)'],Ellipsoid_Factor_result[0]['Median EF']]
         

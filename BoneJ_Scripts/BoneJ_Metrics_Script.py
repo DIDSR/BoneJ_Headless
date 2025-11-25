@@ -13,7 +13,7 @@ from glob import glob
 out_dir1 = "/Thickness_Measurements/"
 os.makedirs(out_dir1, exist_ok=True)
 
-out_dir2 = "/Spacing_Measurements/"
+out_dir2 = "/Separation_Measurements/"
 os.makedirs(out_dir2, exist_ok=True)
 
 out_dir3 = "/Anisotropy_Measurements/"
@@ -41,7 +41,7 @@ for txt in ROINRRD:
 
 import BoneJ_Demo_Script_Area_VolumeFraction
 import BoneJ_Demo_Script_Thickness
-import BoneJ_Demo_Script_Spacing
+import BoneJ_Demo_Script_Separation
 import BoneJ_Demo_Script_Anisotropy
 import BoneJ_Demo_Script_Connectivity
 

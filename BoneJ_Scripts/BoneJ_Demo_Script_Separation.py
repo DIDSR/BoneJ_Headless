@@ -19,7 +19,7 @@ from glob import glob
 ROIDir = "/BoneJ_Headless_ROIs/"
 showMaps = "True"
 maskArtefacts = "True"
-mapChoice = "Trabecular spacing"
+mapChoice = "Trabecular separation"
 
 ROINRRD = glob(ROIDir+"*.nrrd")
 
@@ -31,7 +31,7 @@ for txt in ROINRRD:
     
     tempdir = "/gpfs_projects/sriharsha.marupudi/...Measurements/"
     data1_nrrd = os.path.join(tempdir,"img.nrrd")
-    spacing_tif = os.path.join(tempdir,"spacing.tif")
+    separation_tif = os.path.join(tempdir,"separation.tif")
     table_csv = os.path.join(tempdir,"table.csv")
     outputdir = os.path.join(tempdir)
 
@@ -41,12 +41,12 @@ for txt in ROINRRD:
     nrrd.write(data1_nrrd,data1,header)
 
 
-    macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Spacing_API.py"
+    macro_file = "/gpfs_projects/sriharsha.marupudi/Trabecular_Separation_API.py"
 
     fiji_path = "~/Fiji.app/ImageJ-linux64" #home directory
 
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
-                     " \'image="+"\""+data1_nrrd+"\"", ", spacing_tif="+"\""+spacing_tif+"\"",
+                     " \'image="+"\""+data1_nrrd+"\"", ", separation_tif="+"\""+separation_tif+"\"",
                      ", NAME="+"\""+NAME+"\"",
                      ", showMaps="+"\""+showMaps+"\"",
                      ", maskArtefacts="+"\""+maskArtefacts+"\"",
