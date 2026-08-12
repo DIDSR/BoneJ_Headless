@@ -1,5 +1,5 @@
 pynrrd==1.0.0
-pydicom==2.3.1
+pydicom==2.4.5
 nibabel==5.1.0
 SimpleITK==2.2.1
 tifffile==2021.7.2
