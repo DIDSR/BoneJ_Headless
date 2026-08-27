@@ -79,7 +79,7 @@ def Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
        
     return clean_metric_dict,thickness_tif
     
-def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
+def Separation(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
     
     if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
         print("Error: The input array is not an 8-bit array.")
@@ -92,15 +92,15 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
         print("Error: The input array is not binary.")
         return 
      
-    mapChoice = "Trabecular spacing"
+    mapChoice = "Trabecular separation"
     showMaps = str(showMaps)
     maskArtefacts = str(maskArtefacts)
     tempdir = tempfile.TemporaryDirectory()
     data1_nrrd = os.path.join(tempdir.name, "img.nrrd")
-    spacing_tif = os.path.join(tempdir.name, "spacing.tif")
+    separation_tif = os.path.join(tempdir.name, "separation.tif")
     table_csv = os.path.join(tempdir.name,"table.csv")
     outputdir = os.path.join(tempdir.name, "outputdir")
-    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Trabecular_Spacing_API_Test.py"))
+    macro_file = os.path.abspath(os.path.join(os.path.dirname(__file__),"Macros/Trabecular_Separation_API_Test.py"))
 
     
     # save to temporary directory
@@ -110,7 +110,7 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
 
     
     fiji_cmd = "".join([fiji_path, " --ij2", " --headless", " --run", " "+macro_file, 
-                     " \'image="+"\""+data1_nrrd+"\"", ", spacing_tif="+"\""+spacing_tif+"\"",\
+                     " \'image="+"\""+data1_nrrd+"\"", ", separation_tif="+"\""+separation_tif+"\"",\
                      ", outputdir="+"\""+outputdir+"\"",
                      ", showMaps="+"\""+showMaps+"\"",
                      ", maskArtefacts="+"\""+maskArtefacts+"\"",
@@ -136,16 +136,16 @@ def Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True):
                 
         
         if showMaps=="True":
-            spacing_tif = outputdir +"spacing.tif"
-            spacing_tif=tiff.imread(spacing_tif)
-            z_center = spacing_tif.shape[2] // 2
-            plt.figure();plt.imshow(spacing_tif[:, :, z_center])
-            plt.title("spacing map")
+            separation_tif = outputdir +"separation.tif"
+            separation_tif=tiff.imread(separation_tif)
+            z_center = separation_tif.shape[2] // 2
+            plt.figure();plt.imshow(separation_tif[:, :, z_center])
+            plt.title("separation map")
             plt.axis("off")
             plt.show()
         
         
-    return clean_metric_dict, spacing_tif
+    return clean_metric_dict, separation_tif
 
             
        
@@ -426,7 +426,7 @@ if __name__ == "__main__":
     fiji_path = "~/Fiji.app/ImageJ-linux64"
        
     Thickness_result = Thickness(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
-    Spacing_result = Spacing(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
+    Separation_result = Separation(array,voxel_size,fiji_path,showMaps = True, maskArtefacts = True)
     Area_VolumeFraction_result = Area_VolumeFraction(array,voxel_size,fiji_path)
     Connectivity_result = Connectivity(array,voxel_size,fiji_path)
     Anisotropy_result = Anisotropy(array,voxel_size,fiji_path,NDirs = 2000, nLines = 10000, samplingincrement = 1.73,

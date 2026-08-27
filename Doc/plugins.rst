@@ -7,7 +7,7 @@ Primary Plugins
 This section contians definitions and user instructions for the following plugins
 
 * Thickness
-* Spacing
+* Separation
 * Anisotropy
 * Connectivity
 * Bone Volume Fraction
@@ -29,9 +29,9 @@ Function = ``def Thickness(array, voxel_size, fiji_path, showMaps, maskArtefacts
     
 array = Numpy array of the image
 
-voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Thickness module assumes microns. 
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Thickness module assumes microns and that the voxels are isotropic (same spacing in x, y and z directions). 
 
-fiji_path = Path to the users local Fiji installation 
+fiji_path = Path to the user's local Fiji installation 
 
 showMaps = True will generate a thickness map which is saved as optional_dict. False will generate no thickness map. 
 
@@ -41,40 +41,40 @@ Results
 +++++++++++++++++++++++
 
 
-Mean Tb. Th = The mean trabecular spacing value of the image. 
+Mean Tb.Th = The mean trabecular thickness value of the image. 
 
-Std Tb. Th = The standard deviation of the trabecular spacing values. 
+Std Tb.Th = The standard deviation of the trabecular thickness values. 
 
-Max Tb. Th = The max trabecular spacing value of the image. 
+Max Tb.Th = The max trabecular thickness value of the image. 
 
 
 ------------------------------------
-Spacing
+Separation
 ------------------------------------
 
-Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin. spacing value.  
+Fits spheres into every background voxel of a segmented image to determine the thickness of the of the marrow space between trabeculae. The diameter of the largest sphere that is able to fit inside the background voxel and contains the point for each point is measured by the plugin.
 
-Function = ``def Spacing(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False)``: 
+Function = ``def Separation(array, voxel_size, fiji_path, showMaps = True , maskArtefacts = False)``: 
 
 array = Numpy array of the image
 
-voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Spacing module assumes microns. 
+voxel_size = Size of the voxels in the image, ex. [51.2,51.2,51.2]. Separation module assumes microns and that voxels are isotropic (same spacing in x, y, and z directions). 
 
-fiji_path = Path to the users local Fiji installation 
+fiji_path = Path to the user's local Fiji installation 
 
-showMaps = True will generate a spacing map which is saved as optional_dict. False will generate no spacing map. 
+showMaps = True will generate a separation map which is saved as optional_dict. False will generate no separation map. 
 
-maskArtefacts = True will remove background voxels that are not present in the original image from the final spacing map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
+maskArtefacts = True will remove background voxels that are not present in the original image from the final separation map. Always recommended to select True, the artifacts can cause bias and distortions in the image. 
 
 Results
 +++++++++++++++++++++++
 
 
-Mean Tb. Sp = The mean trabecular spacing value of the image. 
+Mean Tb.Sp = The mean trabecular separation value of the image. 
 
-Std Tb. Sp = The standard deviation of the trabecular spacing values. 
+Std Tb.Sp = The standard deviation of the trabecular separation values. 
 
-Max Tb. Sp = The max trabecular spacing value of the image. 
+Max Tb.Sp = The max trabecular separation value of the image. 
 
 
 ------------------------------------

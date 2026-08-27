@@ -22,7 +22,7 @@ BoneJ Headless Plugins
 The code included in this repository will allow you to compute these common microstructure metrics:
 
 1. Thickness
-2. Spacing
+2. Separation
 3. Anisotropy
 4. Ellipsoid Factor
 5. Bone Volume Fraction 
