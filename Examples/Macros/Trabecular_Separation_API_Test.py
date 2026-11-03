@@ -1,6 +1,7 @@
 # @CommandService cs
 #@ DatasetIOService io
 #@ UIService ui
+#@ ConvertService convertService
 # @Context ctxt
 
 #@ String image
@@ -16,6 +17,7 @@ import os
 
 
 from net.imagej import ImgPlus
+from net.imagej import Dataset
 from net.imagej.axis import Axes
 from net.imglib2.img import Img
 from net.imagej import DefaultDataset
@@ -24,28 +26,31 @@ from io.scif.img import ImgOpener
 from org.bonej.utilities import SharedTable
 from ij import ImagePlus
 from ij.io import FileSaver
-#Prevents unicode error 
+#Prevents unicode error
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-#Open image from path 
+#Open image from path
 outputdir
 
-#open input image as IJ1-style image to be compatabile with wrapper  
-#IJ.run("Clear BoneJ results");
+# Current BoneJ2's ThicknessWrapper (used for both thickness and separation)
+# takes `inputDataset` (net.imagej.Dataset) rather than `inputImage`, and must be
+# run with process=True so that the parameter's validater runs and assigns it.
+# The image is opened with IJ.open(), which reads the NRRD voxel calibration, and
+# converted with ConvertService, which keeps it; opening with io.open() drops it.
 IJ.run("Clear BoneJ results");
 IJ.open(image)
-input_Image = IJ.getImage() # BoneJ2 Thickness wrapper requires IJ1 image data, ImagePlus
-input_image_ij1 = IJ.run(input_Image,"Multiply...", "value=255 stack"); 
+imp = IJ.getImage()
+dataset = convertService.convert(imp, Dataset)
 
-
-#Run Trabecular Thickness Plugin specifying parameters 
-wrapper = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", False, ["inputImage",input_Image, "mapChoice",mapChoice,"showMaps",showMaps,"maskArtefacts",maskArtefacts])
+wrapper = cs.run("org.bonej.wrapperPlugins.ThicknessWrapper", True,
+    ["inputDataset", dataset, "mapChoice", mapChoice, "showMaps", showMaps == "True", "maskArtefacts", maskArtefacts == "True"])
 wrapperInstance = wrapper.get()
-#Call trabecular separation map and save
+# separationMap is a Dataset, so it is saved with DatasetIOService (io.save);
+# the legacy IJ.save expects an ImagePlus.
 separation_tif = wrapperInstance.getOutput("separationMap")
-#separation_map.show()
-IJ.save(separation_tif, outputdir +"separation.tif")
+if separation_tif is not None:
+    io.save(separation_tif, outputdir + "separation.tif")
 
 table = SharedTable.getTable()
 # print(table)
