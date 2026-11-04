@@ -1,6 +1,7 @@
 # @CommandService cs
 #@ DatasetIOService io
 #@ UIService ui
+#@ ConvertService convertService
 # @Context ctxt
 
 #@ String image
@@ -8,7 +9,7 @@
 #@ String outputdir
 
 from ij import IJ
-from net.imglib2.img import ImagePlusAdapter
+from net.imagej import Dataset
 import csv
 
 #Prevents unicode error 
@@ -29,13 +30,22 @@ import net.imagej.ImgPlus;
 from ij.io import FileSaver
 
 
-#Open image from path 
+#Open image from path
 outputdir
 IJ.run("Clear BoneJ results");
-#open input image as ImagePlus and converts to ImgPlus to be compatabile with wrapper
-input_image = IJ.openImage(image)
-output = ImagePlusAdapter.wrapImgPlus(input_image) 
-wrapperBV = cs.run("org.bonej.wrapperPlugins.ElementFractionWrapper", False, ["inputImage",output])
+# Current BoneJ2 (7.2.2) renamed ElementFractionWrapper's input from `inputImage`
+# (ImagePlus) to `inputDataset` (net.imagej.Dataset). It must be run with
+# process=True: the parameter's validater is what assigns it, and process=False
+# skips parameter processing, so run() fails with a NullPointerException.
+#
+# The image is opened with IJ.open(), which reads the NRRD voxel calibration, and
+# converted with ConvertService, which keeps it. Opening it with io.open()
+# (DatasetIOService) drops the calibration, so BV and TV come back in voxels
+# rather than calibrated units (BV/TV itself is unaffected).
+IJ.open(image)
+imp = IJ.getImage()
+dataset = convertService.convert(imp, Dataset)
+wrapperBV = cs.run("org.bonej.wrapperPlugins.ElementFractionWrapper", True, ["inputDataset",dataset])
 wrapperBVInstance = wrapperBV.get()
 
 #Save results to csv file 

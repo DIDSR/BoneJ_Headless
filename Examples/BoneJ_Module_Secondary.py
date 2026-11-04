@@ -19,6 +19,31 @@ import tifffile as tiff
 from contextlib import contextmanager
 import sys, os
 
+
+def _run_fiji_and_check(fiji_cmd, expected_path):
+    """Run Fiji and raise with Fiji's own output if expected_path was not written.
+
+    See _run_fiji_and_read_table in BoneJ_Module.py.
+    """
+    result = subprocess.run(fiji_cmd, shell=True, capture_output=True, text=True)
+    if not os.path.exists(expected_path):
+        raise RuntimeError(
+            "Fiji did not produce {} (exit code {}).\n"
+            "--- Fiji stdout (last 4000 chars) ---\n{}\n"
+            "--- Fiji stderr (last 4000 chars) ---\n{}".format(
+                expected_path, result.returncode, result.stdout[-4000:], result.stderr[-4000:]
+            )
+        )
+
+
+def _run_fiji_and_read_table(fiji_cmd, table_csv_path):
+    _run_fiji_and_check(fiji_cmd, table_csv_path)
+    with open(table_csv_path, "r", encoding='utf-8') as file:
+        reader = csv.reader(file)
+        metric_dict = {row[0]: row[1:] for row in reader if row and row[0]}
+    return {key: value[0].strip('"') for key, value in metric_dict.items()}
+
+
 def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,scaleFactor,autoParam):
 
     if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
@@ -55,25 +80,14 @@ def Fractal_Dimension(array,voxel_size,fiji_path,startBoxSize,smallestBoxSize,sc
                      ", autoParam="+"\""+autoParam+"\"",
                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
-    b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    
- 
-    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
-        reader = csv.reader(file)
-        metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        clean_metric_dict = {
-            key: value[0].strip('"')
-            for key, value in metric_dict.items()
-        }
+    clean_metric_dict = _run_fiji_and_read_table(fiji_cmd, outputdir + "table.csv")
+    for idx, (key, value) in enumerate(clean_metric_dict.items()):
+        if idx == 0:
+            continue
+        print(key + ":", value)
 
-        for idx, (key, value) in enumerate (clean_metric_dict.items()):
-            if idx ==0:
-                continue
-            print(key + ":", value)
-
-             
     return clean_metric_dict
-    
+
 def Surface_Area(array,voxel_size,fiji_path):
 
     if not isinstance(array, np.ndarray) or array.dtype != np.uint8:
@@ -102,23 +116,12 @@ def Surface_Area(array,voxel_size,fiji_path):
                      ", outputdir="+"\""+outputdir+"\"",
                      ", table_csv="+"\""+table_csv+"\""+"\'"])
 
-    b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    
+    clean_metric_dict = _run_fiji_and_read_table(fiji_cmd, outputdir + "table.csv")
+    for idx, (key, value) in enumerate(clean_metric_dict.items()):
+        if idx == 0:
+            continue
+        print(key + ":", value)
 
-    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
-        reader = csv.reader(file)
-        metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        clean_metric_dict = {
-            key: value[0].strip('"')
-            for key, value in metric_dict.items()
-        }
-
-        for idx, (key, value) in enumerate (clean_metric_dict.items()):
-            if idx ==0:
-                continue
-            print(key + ":", value)
-
-          
     return clean_metric_dict
 
 def Skeletonise(array,voxel_size,fiji_path):
@@ -150,9 +153,9 @@ def Skeletonise(array,voxel_size,fiji_path):
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
-    b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    skeleton_tif = outputdir + "skeleton.tif"
+    _run_fiji_and_check(fiji_cmd, skeleton_tif)
     plt.figure()
-    skeleton_tif = outputdir+f"skeleton.tif"
     skeleton_tif=tiff.imread(skeleton_tif)
     z_center = skeleton_tif.shape[2] // 2
     plt.imshow(skeleton_tif[:, :, z_center])
@@ -200,29 +203,18 @@ def Analyze_Skeleton(array,voxel_size,fiji_path,pruneCycleMethod=None,pruneEnds=
                          ", outputdir="+"\""+outputdir+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
 
-    b = subprocess.call(fiji_cmd,shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+f"table.csv", "r", encoding='utf-8') as file:
-        reader = csv.reader(file)
-        metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        clean_metric_dict = {
-            key: value[0].strip('"')
-            for key, value in metric_dict.items()
-        }
+    clean_metric_dict = _run_fiji_and_read_table(fiji_cmd, outputdir + "table.csv")
+    for idx, (key, value) in enumerate(clean_metric_dict.items()):
+        if idx == 0:
+            continue
+        print(key + ":", value)
 
-        for idx, (key, value) in enumerate (clean_metric_dict.items()):
-            if idx ==0:
-                continue
-            print(key + ":", value)
+    if displaySkeletons=="True":
+       skeleton_tif = outputdir +"skeleton.tif"
+       skeleton_tif=tiff.imread(skeleton_tif)
+       z_center = skeleton_tif.shape[2] // 2
+       plt.imshow(skeleton_tif[:, :, z_center]);plt.show()
 
-        
-        if displaySkeletons=="True":
-           skeleton_tif = outputdir +"skeleton.tif"
-           skeleton_tif=tiff.imread(skeleton_tif)
-           z_center = skeleton_tif.shape[2] // 2
-           plt.imshow(skeleton_tif[:, :, z_center]);plt.show()
-        
-  
-        
     return clean_metric_dict, skeleton_tif
 
 def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumValence=50,marginCutOff=10,minimumTrabecularLength=0,useClusters=False,iteratePruning=False,printCentroids=False,printCulledEdgePercentages=False,showSkeleton=False):
@@ -268,19 +260,11 @@ def Intertrabecular_Angles(array,voxel_size,fiji_path,minimumValence=3,maximumVa
                          ", skeleton_tif="+"\""+skeleton_tif+"\"",
                          ", table_csv="+"\""+table_csv+"\""+"\'"])
     
-    b = subprocess.call(fiji_cmd, shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    with open(outputdir+"table.csv", "r", encoding='utf-8') as file:
-        reader = csv.reader(file)
-        metric_dict = {row[0]:row[1:] for row in reader if row and row[0]}
-        clean_metric_dict = {
-            key: value[0].strip('"')
-            for key, value in metric_dict.items()
-        }
-
-        for idx, (key, value) in enumerate (clean_metric_dict.items()):
-            if idx ==0:
-                continue
-            print(key + ":", value)
+    clean_metric_dict = _run_fiji_and_read_table(fiji_cmd, outputdir + "table.csv")
+    for idx, (key, value) in enumerate(clean_metric_dict.items()):
+        if idx == 0:
+            continue
+        print(key + ":", value)
     return clean_metric_dict
 
 
